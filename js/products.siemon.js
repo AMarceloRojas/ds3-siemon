@@ -52,9 +52,9 @@ export const PRODUCTS = [
     category: 'cat5e',
     name: 'Cable UTP Cat5e F/UTP 305m PVC RISER',
     gallery: [
-      '/imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.jpg',
-      '/imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.rollo.jpg',
-      '/imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.Cable.jpg',
+      '../imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.jpg',
+      '../imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.rollo.jpg',
+      '../imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -77,8 +77,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -87,9 +87,9 @@ export const PRODUCTS = [
     category: 'cat5e',
     name: 'Cable UTP Cat5e LSOH-1 305m',
     gallery: [
-      '/imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.jpg',
-      '/imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.rollo.jpg',
-      '/imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.Cable.jpg',
+      '../imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.jpg',
+      '../imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.rollo.jpg',
+      '../imgs/siemon/cat5e/9C5L4-E2/9C5L4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -112,8 +112,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat5e/9C5L4-E2/9C5L4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat5e/9C5L4-E2/9C5L4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9C5L4-E2/9C5L4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9C5L4-E2/9C5L4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -122,9 +122,9 @@ export const PRODUCTS = [
     category: 'cat5e',
     name: 'Cable UTP Cat5e 305m PVC (CM)',
     gallery: [
-      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.jpg',
-      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.rollo.jpg',
-      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.Cable.jpg',
+      '../imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.jpg',
+      '../imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.rollo.jpg',
+      '../imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -147,8 +147,8 @@ export const PRODUCTS = [
       'Color': 'Gris'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat5e/9C5M4-E2/9C5M4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat5e/9C5M4-E2/9C5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9C5M4-E2/9C5M4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9C5M4-E2/9C5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -160,9 +160,9 @@ export const PRODUCTS = [
     category: 'cat6',
     name: 'Cable UTP Cat6 305m LSZH-3',
     gallery: [
-      '/imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.jpg',
-      '/imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.rollo.jpg',
-      '/imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.Cable.jpg',
+      '../imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.jpg',
+      '../imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.rollo.jpg',
+      '../imgs/siemon/cat6/9C6J4-E3/9C6J4-E3.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -185,8 +185,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6/9C6J4-E3/9C6J4-E3-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6/9C6J4-E3/9C6J4-E3-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6/9C6J4-E3/9C6J4-E3-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6/9C6J4-E3/9C6J4-E3-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -195,9 +195,9 @@ export const PRODUCTS = [
     category: 'cat6',
     name: 'Cable UTP Cat6 305m LSZH',
     gallery: [
-      '/imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.jpg',
-      '/imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.rollo.jpg',
-      '/imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.Cable.jpg',
+      '../imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.jpg',
+      '../imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.rollo.jpg',
+      '../imgs/siemon/cat6/9C6L4-E2/9C6L4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -220,8 +220,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6/9C6L4-E2/9C6L4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6/9C6L4-E2/9C6L4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6/9C6L4-E2/9C6L4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6/9C6L4-E2/9C6L4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -230,9 +230,9 @@ export const PRODUCTS = [
     category: 'cat6',
     name: 'Cable UTP Cat6 1000m LSZH Violeta',
     gallery: [
-      '/imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.jpg',
-      '/imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.rollo.jpg',
-      '/imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.Cable.jpg',
+      '../imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.jpg',
+      '../imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.rollo.jpg',
+      '../imgs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000.Cable.jpg',
     ],
     summary: [
       'Rollo de 1000 metros',
@@ -255,8 +255,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6/9C6L4-E3-VI-1000/9C6L4-E3-VI-1000-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -268,9 +268,9 @@ export const PRODUCTS = [
     category: 'cat6a',
     name: 'Cable F/UTP Cat6A 305m LSZH Violeta',
     gallery: [
-      '/imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.jpg',
-      '/imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.rollo.jpg',
-      '/imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.Cable.jpg',
+      '../imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.jpg',
+      '../imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.rollo.jpg',
+      '../imgs/siemon/cat6a/9A6L4-A5/9A6L4-A5.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -295,8 +295,8 @@ export const PRODUCTS = [
       'Frecuencia': 'Hasta 500 MHz'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6a/9A6L4-A5/9A6L4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6a/9A6L4-A5/9A6L4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6a/9A6L4-A5/9A6L4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6a/9A6L4-A5/9A6L4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -305,9 +305,9 @@ export const PRODUCTS = [
     category: 'cat6a',
     name: 'Cable F/UTP Cat6A 305m LSZH-3 Violeta',
     gallery: [
-      '/imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.jpg',
-      '/imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.rollo.jpg',
-      '/imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.Cable.jpg',
+      '../imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.jpg',
+      '../imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.rollo.jpg',
+      '../imgs/siemon/cat6a/9A6J4-A5/9A6J4-A5.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -330,8 +330,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6a/9A6J4-A5/9A6J4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6a/9A6J4-A5/9A6J4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6a/9A6J4-A5/9A6J4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6a/9A6J4-A5/9A6J4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -340,9 +340,9 @@ export const PRODUCTS = [
     category: 'cat6a',
     name: 'Cable UTP Cat6A 305m LSZH Violeta',
     gallery: [
-      '/imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.jpg',
-      '/imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.rollo.jpg',
-      '/imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.Cable.jpg',
+      '../imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.jpg',
+      '../imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.rollo.jpg',
+      '../imgs/siemon/cat6a/9C6L4-A5/9C6L4-A5.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
@@ -365,8 +365,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat6a/9C6L4-A5/9C6L4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat6a/9C6L4-A5/9C6L4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat6a/9C6L4-A5/9C6L4-A5-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat6a/9C6L4-A5/9C6L4-A5-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -378,9 +378,9 @@ export const PRODUCTS = [
     category: 'cat7',
     name: 'Cable S/FTP Cat7A 1000m LSZH Violeta',
     gallery: [
-      '/imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.jpg',
-      '/imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.rollo.jpg',
-      '/imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.Cable.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.rollo.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000.Cable.jpg',
     ],
     summary: [
       'Rollo 1000 metros',
@@ -404,8 +404,8 @@ export const PRODUCTS = [
       'Frecuencia': '600 MHz'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat7/9T7L4-E10-VL-1000/9T7L4-E10-VL-1000-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -414,9 +414,9 @@ export const PRODUCTS = [
     category: 'cat7',
     name: 'Cable S/FTP Cat7A 305m LSZH Violeta',
     gallery: [
-      '/imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.jpg',
-      '/imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.rollo.jpg',
-      '/imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.Cable.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.rollo.jpg',
+      '../imgs/siemon/cat7/9T7L4-E10/9T7L4-E10.Cable.jpg',
     ],
     summary: [
       'Rollo 305 metros',
@@ -439,8 +439,8 @@ export const PRODUCTS = [
       'Color': 'Violeta'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat7/9T7L4-E10/9T7L4-E10-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat7/9T7L4-E10/9T7L4-E10-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat7/9T7L4-E10/9T7L4-E10-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat7/9T7L4-E10/9T7L4-E10-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -452,9 +452,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat5e MAX Angular BULK Rojo',
     gallery: [
-      '/imgs/siemon/jack/MX5-03B/MX5-03B.jpg',
-      '/imgs/siemon/jack/MX5-03B/MX5-03B.rollo.jpg',
-      '/imgs/siemon/jack/MX5-03B/MX5-03B.Cable.jpg',
+      '../imgs/siemon/jack/MX5-03B/MX5-03B.jpg',
+      '../imgs/siemon/jack/MX5-03B/MX5-03B.rollo.jpg',
+      '../imgs/siemon/jack/MX5-03B/MX5-03B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat. 5e MAX Angular',
@@ -475,8 +475,8 @@ export const PRODUCTS = [
       'Ciclos de inserción': '≥ 750'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX5-03B/MX5-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX5-03B/MX5-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX5-03B/MX5-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX5-03B/MX5-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -485,9 +485,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat5e MAX Angular Azul',
     gallery: [
-      '/imgs/siemon/jack/MX5-06/MX5-06.jpg',
-      '/imgs/siemon/jack/MX5-06/MX5-06.rollo.jpg',
-      '/imgs/siemon/jack/MX5-06/MX5-06.Cable.jpg',
+      '../imgs/siemon/jack/MX5-06/MX5-06.jpg',
+      '../imgs/siemon/jack/MX5-06/MX5-06.rollo.jpg',
+      '../imgs/siemon/jack/MX5-06/MX5-06.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat. 5e MAX Angular',
@@ -504,8 +504,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX5-06/MX5-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX5-06/MX5-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX5-06/MX5-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX5-06/MX5-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -514,9 +514,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat5e MAX Plano VALUPACK Negro',
     gallery: [
-      '/imgs/siemon/jack/MX5-F01VP/MX5-F01VP.jpg',
-      '/imgs/siemon/jack/MX5-F01VP/MX5-F01VP.rollo.jpg',
-      '/imgs/siemon/jack/MX5-F01VP/MX5-F01VP.Cable.jpg',
+      '../imgs/siemon/jack/MX5-F01VP/MX5-F01VP.jpg',
+      '../imgs/siemon/jack/MX5-F01VP/MX5-F01VP.rollo.jpg',
+      '../imgs/siemon/jack/MX5-F01VP/MX5-F01VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat. 5e MAX plano',
@@ -534,8 +534,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX5-F01VP/MX5-F01VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX5-F01VP/MX5-F01VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX5-F01VP/MX5-F01VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX5-F01VP/MX5-F01VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -544,9 +544,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat5e MAX Plano VALUPACK Blanco',
     gallery: [
-      '/imgs/siemon/jack/MX5-F02VP/MX5-F02VP.jpg',
-      '/imgs/siemon/jack/MX5-F02VP/MX5-F02VP.rollo.jpg',
-      '/imgs/siemon/jack/MX5-F02VP/MX5-F02VP.Cable.jpg',
+      '../imgs/siemon/jack/MX5-F02VP/MX5-F02VP.jpg',
+      '../imgs/siemon/jack/MX5-F02VP/MX5-F02VP.rollo.jpg',
+      '../imgs/siemon/jack/MX5-F02VP/MX5-F02VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat. 5e MAX plano',
@@ -564,8 +564,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX5-F02VP/MX5-F02VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX5-F02VP/MX5-F02VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX5-F02VP/MX5-F02VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX5-F02VP/MX5-F02VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -574,9 +574,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat5e MAX Plano Azul',
     gallery: [
-      '/imgs/siemon/jack/MX5-F06/MX5-F06.jpg',
-      '/imgs/siemon/jack/MX5-F06/MX5-F06.rollo.jpg',
-      '/imgs/siemon/jack/MX5-F06/MX5-F06.Cable.jpg',
+      '../imgs/siemon/jack/MX5-F06/MX5-F06.jpg',
+      '../imgs/siemon/jack/MX5-F06/MX5-F06.rollo.jpg',
+      '../imgs/siemon/jack/MX5-F06/MX5-F06.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat. 5e MAX plano',
@@ -592,8 +592,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX5-F06/MX5-F06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX5-F06/MX5-F06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX5-F06/MX5-F06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX5-F06/MX5-F06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -605,9 +605,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Angular VP Blanco',
     gallery: [
-      '/imgs/siemon/jack/MX6-02VP/MX6-02VP.jpg',
-      '/imgs/siemon/jack/MX6-02VP/MX6-02VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-02VP/MX6-02VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-02VP/MX6-02VP.jpg',
+      '../imgs/siemon/jack/MX6-02VP/MX6-02VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-02VP/MX6-02VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Angular VP',
@@ -624,8 +624,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-02VP/MX6-02VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-02VP/MX6-02VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-02VP/MX6-02VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-02VP/MX6-02VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -634,9 +634,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Angular VP Rojo',
     gallery: [
-      '/imgs/siemon/jack/MX6-03VP/MX6-03VP.jpg',
-      '/imgs/siemon/jack/MX6-03VP/MX6-03VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-03VP/MX6-03VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-03VP/MX6-03VP.jpg',
+      '../imgs/siemon/jack/MX6-03VP/MX6-03VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-03VP/MX6-03VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Angular VP',
@@ -652,8 +652,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-03VP/MX6-03VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-03VP/MX6-03VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-03VP/MX6-03VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-03VP/MX6-03VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -662,9 +662,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Angular VP Azul',
     gallery: [
-      '/imgs/siemon/jack/MX6-06VP/MX6-06VP.jpg',
-      '/imgs/siemon/jack/MX6-06VP/MX6-06VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-06VP/MX6-06VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-06VP/MX6-06VP.jpg',
+      '../imgs/siemon/jack/MX6-06VP/MX6-06VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-06VP/MX6-06VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Angular VP',
@@ -680,8 +680,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-06VP/MX6-06VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-06VP/MX6-06VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-06VP/MX6-06VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-06VP/MX6-06VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -690,9 +690,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Plano VP Negro',
     gallery: [
-      '/imgs/siemon/jack/MX6-F01VP/MX6-F01VP.jpg',
-      '/imgs/siemon/jack/MX6-F01VP/MX6-F01VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-F01VP/MX6-F01VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-F01VP/MX6-F01VP.jpg',
+      '../imgs/siemon/jack/MX6-F01VP/MX6-F01VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-F01VP/MX6-F01VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Plano VP',
@@ -708,8 +708,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-F01VP/MX6-F01VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-F01VP/MX6-F01VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-F01VP/MX6-F01VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-F01VP/MX6-F01VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -718,9 +718,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Plano Rojo',
     gallery: [
-      '/imgs/siemon/jack/MX6-F03VP/MX6-F03VP.jpg',
-      '/imgs/siemon/jack/MX6-F03VP/MX6-F03VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-F03VP/MX6-F03VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-F03VP/MX6-F03VP.jpg',
+      '../imgs/siemon/jack/MX6-F03VP/MX6-F03VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-F03VP/MX6-F03VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Plano',
@@ -736,8 +736,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-F03VP/MX6-F03VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-F03VP/MX6-F03VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-F03VP/MX6-F03VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-F03VP/MX6-F03VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -746,9 +746,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Plano Azul',
     gallery: [
-      '/imgs/siemon/jack/MX6-F06VP/MX6-F06VP.jpg',
-      '/imgs/siemon/jack/MX6-F06VP/MX6-F06VP.rollo.jpg',
-      '/imgs/siemon/jack/MX6-F06VP/MX6-F06VP.Cable.jpg',
+      '../imgs/siemon/jack/MX6-F06VP/MX6-F06VP.jpg',
+      '../imgs/siemon/jack/MX6-F06VP/MX6-F06VP.rollo.jpg',
+      '../imgs/siemon/jack/MX6-F06VP/MX6-F06VP.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Plano',
@@ -764,8 +764,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-F06VP/MX6-F06VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-F06VP/MX6-F06VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-F06VP/MX6-F06VP-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-F06VP/MX6-F06VP-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -774,9 +774,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Angular Azul BULK',
     gallery: [
-      '/imgs/siemon/jack/MX6-06B/MX6-06B.jpg',
-      '/imgs/siemon/jack/MX6-06B/MX6-06B.rollo.jpg',
-      '/imgs/siemon/jack/MX6-06B/MX6-06B.Cable.jpg',
+      '../imgs/siemon/jack/MX6-06B/MX6-06B.jpg',
+      '../imgs/siemon/jack/MX6-06B/MX6-06B.rollo.jpg',
+      '../imgs/siemon/jack/MX6-06B/MX6-06B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Angular',
@@ -794,8 +794,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-06B/MX6-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-06B/MX6-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-06B/MX6-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-06B/MX6-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -804,9 +804,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Plano Negro BULK',
     gallery: [
-      '/imgs/siemon/jack/MX6-F01B/MX6-F01B.jpg',
-      '/imgs/siemon/jack/MX6-F01B/MX6-F01B.rollo.jpg',
-      '/imgs/siemon/jack/MX6-F01B/MX6-F01B.Cable.jpg',
+      '../imgs/siemon/jack/MX6-F01B/MX6-F01B.jpg',
+      '../imgs/siemon/jack/MX6-F01B/MX6-F01B.rollo.jpg',
+      '../imgs/siemon/jack/MX6-F01B/MX6-F01B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6 MAX Plano',
@@ -824,8 +824,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/MX6-F01B/MX6-F01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/MX6-F01B/MX6-F01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/MX6-F01B/MX6-F01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/MX6-F01B/MX6-F01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -837,9 +837,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX Plano/Angular BULK Negro',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S01B/Z6A-S01B.jpg',
-      '/imgs/siemon/jack/Z6A-S01B/Z6A-S01B.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S01B/Z6A-S01B.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S01B/Z6A-S01B.jpg',
+      '../imgs/siemon/jack/Z6A-S01B/Z6A-S01B.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S01B/Z6A-S01B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -860,8 +860,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S01B/Z6A-S01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S01B/Z6A-S01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S01B/Z6A-S01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S01B/Z6A-S01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -870,9 +870,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX CON TAPA BULK Negro',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.jpg',
-      '/imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.jpg',
+      '../imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S01DB/Z6A-S01DB.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -893,8 +893,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S01DB/Z6A-S01DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S01DB/Z6A-S01DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S01DB/Z6A-S01DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S01DB/Z6A-S01DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -903,9 +903,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX Plano/Angular BULK Blanco',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S02B/Z6A-S02B.jpg',
-      '/imgs/siemon/jack/Z6A-S02B/Z6A-S02B.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S02B/Z6A-S02B.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S02B/Z6A-S02B.jpg',
+      '../imgs/siemon/jack/Z6A-S02B/Z6A-S02B.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S02B/Z6A-S02B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -924,8 +924,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S02B/Z6A-S02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S02B/Z6A-S02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S02B/Z6A-S02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S02B/Z6A-S02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -934,9 +934,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX CON TAPA BULK Blanco',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.jpg',
-      '/imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.jpg',
+      '../imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S02DB/Z6A-S02DB.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -955,8 +955,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S02DB/Z6A-S02DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S02DB/Z6A-S02DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S02DB/Z6A-S02DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S02DB/Z6A-S02DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -965,9 +965,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX Plano/Angular BULK Rojo',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S03B/Z6A-S03B.jpg',
-      '/imgs/siemon/jack/Z6A-S03B/Z6A-S03B.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S03B/Z6A-S03B.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S03B/Z6A-S03B.jpg',
+      '../imgs/siemon/jack/Z6A-S03B/Z6A-S03B.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S03B/Z6A-S03B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -986,8 +986,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S03B/Z6A-S03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S03B/Z6A-S03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S03B/Z6A-S03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S03B/Z6A-S03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -996,9 +996,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX CON TAPA BULK Rojo',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.jpg',
-      '/imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.jpg',
+      '../imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S03DB/Z6A-S03DB.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1017,8 +1017,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S03DB/Z6A-S03DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S03DB/Z6A-S03DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S03DB/Z6A-S03DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S03DB/Z6A-S03DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1027,9 +1027,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX Plano/Angular Amarillo',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S05/Z6A-S05.jpg',
-      '/imgs/siemon/jack/Z6A-S05/Z6A-S05.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S05/Z6A-S05.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S05/Z6A-S05.jpg',
+      '../imgs/siemon/jack/Z6A-S05/Z6A-S05.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S05/Z6A-S05.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1047,8 +1047,8 @@ export const PRODUCTS = [
       'Color': 'Amarillo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S05/Z6A-S05-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S05/Z6A-S05-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S05/Z6A-S05-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S05/Z6A-S05-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1057,9 +1057,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX CON TAPA BULK Amarillo',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.jpg',
-      '/imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.jpg',
+      '../imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S05DB/Z6A-S05DB.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1078,8 +1078,8 @@ export const PRODUCTS = [
       'Color': 'Amarillo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S05DB/Z6A-S05DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S05DB/Z6A-S05DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S05DB/Z6A-S05DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S05DB/Z6A-S05DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1088,9 +1088,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX Plano/Angular BULK Azul',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S06B/Z6A-S06B.jpg',
-      '/imgs/siemon/jack/Z6A-S06B/Z6A-S06B.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S06B/Z6A-S06B.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S06B/Z6A-S06B.jpg',
+      '../imgs/siemon/jack/Z6A-S06B/Z6A-S06B.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S06B/Z6A-S06B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1109,8 +1109,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S06B/Z6A-S06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S06B/Z6A-S06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S06B/Z6A-S06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S06B/Z6A-S06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1119,9 +1119,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX CON TAPA BULK Azul',
     gallery: [
-      '/imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.jpg',
-      '/imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.jpg',
+      '../imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-S06DB/Z6A-S06DB.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1140,8 +1140,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-S06DB/Z6A-S06DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-S06DB/Z6A-S06DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-S06DB/Z6A-S06DB-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-S06DB/Z6A-S06DB-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1150,9 +1150,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX KEYSTONE Negro',
     gallery: [
-      '/imgs/siemon/jack/Z6A-SK01/Z6A-SK01.jpg',
-      '/imgs/siemon/jack/Z6A-SK01/Z6A-SK01.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-SK01/Z6A-SK01.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-SK01/Z6A-SK01.jpg',
+      '../imgs/siemon/jack/Z6A-SK01/Z6A-SK01.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-SK01/Z6A-SK01.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1171,8 +1171,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-SK01/Z6A-SK01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-SK01/Z6A-SK01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-SK01/Z6A-SK01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-SK01/Z6A-SK01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1181,9 +1181,9 @@ export const PRODUCTS = [
     category: 'jack',
     name: 'Jack RJ-45 Cat6A Z-MAX KEYSTONE BULK Negro',
     gallery: [
-      '/imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.jpg',
-      '/imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.rollo.jpg',
-      '/imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.Cable.jpg',
+      '../imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.jpg',
+      '../imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.rollo.jpg',
+      '../imgs/siemon/jack/Z6A-SK01B/Z6A-SK01B.Cable.jpg',
     ],
     summary: [
       'Jack RJ-45 Cat6A Apantallado',
@@ -1202,8 +1202,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/jack/Z6A-SK01B/Z6A-SK01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/jack/Z6A-SK01B/Z6A-SK01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/jack/Z6A-SK01B/Z6A-SK01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/jack/Z6A-SK01B/Z6A-SK01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1215,9 +1215,9 @@ export const PRODUCTS = [
     category: 'plug',
     name: 'Conector Plug RJ-45 de 8 pines Apantallado',
     gallery: [
-      '/imgs/siemon/plug/PS-8-8/PS-8-8.jpg',
-      '/imgs/siemon/plug/PS-8-8/PS-8-8.rollo.jpg',
-      '/imgs/siemon/plug/PS-8-8/PS-8-8.Cable.jpg',
+      '../imgs/siemon/plug/PS-8-8/PS-8-8.jpg',
+      '../imgs/siemon/plug/PS-8-8/PS-8-8.rollo.jpg',
+      '../imgs/siemon/plug/PS-8-8/PS-8-8.Cable.jpg',
     ],
     summary: [
       'Conector Plug RJ-45 de 8 pines',
@@ -1235,8 +1235,8 @@ export const PRODUCTS = [
       'Aplicación': 'Cables blindados Cat6/Cat6A/Cat7'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/plug/PS-8-8/PS-8-8-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/plug/PS-8-8/PS-8-8-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/plug/PS-8-8/PS-8-8-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/plug/PS-8-8/PS-8-8-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1248,9 +1248,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat5e 0.9m Azul',
     gallery: [
-      '/imgs/siemon/patch/MC5-03-0606/MC5-03-0606.jpg',
-      '/imgs/siemon/patch/MC5-03-0606/MC5-03-0606.rollo.jpg',
-      '/imgs/siemon/patch/MC5-03-0606/MC5-03-0606.Cable.jpg',
+      '../imgs/siemon/patch/MC5-03-0606/MC5-03-0606.jpg',
+      '../imgs/siemon/patch/MC5-03-0606/MC5-03-0606.rollo.jpg',
+      '../imgs/siemon/patch/MC5-03-0606/MC5-03-0606.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 5e',
@@ -1271,8 +1271,8 @@ export const PRODUCTS = [
       'Conectores': 'RJ45 moldeados'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC5-03-0606/MC5-03-0606-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC5-03-0606/MC5-03-0606-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC5-03-0606/MC5-03-0606-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC5-03-0606/MC5-03-0606-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1281,9 +1281,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat5e 2.1m Azul',
     gallery: [
-      '/imgs/siemon/patch/MC5-07-0606/MC5-07-0606.jpg',
-      '/imgs/siemon/patch/MC5-07-0606/MC5-07-0606.rollo.jpg',
-      '/imgs/siemon/patch/MC5-07-0606/MC5-07-0606.Cable.jpg',
+      '../imgs/siemon/patch/MC5-07-0606/MC5-07-0606.jpg',
+      '../imgs/siemon/patch/MC5-07-0606/MC5-07-0606.rollo.jpg',
+      '../imgs/siemon/patch/MC5-07-0606/MC5-07-0606.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 5e',
@@ -1302,8 +1302,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC5-07-0606/MC5-07-0606-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC5-07-0606/MC5-07-0606-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC5-07-0606/MC5-07-0606-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC5-07-0606/MC5-07-0606-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1312,9 +1312,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat5e 2.1m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.jpg',
-      '/imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.rollo.jpg',
-      '/imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.Cable.jpg',
+      '../imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.jpg',
+      '../imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.rollo.jpg',
+      '../imgs/siemon/patch/MC5-07-0606B/MC5-07-0606B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 5e',
@@ -1333,8 +1333,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC5-07-0606B/MC5-07-0606B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC5-07-0606B/MC5-07-0606B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC5-07-0606B/MC5-07-0606B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC5-07-0606B/MC5-07-0606B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1343,9 +1343,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat5e 3.1m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.jpg',
-      '/imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.rollo.jpg',
-      '/imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.Cable.jpg',
+      '../imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.jpg',
+      '../imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.rollo.jpg',
+      '../imgs/siemon/patch/MC5-10-0606B/MC5-10-0606B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 5e',
@@ -1364,8 +1364,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC5-10-0606B/MC5-10-0606B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC5-10-0606B/MC5-10-0606B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC5-10-0606B/MC5-10-0606B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC5-10-0606B/MC5-10-0606B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1374,9 +1374,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat5e 1.5m Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.jpg',
-      '/imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.rollo.jpg',
-      '/imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.Cable.jpg',
+      '../imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.jpg',
+      '../imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.rollo.jpg',
+      '../imgs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 5e',
@@ -1394,8 +1394,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC5-8T-05-B02C/MC5-8T-05-B02C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1405,9 +1405,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 0.9m BULK Negro',
     gallery: [
-      '/imgs/siemon/patch/MC6-03-01B/MC6-03-01B.jpg',
-      '/imgs/siemon/patch/MC6-03-01B/MC6-03-01B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-03-01B/MC6-03-01B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-03-01B/MC6-03-01B.jpg',
+      '../imgs/siemon/patch/MC6-03-01B/MC6-03-01B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-03-01B/MC6-03-01B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1428,8 +1428,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-03-01B/MC6-03-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-03-01B/MC6-03-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-03-01B/MC6-03-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-03-01B/MC6-03-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1438,9 +1438,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 0.9m BULK Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC6-03-02B/MC6-03-02B.jpg',
-      '/imgs/siemon/patch/MC6-03-02B/MC6-03-02B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-03-02B/MC6-03-02B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-03-02B/MC6-03-02B.jpg',
+      '../imgs/siemon/patch/MC6-03-02B/MC6-03-02B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-03-02B/MC6-03-02B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1459,8 +1459,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-03-02B/MC6-03-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-03-02B/MC6-03-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-03-02B/MC6-03-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-03-02B/MC6-03-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1469,9 +1469,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 0.9m BULK Rojo',
     gallery: [
-      '/imgs/siemon/patch/MC6-03-03B/MC6-03-03B.jpg',
-      '/imgs/siemon/patch/MC6-03-03B/MC6-03-03B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-03-03B/MC6-03-03B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-03-03B/MC6-03-03B.jpg',
+      '../imgs/siemon/patch/MC6-03-03B/MC6-03-03B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-03-03B/MC6-03-03B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1490,8 +1490,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-03-03B/MC6-03-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-03-03B/MC6-03-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-03-03B/MC6-03-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-03-03B/MC6-03-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1500,9 +1500,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 0.9m BULK Amarillo',
     gallery: [
-      '/imgs/siemon/patch/MC6-03-05B/MC6-03-05B.jpg',
-      '/imgs/siemon/patch/MC6-03-05B/MC6-03-05B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-03-05B/MC6-03-05B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-03-05B/MC6-03-05B.jpg',
+      '../imgs/siemon/patch/MC6-03-05B/MC6-03-05B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-03-05B/MC6-03-05B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1521,8 +1521,8 @@ export const PRODUCTS = [
       'Color': 'Amarillo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-03-05B/MC6-03-05B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-03-05B/MC6-03-05B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-03-05B/MC6-03-05B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-03-05B/MC6-03-05B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1531,9 +1531,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 0.9m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-03-06B/MC6-03-06B.jpg',
-      '/imgs/siemon/patch/MC6-03-06B/MC6-03-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-03-06B/MC6-03-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-03-06B/MC6-03-06B.jpg',
+      '../imgs/siemon/patch/MC6-03-06B/MC6-03-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-03-06B/MC6-03-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1552,8 +1552,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-03-06B/MC6-03-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-03-06B/MC6-03-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-03-06B/MC6-03-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-03-06B/MC6-03-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1562,9 +1562,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 1.5m BULK Negro',
     gallery: [
-      '/imgs/siemon/patch/MC6-05-01B/MC6-05-01B.jpg',
-      '/imgs/siemon/patch/MC6-05-01B/MC6-05-01B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-05-01B/MC6-05-01B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-05-01B/MC6-05-01B.jpg',
+      '../imgs/siemon/patch/MC6-05-01B/MC6-05-01B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-05-01B/MC6-05-01B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1572,8 +1572,7 @@ export const PRODUCTS = [
       'Color negro'
     ],
     standards: [
-      'ANSI/TIA-568.2-D — Cat 6'
-    ],
+      'ANSI/TIA-568.2-D — Cat 6'],
     description: 'Patch Cord UTP RJ-45 Cat 6, 04 pares, de 1.5 metros BULK, color negro, marca SIEMON.',
     specs: {
       'Categoría': 'Cat 6',
@@ -1583,8 +1582,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-05-01B/MC6-05-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-05-01B/MC6-05-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-05-01B/MC6-05-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-05-01B/MC6-05-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1593,9 +1592,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 1.5m BULK Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC6-05-02B/MC6-05-02B.jpg',
-      '/imgs/siemon/patch/MC6-05-02B/MC6-05-02B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-05-02B/MC6-05-02B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-05-02B/MC6-05-02B.jpg',
+      '../imgs/siemon/patch/MC6-05-02B/MC6-05-02B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-05-02B/MC6-05-02B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1614,8 +1613,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-05-02B/MC6-05-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-05-02B/MC6-05-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-05-02B/MC6-05-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-05-02B/MC6-05-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1624,9 +1623,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 1.5m BULK Rojo',
     gallery: [
-      '/imgs/siemon/patch/MC6-05-03B/MC6-05-03B.jpg',
-      '/imgs/siemon/patch/MC6-05-03B/MC6-05-03B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-05-03B/MC6-05-03B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-05-03B/MC6-05-03B.jpg',
+      '../imgs/siemon/patch/MC6-05-03B/MC6-05-03B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-05-03B/MC6-05-03B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1645,8 +1644,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-05-03B/MC6-05-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-05-03B/MC6-05-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-05-03B/MC6-05-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-05-03B/MC6-05-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1655,9 +1654,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 1.5m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-05-06B/MC6-05-06B.jpg',
-      '/imgs/siemon/patch/MC6-05-06B/MC6-05-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-05-06B/MC6-05-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-05-06B/MC6-05-06B.jpg',
+      '../imgs/siemon/patch/MC6-05-06B/MC6-05-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-05-06B/MC6-05-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1676,8 +1675,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-05-06B/MC6-05-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-05-06B/MC6-05-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-05-06B/MC6-05-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-05-06B/MC6-05-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1686,9 +1685,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 2.1m BULK Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC6-07-02B/MC6-07-02B.jpg',
-      '/imgs/siemon/patch/MC6-07-02B/MC6-07-02B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-07-02B/MC6-07-02B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-07-02B/MC6-07-02B.jpg',
+      '../imgs/siemon/patch/MC6-07-02B/MC6-07-02B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-07-02B/MC6-07-02B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1707,8 +1706,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-07-02B/MC6-07-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-07-02B/MC6-07-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-07-02B/MC6-07-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-07-02B/MC6-07-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1717,9 +1716,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 2.1m BULK Rojo',
     gallery: [
-      '/imgs/siemon/patch/MC6-07-03B/MC6-07-03B.jpg',
-      '/imgs/siemon/patch/MC6-07-03B/MC6-07-03B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-07-03B/MC6-07-03B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-07-03B/MC6-07-03B.jpg',
+      '../imgs/siemon/patch/MC6-07-03B/MC6-07-03B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-07-03B/MC6-07-03B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1738,8 +1737,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-07-03B/MC6-07-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-07-03B/MC6-07-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-07-03B/MC6-07-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-07-03B/MC6-07-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1748,9 +1747,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 2.1m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-07-06B/MC6-07-06B.jpg',
-      '/imgs/siemon/patch/MC6-07-06B/MC6-07-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-07-06B/MC6-07-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-07-06B/MC6-07-06B.jpg',
+      '../imgs/siemon/patch/MC6-07-06B/MC6-07-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-07-06B/MC6-07-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1769,8 +1768,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-07-06B/MC6-07-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-07-06B/MC6-07-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-07-06B/MC6-07-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-07-06B/MC6-07-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1779,9 +1778,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Negro',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-01B/MC6-10-01B.jpg',
-      '/imgs/siemon/patch/MC6-10-01B/MC6-10-01B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-01B/MC6-10-01B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-01B/MC6-10-01B.jpg',
+      '../imgs/siemon/patch/MC6-10-01B/MC6-10-01B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-01B/MC6-10-01B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1800,8 +1799,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-01B/MC6-10-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-01B/MC6-10-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-01B/MC6-10-01B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-01B/MC6-10-01B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1810,9 +1809,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-02B/MC6-10-02B.jpg',
-      '/imgs/siemon/patch/MC6-10-02B/MC6-10-02B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-02B/MC6-10-02B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-02B/MC6-10-02B.jpg',
+      '../imgs/siemon/patch/MC6-10-02B/MC6-10-02B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-02B/MC6-10-02B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1831,8 +1830,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-02B/MC6-10-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-02B/MC6-10-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-02B/MC6-10-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-02B/MC6-10-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1841,9 +1840,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Rojo',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-03B/MC6-10-03B.jpg',
-      '/imgs/siemon/patch/MC6-10-03B/MC6-10-03B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-03B/MC6-10-03B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-03B/MC6-10-03B.jpg',
+      '../imgs/siemon/patch/MC6-10-03B/MC6-10-03B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-03B/MC6-10-03B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1862,8 +1861,8 @@ export const PRODUCTS = [
       'Color': 'Rojo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-03B/MC6-10-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-03B/MC6-10-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-03B/MC6-10-03B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-03B/MC6-10-03B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1872,9 +1871,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Amarillo',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-05B/MC6-10-05B.jpg',
-      '/imgs/siemon/patch/MC6-10-05B/MC6-10-05B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-05B/MC6-10-05B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-05B/MC6-10-05B.jpg',
+      '../imgs/siemon/patch/MC6-10-05B/MC6-10-05B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-05B/MC6-10-05B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1893,8 +1892,8 @@ export const PRODUCTS = [
       'Color': 'Amarillo'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-05B/MC6-10-05B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-05B/MC6-10-05B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-05B/MC6-10-05B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-05B/MC6-10-05B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1903,9 +1902,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-06B/MC6-10-06B.jpg',
-      '/imgs/siemon/patch/MC6-10-06B/MC6-10-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-06B/MC6-10-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-06B/MC6-10-06B.jpg',
+      '../imgs/siemon/patch/MC6-10-06B/MC6-10-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-06B/MC6-10-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1924,8 +1923,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-06B/MC6-10-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-06B/MC6-10-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-06B/MC6-10-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-06B/MC6-10-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1934,9 +1933,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 3.1m BULK Verde',
     gallery: [
-      '/imgs/siemon/patch/MC6-10-07B/MC6-10-07B.jpg',
-      '/imgs/siemon/patch/MC6-10-07B/MC6-10-07B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-10-07B/MC6-10-07B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-10-07B/MC6-10-07B.jpg',
+      '../imgs/siemon/patch/MC6-10-07B/MC6-10-07B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-10-07B/MC6-10-07B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1955,8 +1954,8 @@ export const PRODUCTS = [
       'Color': 'Verde'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-10-07B/MC6-10-07B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-10-07B/MC6-10-07B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-10-07B/MC6-10-07B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-10-07B/MC6-10-07B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1965,9 +1964,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 4.5m BULK Blanco',
     gallery: [
-      '/imgs/siemon/patch/MC6-15-02B/MC6-15-02B.jpg',
-      '/imgs/siemon/patch/MC6-15-02B/MC6-15-02B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-15-02B/MC6-15-02B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-15-02B/MC6-15-02B.jpg',
+      '../imgs/siemon/patch/MC6-15-02B/MC6-15-02B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-15-02B/MC6-15-02B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -1986,8 +1985,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-15-02B/MC6-15-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-15-02B/MC6-15-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-15-02B/MC6-15-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-15-02B/MC6-15-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -1996,9 +1995,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 4.5m Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-15-06/MC6-15-06.jpg',
-      '/imgs/siemon/patch/MC6-15-06/MC6-15-06.rollo.jpg',
-      '/imgs/siemon/patch/MC6-15-06/MC6-15-06.Cable.jpg',
+      '../imgs/siemon/patch/MC6-15-06/MC6-15-06.jpg',
+      '../imgs/siemon/patch/MC6-15-06/MC6-15-06.rollo.jpg',
+      '../imgs/siemon/patch/MC6-15-06/MC6-15-06.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -2016,8 +2015,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-15-06/MC6-15-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-15-06/MC6-15-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-15-06/MC6-15-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-15-06/MC6-15-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2026,9 +2025,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 4.5m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-15-06B/MC6-15-06B.jpg',
-      '/imgs/siemon/patch/MC6-15-06B/MC6-15-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-15-06B/MC6-15-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-15-06B/MC6-15-06B.jpg',
+      '../imgs/siemon/patch/MC6-15-06B/MC6-15-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-15-06B/MC6-15-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -2047,8 +2046,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-15-06B/MC6-15-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-15-06B/MC6-15-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-15-06B/MC6-15-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-15-06B/MC6-15-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2057,9 +2056,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 6.1m Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-20-06/MC6-20-06.jpg',
-      '/imgs/siemon/patch/MC6-20-06/MC6-20-06.rollo.jpg',
-      '/imgs/siemon/patch/MC6-20-06/MC6-20-06.Cable.jpg',
+      '../imgs/siemon/patch/MC6-20-06/MC6-20-06.jpg',
+      '../imgs/siemon/patch/MC6-20-06/MC6-20-06.rollo.jpg',
+      '../imgs/siemon/patch/MC6-20-06/MC6-20-06.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -2077,8 +2076,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-20-06/MC6-20-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-20-06/MC6-20-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-20-06/MC6-20-06-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-20-06/MC6-20-06-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2087,9 +2086,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord UTP Cat6 6.1m BULK Azul',
     gallery: [
-      '/imgs/siemon/patch/MC6-20-06B/MC6-20-06B.jpg',
-      '/imgs/siemon/patch/MC6-20-06B/MC6-20-06B.rollo.jpg',
-      '/imgs/siemon/patch/MC6-20-06B/MC6-20-06B.Cable.jpg',
+      '../imgs/siemon/patch/MC6-20-06B/MC6-20-06B.jpg',
+      '../imgs/siemon/patch/MC6-20-06B/MC6-20-06B.rollo.jpg',
+      '../imgs/siemon/patch/MC6-20-06B/MC6-20-06B.Cable.jpg',
     ],
     summary: [
       'Patch Cord UTP RJ-45 Cat 6',
@@ -2108,8 +2107,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/MC6-20-06B/MC6-20-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/MC6-20-06B/MC6-20-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/MC6-20-06B/MC6-20-06B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/MC6-20-06B/MC6-20-06B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2121,9 +2120,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Pigtail LC Multimodo OM1 1m Naranja',
     gallery: [
-      '/imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.jpg',
-      '/imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.rollo.jpg',
-      '/imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.Cable.jpg',
+      '../imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.jpg',
+      '../imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.rollo.jpg',
+      '../imgs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01.Cable.jpg',
     ],
     summary: [
       'Pigtail LC Multimodo OM1 de 01 metro',
@@ -2143,8 +2142,8 @@ export const PRODUCTS = [
       'Color': 'Naranja'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/FP1B-LC8MM-01/FP1B-LC8MM-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2153,9 +2152,9 @@ export const PRODUCTS = [
     category: 'patch',
     name: 'Patch Cord F/UTP Cat6A TERA 2 Pares 0.9m LSZH Azul',
     gallery: [
-      '/imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.jpg',
-      '/imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.rollo.jpg',
-      '/imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.Cable.jpg',
+      '../imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.jpg',
+      '../imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.rollo.jpg',
+      '../imgs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L.Cable.jpg',
     ],
     summary: [
       'Patch Cord F/UTP RJ-45 TERA',
@@ -2178,8 +2177,8 @@ export const PRODUCTS = [
       'Color': 'Azul'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/patch/T2E2-03M-B08L/T2E2-03M-B08L-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2191,9 +2190,9 @@ export const PRODUCTS = [
     category: 'panel',
     name: 'Patch Panel 24 Puertos Modular MAX Negro',
     gallery: [
-      '/imgs/siemon/panel/MX-PNL-24/MX-PNL-24.jpg',
-      '/imgs/siemon/panel/MX-PNL-24/MX-PNL-24.rollo.jpg',
-      '/imgs/siemon/panel/MX-PNL-24/MX-PNL-24.Cable.jpg',
+      '../imgs/siemon/panel/MX-PNL-24/MX-PNL-24.jpg',
+      '../imgs/siemon/panel/MX-PNL-24/MX-PNL-24.rollo.jpg',
+      '../imgs/siemon/panel/MX-PNL-24/MX-PNL-24.Cable.jpg',
     ],
     summary: [
       'Patch Panel 24 Puertos Modular',
@@ -2214,8 +2213,8 @@ export const PRODUCTS = [
       'Presentación': 'Caja 02 unidades'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/panel/MX-PNL-24/MX-PNL-24-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/panel/MX-PNL-24/MX-PNL-24-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/panel/MX-PNL-24/MX-PNL-24-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/panel/MX-PNL-24/MX-PNL-24-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2224,9 +2223,9 @@ export const PRODUCTS = [
     category: 'panel',
     name: 'Patch Panel 24 Puertos Modular TERA Z-MAX Negro',
     gallery: [
-      '/imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.jpg',
-      '/imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.rollo.jpg',
-      '/imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.Cable.jpg',
+      '../imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.jpg',
+      '../imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.rollo.jpg',
+      '../imgs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01.Cable.jpg',
     ],
     summary: [
       'Patch Panel de 24 Puertos Modular',
@@ -2245,8 +2244,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/panel/TM-PNLZ-24-01/TM-PNLZ-24-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2255,9 +2254,9 @@ export const PRODUCTS = [
     category: 'panel',
     name: 'Patch Panel 48 Puertos Modular MAX Negro',
     gallery: [
-      '/imgs/siemon/panel/MX-PNL-48/MX-PNL-48.jpg',
-      '/imgs/siemon/panel/MX-PNL-48/MX-PNL-48.rollo.jpg',
-      '/imgs/siemon/panel/MX-PNL-48/MX-PNL-48.Cable.jpg',
+      '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.jpg',
+      '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.rollo.jpg',
+      '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.Cable.jpg',
     ],
     summary: [
       'Patch Panel 48 Puertos Modular',
@@ -2278,8 +2277,8 @@ export const PRODUCTS = [
       'Presentación': 'Caja 02 unidades'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/panel/MX-PNL-48/MX-PNL-48-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/panel/MX-PNL-48/MX-PNL-48-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/panel/MX-PNL-48/MX-PNL-48-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/panel/MX-PNL-48/MX-PNL-48-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2288,9 +2287,9 @@ export const PRODUCTS = [
     category: 'panel',
     name: 'Patch Panel 24 Puertos Cat6 S110 Negro',
     gallery: [
-      '/imgs/siemon/panel/HD6-24/HD6-24.jpg',
-      '/imgs/siemon/panel/HD6-24/HD6-24.rollo.jpg',
-      '/imgs/siemon/panel/HD6-24/HD6-24.Cable.jpg',
+      '../imgs/siemon/panel/HD6-24/HD6-24.jpg',
+      '../imgs/siemon/panel/HD6-24/HD6-24.rollo.jpg',
+      '../imgs/siemon/panel/HD6-24/HD6-24.Cable.jpg',
     ],
     summary: [
       'Patch Panel 24 Puertos Cat6 S110',
@@ -2311,8 +2310,8 @@ export const PRODUCTS = [
       'Presentación': 'Caja 02 unidades'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/panel/HD6-24/HD6-24-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/panel/HD6-24/HD6-24-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/panel/HD6-24/HD6-24-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/panel/HD6-24/HD6-24-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2321,9 +2320,9 @@ export const PRODUCTS = [
     category: 'panel',
     name: 'Patch Panel 48 Puertos Cat6 S110 Negro',
     gallery: [
-      '/imgs/siemon/panel/HD6-48/HD6-48.jpg',
-      '/imgs/siemon/panel/HD6-48/HD6-48.rollo.jpg',
-      '/imgs/siemon/panel/HD6-48/HD6-48.Cable.jpg',
+      '../imgs/siemon/panel/HD6-48/HD6-48.jpg',
+      '../imgs/siemon/panel/HD6-48/HD6-48.rollo.jpg',
+      '../imgs/siemon/panel/HD6-48/HD6-48.Cable.jpg',
     ],
     summary: [
       'Patch Panel 48 Puertos Cat6 S110',
@@ -2343,8 +2342,8 @@ export const PRODUCTS = [
       'Presentación': 'Caja 02 unidades'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/panel/HD6-48/HD6-48-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/panel/HD6-48/HD6-48-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/panel/HD6-48/HD6-48-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/panel/HD6-48/HD6-48-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2356,9 +2355,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Bandeja Fibra Óptica Rackeable 1-RU Cap. 3 Paneles',
     gallery: [
-      '/imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.jpg',
-      '/imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.rollo.jpg',
-      '/imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.Cable.jpg',
+      '../imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.jpg',
+      '../imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.rollo.jpg',
+      '../imgs/siemon/fibra/FCP3-RACK/FCP3-RACK.Cable.jpg',
     ],
     summary: [
       'Bandeja de Fibra Óptica Rackeable 1-RU',
@@ -2380,8 +2379,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/FCP3-RACK/FCP3-RACK-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/FCP3-RACK/FCP3-RACK-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/FCP3-RACK/FCP3-RACK-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/FCP3-RACK/FCP3-RACK-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2390,9 +2389,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Bandeja Fibra Óptica Rackeable 1-RU Cap. 3 Paneles Deslizante',
     gallery: [
-      '/imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.jpg',
-      '/imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.rollo.jpg',
-      '/imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.Cable.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.rollo.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR/FCP3-DWR.Cable.jpg',
     ],
     summary: [
       'Bandeja de Fibra Óptica Rackeable 1-RU',
@@ -2413,8 +2412,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/FCP3-DWR/FCP3-DWR-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/FCP3-DWR/FCP3-DWR-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/FCP3-DWR/FCP3-DWR-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/FCP3-DWR/FCP3-DWR-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2423,9 +2422,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Bandeja Fibra Óptica Rackeable 1-RU HIGH-DENSITY Cap. 4 Paneles',
     gallery: [
-      '/imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.jpg',
-      '/imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.rollo.jpg',
-      '/imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.Cable.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.rollo.jpg',
+      '../imgs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A.Cable.jpg',
     ],
     summary: [
       'Bandeja de Fibra Óptica Rackeable 1-RU',
@@ -2447,8 +2446,8 @@ export const PRODUCTS = [
       'Color': 'Negro'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/FCP3-DWR-4A/FCP3-DWR-4A-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2460,9 +2459,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Panel Fibra Óptica 6 Acopladoras LC Duplex MM/SM Beige',
     gallery: [
-      '/imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.rollo.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.Cable.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.rollo.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.Cable.jpg',
     ],
     summary: [
       'Panel de Fibra Óptica con 6 Acopladoras',
@@ -2480,8 +2479,8 @@ export const PRODUCTS = [
       'Color': 'Beige'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2490,9 +2489,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Panel Ciego para Bandeja de Fibra Óptica',
     gallery: [
-      '/imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.jpg',
-      '/imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.rollo.jpg',
-      '/imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.Cable.jpg',
+      '../imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.jpg',
+      '../imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.rollo.jpg',
+      '../imgs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01.Cable.jpg',
     ],
     summary: [
       'Panel Ciego para Bandeja de Fibra Óptica'
@@ -2506,8 +2505,8 @@ export const PRODUCTS = [
       'Uso': 'Bandeja de fibra óptica'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/RIC-F-BLNK-01/RIC-F-BLNK-01-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2516,9 +2515,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Panel Fibra Óptica 8 Acopladoras LC Duplex Beige',
     gallery: [
-      '/imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.rollo.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.Cable.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.rollo.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C.Cable.jpg',
     ],
     summary: [
       'Panel de Fibra Óptica con 8 Acopladoras',
@@ -2534,8 +2533,8 @@ export const PRODUCTS = [
       'Color': 'Beige'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/RIC-F-LC16-01C/RIC-F-LC16-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2544,9 +2543,9 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Panel Fibra Óptica 12 Acopladoras LC Duplex Beige',
     gallery: [
-      '/imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.rollo.jpg',
-      '/imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.Cable.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.rollo.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C.Cable.jpg',
     ],
     summary: [
       'Panel de Fibra Óptica con 12 Acopladoras',
@@ -2563,8 +2562,8 @@ export const PRODUCTS = [
       'Color': 'Beige'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/fibra/RIC-F-LC24-01C/RIC-F-LC24-01C-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2576,9 +2575,9 @@ export const PRODUCTS = [
     category: 'accesorio',
     name: 'Organizador de Cables Horizontal Frontal 1RU',
     gallery: [
-      '/imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.jpg',
-      '/imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.rollo.jpg',
-      '/imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.Cable.jpg',
+      '../imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.jpg',
+      '../imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.rollo.jpg',
+      '../imgs/siemon/accesorio/HCM-4-1U/HCM-4-1U.Cable.jpg',
     ],
     summary: [
       'Organizador de cables horizontal frontal',
@@ -2595,8 +2594,8 @@ export const PRODUCTS = [
       'Montaje': 'Rack 19"'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/accesorio/HCM-4-1U/HCM-4-1U-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/accesorio/HCM-4-1U/HCM-4-1U-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/accesorio/HCM-4-1U/HCM-4-1U-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/accesorio/HCM-4-1U/HCM-4-1U-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2605,9 +2604,9 @@ export const PRODUCTS = [
     category: 'accesorio',
     name: 'Organizador Mini Bandeja para 12 Empalmes Fusión',
     gallery: [
-      '/imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.jpg',
-      '/imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.rollo.jpg',
-      '/imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.Cable.jpg',
+      '../imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.jpg',
+      '../imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.rollo.jpg',
+      '../imgs/siemon/accesorio/TRAY-M-3/TRAY-M-3.Cable.jpg',
     ],
     summary: [
       'Organizador (Mini bandeja) para 12 Empalmes de Fusión',
@@ -2625,8 +2624,8 @@ export const PRODUCTS = [
       'No incluye': 'Manguitos termocontráibles'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/accesorio/TRAY-M-3/TRAY-M-3-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/accesorio/TRAY-M-3/TRAY-M-3-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/accesorio/TRAY-M-3/TRAY-M-3-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/accesorio/TRAY-M-3/TRAY-M-3-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2635,9 +2634,9 @@ export const PRODUCTS = [
     category: 'accesorio',
     name: 'Caja de Montaje Universal Simple Blanco',
     gallery: [
-      '/imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.jpg',
-      '/imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.rollo.jpg',
-      '/imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.Cable.jpg',
+      '../imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.jpg',
+      '../imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.rollo.jpg',
+      '../imgs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02.Cable.jpg',
     ],
     summary: [
       'Caja de Montaje Universal Simple',
@@ -2655,8 +2654,8 @@ export const PRODUCTS = [
       'Montaje': 'Superficial'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/accesorio/CT4-BOX-02/CT4-BOX-02-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
@@ -2665,9 +2664,9 @@ export const PRODUCTS = [
     category: 'accesorio',
     name: 'Faceplate 2 Puertos MAX Horizontal Blanco',
     gallery: [
-      '/imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.jpg',
-      '/imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.rollo.jpg',
-      '/imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.Cable.jpg',
+      '../imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.jpg',
+      '../imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.rollo.jpg',
+      '../imgs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B.Cable.jpg',
     ],
     summary: [
       'Faceplate - Placa de pared de 02 Puertos',
@@ -2687,8 +2686,8 @@ export const PRODUCTS = [
       'Color': 'Blanco'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
