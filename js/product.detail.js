@@ -1,10 +1,25 @@
-// /js/product.detail.js
+// /SIEMON/js/product.detail.js
 import { PRODUCTS } from './products.siemon.js';
 
-/* ===================== helpers ===================== */
-const $ = (s) => document.querySelector(s);
-const DEFAULT_IMG = '../SIEMON/icons/Siemonlogo.png';
+/* ===================== rutas seguras para GH Pages ===================== */
+// Detecta si el detalle vive en /productos/ (tu caso)
+const IN_PRODUCT = /\/productos(\/|$)/.test(location.pathname);
+// Prefijo correcto para subir un nivel desde /productos/
+const PREFIX = IN_PRODUCT ? '../' : './';
 
+// Normaliza cualquier ruta local para que NO sea absoluta
+const fixRel = (u) => {
+  if (!u) return u;
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
+  if (u.startsWith('/'))   return PREFIX + u.slice(1);   // "/imgs/x.png" -> "../imgs/x.png"
+  if (u.startsWith('./'))  return PREFIX + u.slice(2);   // "./imgs/x.png" -> "../imgs/x.png"
+  return u;                                                // "../imgs/x.png" o similar
+};
+
+const $ = (s) => document.querySelector(s);
+const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
+
+/* ===================== helpers ===================== */
 function escapeHtml(s) {
   return (s ?? '').toString()
     .replace(/&/g,'&amp;')
@@ -28,15 +43,16 @@ function getSku() {
   return null;
 }
 
-/* ===================== templates con diseño simple ===================== */
+/* ===================== templates ===================== */
 function galleryTpl(imgs) {
-  const list = (Array.isArray(imgs) && imgs.length ? imgs : [DEFAULT_IMG]).slice(0, 4);
+  const listRaw = (Array.isArray(imgs) && imgs.length ? imgs : [DEFAULT_IMG]).slice(0, 4);
+  const list = listRaw.map(fixRel);
   const main = list[0] || DEFAULT_IMG;
 
   const thumbs = list.map((src, idx) => `
     <button class="w-20 h-20 border rounded p-1 hover:border-blue-500 transition" 
             data-thumb="${src}" data-index="${idx}">
-      <img src="${src}" alt="Vista ${idx + 1}" class="w-full h-full object-contain">
+      <img src="${src}" alt="Vista ${idx + 1}" class="w-full h-full object-contain" loading="lazy">
     </button>
   `).join('');
 
@@ -76,18 +92,15 @@ function downloadsTpl(items) {
   if (!Array.isArray(items) || !items.length) return '';
   
   const links = items.map(d => {
-    // Solo 2 tipos: PDF (rojo) y Especificaciones (verde)
-    let btnClass = 'download-btn btn-pdf'; // Por defecto PDF
-    
-    // Si el label contiene "especificaciones" o el icon es fa-clipboard-list, usar verde
-    if (d.label.toLowerCase().includes('especificaciones') || 
-        d.label.toLowerCase().includes('specifications') ||
+    const href = fixRel(d.href);
+    let btnClass = 'download-btn btn-pdf';
+    if ((d.label || '').toLowerCase().includes('especificaciones') ||
+        (d.label || '').toLowerCase().includes('specifications') ||
         d.icon === 'fa-clipboard-list') {
       btnClass = 'download-btn btn-specs';
     }
-    
     return `
-      <a href="${d.href}" target="_blank" class="${btnClass}">
+      <a href="${href}" target="_blank" class="${btnClass}">
         <i class="fa-solid ${d.icon || 'fa-file-pdf'}"></i>
         <span>${escapeHtml(d.label || 'Descarga')}</span>
       </a>
@@ -127,7 +140,7 @@ function standardsContent(items) {
   `;
 }
 
-/* ===================== render principal ===================== */
+/* ===================== render ===================== */
 function renderProduct(p) {
   // Breadcrumb
   const crumbSku = $('#crumbSku');
@@ -169,16 +182,14 @@ function renderProduct(p) {
     </div>
   `;
 
-  // Vista principal
+  // Galería + info
   $('#productView').innerHTML = `
     <div class="p-4 md:p-6">
-      <!-- HERO: Galería + Info -->
       <div class="grid gap-6 lg:grid-cols-2">
         ${galleryTpl(p.gallery && p.gallery.length ? p.gallery : (p.image ? [p.image] : [DEFAULT_IMG]))}
         ${infoBlock}
       </div>
 
-      <!-- DESCRIPCIÓN -->
       ${p.description ? `
         <section class="mt-8">
           <h2 class="text-lg font-semibold mb-2">Descripción</h2>
@@ -186,23 +197,19 @@ function renderProduct(p) {
         </section>
       ` : ''}
 
-      <!-- DOWNLOADS -->
       ${downloadsTpl(p.downloads)}
 
-      <!-- ESPECIFICACIONES TÉCNICAS -->
       <section class="mt-8">
         <h2 class="text-lg font-semibold mb-3">Especificaciones Técnicas</h2>
         ${specTable(p.specs)}
       </section>
 
-      <!-- ACORDEONES -->
       <div class="mt-8 space-y-4">
         ${p.standards && p.standards.length ? accordionTpl(
           'Normas y desempeño',
           standardsContent(p.standards),
           'fa-award'
         ) : ''}
-        
         ${accordionTpl(
           'Certificaciones y ambiente',
           `
@@ -215,15 +222,17 @@ function renderProduct(p) {
     </div>
   `;
 
-  // Galería interactiva
-  const view = $('#productView');
+  // Fallback para imagen principal
   const imgMain = $('#img_main');
-  
+  if (imgMain) imgMain.addEventListener('error', () => { imgMain.src = DEFAULT_IMG; }, { once:true });
+
+  // Clicks en thumbnails
+  const view = $('#productView');
   view.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-thumb]');
     if (!btn || !imgMain) return;
     imgMain.style.opacity = '0.2';
-    imgMain.src = btn.getAttribute('data-thumb');
+    imgMain.src = fixRel(btn.getAttribute('data-thumb'));
     imgMain.onload = () => imgMain.style.opacity = '1';
   });
 
@@ -236,7 +245,7 @@ function renderSimilar(current) {
   if (!grid) return;
 
   const sameCat = PRODUCTS.filter(p => p.sku !== current.sku && p.category === current.category);
-  const others = PRODUCTS.filter(p => p.sku !== current.sku && p.category !== current.category);
+  const others  = PRODUCTS.filter(p => p.sku !== current.sku && p.category !== current.category);
   const uniquePool = [...sameCat, ...others];
 
   function shuffle(arr) {
@@ -249,9 +258,8 @@ function renderSimilar(current) {
   }
 
   const cards = [];
-  if (uniquePool.length >= MAX) {
-    cards.push(...shuffle(uniquePool).slice(0, MAX));
-  } else {
+  if (uniquePool.length >= MAX) cards.push(...shuffle(uniquePool).slice(0, MAX));
+  else {
     cards.push(...shuffle(uniquePool));
     while (cards.length < MAX && uniquePool.length) {
       const r = uniquePool[Math.floor(Math.random() * uniquePool.length)];
@@ -259,14 +267,15 @@ function renderSimilar(current) {
     }
   }
 
-  const fallbackImg = '../SIEMON/icons/Siemonlogo.png';
   const cardTpl = (p) => `
-    <a href="/productos/index.html?sku=${encodeURIComponent(p.sku)}"
+    <a href="./index.html?sku=${encodeURIComponent(p.sku)}"
        class="product-card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5">
       <div class="h-40 flex items-center justify-center">
-        <img src="${(p.gallery && p.gallery[0]) || p.image || fallbackImg}"
+        <img src="${fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG}"
              alt="${escapeHtml(p.name)}"
-             class="max-h-full object-contain group-hover:scale-105 transition">
+             class="max-h-full object-contain group-hover:scale-105 transition"
+             loading="lazy"
+             onerror="this.src='${DEFAULT_IMG}'">
       </div>
       <div class="pt-4 text-center">
         <h3 class="font-bold">${escapeHtml(p.name)}</h3>
@@ -283,9 +292,6 @@ function renderSimilar(current) {
 (function boot() {
   const sku = getSku();
   const mount = $('#productView');
-
-  console.log('[Detalle] SKU detectado:', sku);
-  console.log('[Detalle] SKUs disponibles:', PRODUCTS.map(p => p.sku));
 
   if (!sku) {
     mount.innerHTML = `<div class="p-6 bg-white border rounded-xl">No encontré el producto (sin SKU).</div>`;
