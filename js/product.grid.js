@@ -1,17 +1,24 @@
 // /SIEMON/js/product.grid.js
 import { PRODUCTS } from './products.siemon.js';
 
-// Detecta si estamos dentro de /productos/ para calcular prefijos robustos
-const IN_PRODUCT = /\/productos(\/|$)/.test(location.pathname);
-const PREFIX = IN_PRODUCT ? '../' : './';
+// ===== DETECCIÓN DE RUTAS MEJORADA =====
+const path = window.location.pathname;
+const isInProductos = path.includes('/productos/');
+const PREFIX = isInProductos ? '../' : './';
 const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
-// Normaliza rutas: evita "/" absoluto (rompe en GitHub Pages)
+// Normaliza rutas
 const fixRel = (u) => {
   if (!u) return u;
   if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
-  if (u.startsWith('/'))   return '.' + u;  // "/imgs/x.png" -> "./imgs/x.png"
-  // si ya empieza con "./" o "../" lo dejamos
+  
+  // Si empieza con "/" -> agregar PREFIX
+  if (u.startsWith('/')) return PREFIX + u.slice(1);
+  
+  // Si empieza con "./" -> reemplazar con PREFIX
+  if (u.startsWith('./')) return PREFIX + u.slice(2);
+  
+  // Si ya es correcto, dejarlo
   return u;
 };
 
@@ -51,10 +58,12 @@ function apply(){
 }
 
 function card(p){
-  // Enlace robusto: si estamos en productos/, subimos un nivel
+  // ===== CORRECCIÓN: Enlace relativo correcto =====
+  // Si estamos en root (index.html principal), ir a productos/
+  // Si estamos en /productos/, quedarse en ./
   const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
 
-  // Imagen principal (gallery[0] | image) normalizada; fallback seguro
+  // ===== CORRECCIÓN: Imagen con ruta normalizada =====
   const rawImg = (p.gallery && p.gallery[0]) || p.image;
   const img = fixRel(rawImg) || LOGO_FALLBACK;
   
@@ -62,7 +71,9 @@ function card(p){
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
        data-cat="${p.category}" data-name="${p.name}" data-model="${p.sku}">
       <div class="h-40 flex items-center justify-center">
-        <img src="${img}" alt="${p.sku}" class="max-h-full object-contain group-hover:scale-105 transition">
+        <img src="${img}" alt="${p.sku}" 
+             class="max-h-full object-contain group-hover:scale-105 transition"
+             onerror="this.src='${LOGO_FALLBACK}'">
       </div>
       <div class="pt-4 text-center">
         <h3 class="font-bold">${p.name}</h3>
@@ -77,7 +88,13 @@ function postRenderImageEnhancements(){
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
-    img.addEventListener('error', () => { img.src = LOGO_FALLBACK; }, { once:true });
+    // ===== CORRECCIÓN: Solo agregar listener si no existe =====
+    if (!img.dataset.errorHandled) {
+      img.dataset.errorHandled = 'true';
+      img.addEventListener('error', () => { 
+        img.src = LOGO_FALLBACK; 
+      }, { once: true });
+    }
   });
 }
 
