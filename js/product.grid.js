@@ -39,11 +39,11 @@ const fixRel = (u) => {
   // 🔥 CORRECCIÓN: Limpiar rutas que empiezan con ../
   let cleanUrl = u;
   if (cleanUrl.startsWith('../')) {
-    cleanUrl = cleanUrl.slice(3); // Quitar "../"
+    cleanUrl = cleanUrl.slice(3);
   } else if (cleanUrl.startsWith('./')) {
-    cleanUrl = cleanUrl.slice(2); // Quitar "./"
+    cleanUrl = cleanUrl.slice(2);
   } else if (cleanUrl.startsWith('/')) {
-    cleanUrl = cleanUrl.slice(1); // Quitar "/"
+    cleanUrl = cleanUrl.slice(1);
   }
   
   // 🔥 Construir ruta correcta para GitHub Pages
@@ -51,12 +51,10 @@ const fixRel = (u) => {
     return repoName + cleanUrl;
   }
   
-  // Para páginas dentro de /productos/
   if (isInProductos) {
     return '../' + cleanUrl;
   }
   
-  // Para localhost o root normal
   return './' + cleanUrl;
 };
 
@@ -96,18 +94,10 @@ function apply(){
 }
 
 function card(p){
-  // Enlace correcto
   const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
 
-  // Obtener imagen principal y normalizarla
   let rawImg = (p.gallery && p.gallery[0]) || p.image;
   let img = fixRel(rawImg);
-  
-  console.log('🖼️ Imagen procesada:', { 
-    sku: p.sku, 
-    rawImg, 
-    img
-  });
   
   return `
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
@@ -274,6 +264,25 @@ if (btnMore) {
   });
 }
 
-// Primera carga
+// 🔥 SOLUCIÓN: Auto-activar el filtro "Todos" al cargar la página
 console.log('🚀 Iniciando renderizado inicial');
-render(false);
+
+// Buscar el botón "Todos" y hacer click automático
+const btnTodos = document.querySelector('[data-filter="all"]');
+if (btnTodos) {
+  // Activar visualmente el botón
+  btnTodos.classList.add('active');
+  
+  // Renderizar con el filtro activo
+  state.filter = 'all';
+  state.page = 1;
+  
+  // Usar setTimeout para asegurar que el DOM esté listo
+  setTimeout(() => {
+    render(true);
+    console.log('✅ Filtro "Todos" activado automáticamente');
+  }, 100);
+} else {
+  // Fallback si no encuentra el botón
+  render(false);
+}
