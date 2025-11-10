@@ -4,66 +4,39 @@ import { PRODUCTS } from './products.siemon.js';
 // ===== DETECCIÓN DE RUTAS PARA GITHUB PAGES =====
 const path = window.location.pathname;
 const isInProductos = path.includes('/productos/');
-
-// 🔥 CORRECCIÓN: Detectar si estamos en GitHub Pages
 const isGitHubPages = path.includes('/ds3-siemon/');
 const repoName = isGitHubPages ? '/ds3-siemon/' : '/';
 
-// Prefijo correcto según ubicación
 let PREFIX = isInProductos ? '../' : './';
-
-// 🔥 Si estamos en GitHub Pages y en root, agregar repo name
 if (isGitHubPages && !isInProductos) {
   PREFIX = repoName;
 }
 
 const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
-console.log('🔍 product.grid.js - Detección:', { 
-  path, 
-  isInProductos, 
-  isGitHubPages,
-  repoName,
-  PREFIX 
-});
+console.log('🔍 Configuración:', { path, isGitHubPages, PREFIX });
 
-// Normaliza rutas para GitHub Pages
+// Normaliza rutas
 const fixRel = (u) => {
   if (!u) return LOGO_FALLBACK;
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
   
-  // URLs externas no se modifican
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) {
-    return u;
-  }
-  
-  // 🔥 CORRECCIÓN: Limpiar rutas que empiezan con ../
   let cleanUrl = u;
-  if (cleanUrl.startsWith('../')) {
-    cleanUrl = cleanUrl.slice(3);
-  } else if (cleanUrl.startsWith('./')) {
-    cleanUrl = cleanUrl.slice(2);
-  } else if (cleanUrl.startsWith('/')) {
-    cleanUrl = cleanUrl.slice(1);
-  }
+  if (cleanUrl.startsWith('../')) cleanUrl = cleanUrl.slice(3);
+  else if (cleanUrl.startsWith('./')) cleanUrl = cleanUrl.slice(2);
+  else if (cleanUrl.startsWith('/')) cleanUrl = cleanUrl.slice(1);
   
-  // 🔥 Construir ruta correcta para GitHub Pages
-  if (isGitHubPages && !isInProductos) {
-    return repoName + cleanUrl;
-  }
-  
-  if (isInProductos) {
-    return '../' + cleanUrl;
-  }
-  
+  if (isGitHubPages && !isInProductos) return repoName + cleanUrl;
+  if (isInProductos) return '../' + cleanUrl;
   return './' + cleanUrl;
 };
 
-const grid         = document.getElementById('grid');
-const chips        = document.querySelectorAll('[data-filter]');
-const inputQ       = document.getElementById('q');
-const sortSel      = document.getElementById('sort');
+const grid = document.getElementById('grid');
+const chips = document.querySelectorAll('[data-filter]');
+const inputQ = document.getElementById('q');
+const sortSel = document.getElementById('sort');
 const countVisible = document.getElementById('countVisible');
-const btnMore      = document.getElementById('btnMore');
+const btnMore = document.getElementById('btnMore');
 
 let state = {
   filter: 'all',
@@ -73,10 +46,7 @@ let state = {
   pageSize: 9,
 };
 
-const normalize = s => (s||'').toString()
-  .toLowerCase()
-  .normalize('NFD')
-  .replace(/\p{Diacritic}/gu,'');
+const normalize = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
 
 function apply(){
   const term = normalize(state.q);
@@ -86,16 +56,14 @@ function apply(){
     const qOK = !term || normalize(txt).includes(term);
     return catOK && qOK;
   });
-
-  if (state.sort === 'name')  list.sort((a,b)=> a.name.localeCompare(b.name));
-  if (state.sort === 'model') list.sort((a,b)=> a.sku.localeCompare(b.sku));
   
+  if (state.sort === 'name') list.sort((a,b)=> a.name.localeCompare(b.name));
+  if (state.sort === 'model') list.sort((a,b)=> a.sku.localeCompare(b.sku));
   return list;
 }
 
 function card(p){
   const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
-
   let rawImg = (p.gallery && p.gallery[0]) || p.image;
   let img = fixRel(rawImg);
   
@@ -107,7 +75,7 @@ function card(p){
              alt="${p.sku}" 
              class="max-h-full object-contain group-hover:scale-105 transition"
              loading="lazy"
-             onerror="console.error('❌ Error:', this.src); this.src='${LOGO_FALLBACK}'; this.onerror=null;">
+             onerror="this.src='${LOGO_FALLBACK}'; this.onerror=null;">
       </div>
       <div class="pt-4 text-center">
         <h3 class="font-bold">${p.name}</h3>
@@ -121,11 +89,9 @@ function postRenderImageEnhancements(){
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
-    
     if (!img.dataset.errorHandled) {
       img.dataset.errorHandled = 'true';
       img.addEventListener('error', function() {
-        console.error('❌ Error en imagen:', this.src);
         this.src = LOGO_FALLBACK;
       }, { once: true });
     }
@@ -150,14 +116,13 @@ function render(animate = true){
       grid.style.transform = 'translateY(0)';
       
       const cards = grid.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
+      cards.forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(20px)';
         setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, index * 50);
+          c.style.opacity = '1';
+          c.style.transform = 'translateY(0)';
+        }, i * 50);
       });
     }
     
@@ -168,18 +133,12 @@ function render(animate = true){
     }
     
     if (btnMore) {
-      const totalShown = slice.length;
-      const totalProducts = all.length;
-      const hasMore = totalShown < totalProducts;
-      
+      const hasMore = slice.length < all.length;
       if (hasMore) {
-        const remaining = totalProducts - totalShown;
+        const remaining = all.length - slice.length;
         btnMore.style.display = 'inline-flex';
         btnMore.disabled = false;
-        btnMore.innerHTML = `
-          <i class="fa-solid fa-chevron-down mr-2"></i>
-          Cargar más (${remaining} restantes)
-        `;
+        btnMore.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i>Cargar más (${remaining} restantes)`;
       } else {
         btnMore.style.display = 'none';
       }
@@ -187,18 +146,16 @@ function render(animate = true){
   }, animate ? 150 : 0);
 }
 
-// Eventos de filtros
+// Eventos filtros
 chips.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
     });
-    
     btn.classList.add('active');
     btn.style.transform = 'scale(1.05)';
     setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
-    
     state.filter = btn.getAttribute('data-filter');
     state.page = 1;
     render(true);
@@ -232,28 +189,22 @@ if (btnMore) {
   btnMore.addEventListener('click', ()=>{
     const all = apply();
     const currentShown = state.page * state.pageSize;
-    
     if (currentShown < all.length) {
       state.page++;
       btnMore.style.transform = 'scale(0.95)';
       setTimeout(() => { btnMore.style.transform = 'scale(1)'; }, 100);
-      
       render(false);
-      
       setTimeout(() => {
         const cards = grid.querySelectorAll('.card');
         const newCards = Array.from(cards).slice(currentShown);
-        
         newCards.forEach((card, index) => {
           card.style.opacity = '0';
           card.style.transform = 'translateY(20px)';
-          
           setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
           }, index * 50);
         });
-        
         if (newCards.length > 0) {
           setTimeout(() => {
             newCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -264,25 +215,37 @@ if (btnMore) {
   });
 }
 
-// 🔥 SOLUCIÓN: Auto-activar el filtro "Todos" al cargar la página
-console.log('🚀 Iniciando renderizado inicial');
+// ============================================
+// 🔥 INICIALIZACIÓN FORZADA
+// ============================================
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGrid);
+} else {
+  initGrid();
+}
 
-// Buscar el botón "Todos" y hacer click automático
-const btnTodos = document.querySelector('[data-filter="all"]');
-if (btnTodos) {
-  // Activar visualmente el botón
-  btnTodos.classList.add('active');
+function initGrid() {
+  console.log('🚀 Inicializando grid...');
   
-  // Renderizar con el filtro activo
+  // Limpiar contenido previo
+  if (grid) grid.innerHTML = '';
+  
+  // Activar filtro "Todos"
+  chips.forEach(chip => {
+    if (chip.getAttribute('data-filter') === 'all') {
+      chip.classList.add('active');
+    } else {
+      chip.classList.remove('active');
+    }
+  });
+  
+  // Reset estado
   state.filter = 'all';
   state.page = 1;
+  state.q = '';
+  state.sort = '';
   
-  // Usar setTimeout para asegurar que el DOM esté listo
-  setTimeout(() => {
-    render(true);
-    console.log('✅ Filtro "Todos" activado automáticamente');
-  }, 100);
-} else {
-  // Fallback si no encuentra el botón
+  // Renderizar
   render(false);
+  console.log('✅ Grid listo');
 }
