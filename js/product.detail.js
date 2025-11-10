@@ -1,25 +1,24 @@
 // /SIEMON/js/product.detail.js
 import { PRODUCTS } from './products.siemon.js';
 
-/* ===================== rutas seguras para GH Pages ===================== */
-// Detecta si el detalle vive en /productos/ (tu caso)
-const IN_PRODUCT = /\/productos(\/|$)/.test(location.pathname);
-// Prefijo correcto para subir un nivel desde /productos/
-const PREFIX = IN_PRODUCT ? '../' : './';
+/* ===================== DETECCIÓN DE RUTAS MEJORADA ===================== */
+const path = window.location.pathname;
+const isInProductos = path.includes('/productos/');
+const PREFIX = isInProductos ? '../' : './';
 
-// Normaliza cualquier ruta local para que NO sea absoluta
-const fixRel = (u) => {
-  if (!u) return u;
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
-  if (u.startsWith('/'))   return PREFIX + u.slice(1);   // "/imgs/x.png" -> "../imgs/x.png"
-  if (u.startsWith('./'))  return PREFIX + u.slice(2);   // "./imgs/x.png" -> "../imgs/x.png"
-  return u;                                                // "../imgs/x.png" o similar
-};
-
+/* ===================== UTILIDADES ===================== */
 const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
-/* ===================== helpers ===================== */
+// Normaliza rutas
+const fixRel = (u) => {
+  if (!u) return u;
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
+  if (u.startsWith('/'))   return PREFIX + u.slice(1);
+  if (u.startsWith('./'))  return PREFIX + u.slice(2);
+  return u;
+};
+
 function escapeHtml(s) {
   return (s ?? '').toString()
     .replace(/&/g,'&amp;')
@@ -52,7 +51,8 @@ function galleryTpl(imgs) {
   const thumbs = list.map((src, idx) => `
     <button class="w-20 h-20 border rounded p-1 hover:border-blue-500 transition" 
             data-thumb="${src}" data-index="${idx}">
-      <img src="${src}" alt="Vista ${idx + 1}" class="w-full h-full object-contain" loading="lazy">
+      <img src="${src}" alt="Vista ${idx + 1}" class="w-full h-full object-contain" loading="lazy"
+           onerror="this.src='${DEFAULT_IMG}'">
     </button>
   `).join('');
 
@@ -60,7 +60,8 @@ function galleryTpl(imgs) {
     <div class="bg-white rounded-lg border p-4">
       <div class="w-full h-[360px] md:h-[420px] flex items-center justify-center overflow-hidden">
         <img id="img_main" src="${main}" alt="Producto" 
-             class="max-w-full max-h-full object-contain transition-opacity duration-200">
+             class="max-w-full max-h-full object-contain transition-opacity duration-200"
+             onerror="this.src='${DEFAULT_IMG}'">
       </div>
       <div class="flex gap-3 mt-4 justify-center">${thumbs}</div>
     </div>
@@ -267,23 +268,26 @@ function renderSimilar(current) {
     }
   }
 
-  const cardTpl = (p) => `
-    <a href="./index.html?sku=${encodeURIComponent(p.sku)}"
-       class="product-card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5">
-      <div class="h-40 flex items-center justify-center">
-        <img src="${fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG}"
-             alt="${escapeHtml(p.name)}"
-             class="max-h-full object-contain group-hover:scale-105 transition"
-             loading="lazy"
-             onerror="this.src='${DEFAULT_IMG}'">
-      </div>
-      <div class="pt-4 text-center">
-        <h3 class="font-bold">${escapeHtml(p.name)}</h3>
-        <p class="text-sm text-gray-600 mt-1">Ref. ${escapeHtml(p.sku)}</p>
-        <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
-      </div>
-    </a>
-  `;
+  const cardTpl = (p) => {
+    const imgSrc = fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG;
+    return `
+      <a href="./index.html?sku=${encodeURIComponent(p.sku)}"
+         class="product-card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5">
+        <div class="h-40 flex items-center justify-center">
+          <img src="${imgSrc}"
+               alt="${escapeHtml(p.name)}"
+               class="max-h-full object-contain group-hover:scale-105 transition"
+               loading="lazy"
+               onerror="this.src='${DEFAULT_IMG}'">
+        </div>
+        <div class="pt-4 text-center">
+          <h3 class="font-bold">${escapeHtml(p.name)}</h3>
+          <p class="text-sm text-gray-600 mt-1">Ref. ${escapeHtml(p.sku)}</p>
+          <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+        </div>
+      </a>
+    `;
+  };
 
   grid.innerHTML = cards.map(cardTpl).join('');
 }
