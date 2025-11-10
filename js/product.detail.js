@@ -3,7 +3,7 @@ import { PRODUCTS } from './products.siemon.js';
 
 /* ===================== helpers ===================== */
 const $ = (s) => document.querySelector(s);
-const DEFAULT_IMG = './SIEMON/icons/Siemonlogo.png';
+const DEFAULT_IMG = '../SIEMON/icons/Siemonlogo.png';
 
 function escapeHtml(s) {
   return (s ?? '').toString()
@@ -259,7 +259,7 @@ function renderSimilar(current) {
     }
   }
 
-  const fallbackImg = '/SIEMON/icons/Siemonlogo.png';
+  const fallbackImg = '../SIEMON/icons/Siemonlogo.png';
   const cardTpl = (p) => `
     <a href="/productos/index.html?sku=${encodeURIComponent(p.sku)}"
        class="product-card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5">
