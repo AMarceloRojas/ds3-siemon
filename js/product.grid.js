@@ -1,32 +1,63 @@
 // /SIEMON/js/product.grid.js
 import { PRODUCTS } from './products.siemon.js';
 
-// ===== DETECCIÓN DE RUTAS MEJORADA =====
+// ===== DETECCIÓN DE RUTAS PARA GITHUB PAGES =====
 const path = window.location.pathname;
 const isInProductos = path.includes('/productos/');
-const PREFIX = isInProductos ? '../' : './';
+
+// 🔥 CORRECCIÓN: Detectar si estamos en GitHub Pages
+const isGitHubPages = path.includes('/ds3-siemon/');
+const repoName = isGitHubPages ? '/ds3-siemon/' : '/';
+
+// Prefijo correcto según ubicación
+let PREFIX = isInProductos ? '../' : './';
+
+// 🔥 Si estamos en GitHub Pages y en root, agregar repo name
+if (isGitHubPages && !isInProductos) {
+  PREFIX = repoName;
+}
+
 const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
-console.log('🔍 product.grid.js - Ubicación:', { path, isInProductos, PREFIX });
+console.log('🔍 product.grid.js - Detección:', { 
+  path, 
+  isInProductos, 
+  isGitHubPages,
+  repoName,
+  PREFIX 
+});
 
-// Normaliza rutas
+// Normaliza rutas para GitHub Pages
 const fixRel = (u) => {
   if (!u) return LOGO_FALLBACK;
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
   
-  // Si empieza con "/" → agregar PREFIX
-  if (u.startsWith('/')) return PREFIX + u.slice(1);
+  // URLs externas no se modifican
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) {
+    return u;
+  }
   
-  // Si empieza con "./" → reemplazar con PREFIX
-  if (u.startsWith('./')) return PREFIX + u.slice(2);
+  // 🔥 CORRECCIÓN: Limpiar rutas que empiezan con ../
+  let cleanUrl = u;
+  if (cleanUrl.startsWith('../')) {
+    cleanUrl = cleanUrl.slice(3); // Quitar "../"
+  } else if (cleanUrl.startsWith('./')) {
+    cleanUrl = cleanUrl.slice(2); // Quitar "./"
+  } else if (cleanUrl.startsWith('/')) {
+    cleanUrl = cleanUrl.slice(1); // Quitar "/"
+  }
   
-  // Si empieza con "../" y NO estamos en productos, quitar un nivel
-  if (u.startsWith('../') && !isInProductos) return u.slice(3);
+  // 🔥 Construir ruta correcta para GitHub Pages
+  if (isGitHubPages && !isInProductos) {
+    return repoName + cleanUrl;
+  }
   
-  // Si no tiene prefijo, agregar PREFIX
-  if (!u.startsWith('../') && !u.startsWith('./')) return PREFIX + u;
+  // Para páginas dentro de /productos/
+  if (isInProductos) {
+    return '../' + cleanUrl;
+  }
   
-  return u;
+  // Para localhost o root normal
+  return './' + cleanUrl;
 };
 
 const grid         = document.getElementById('grid');
@@ -65,20 +96,17 @@ function apply(){
 }
 
 function card(p){
-  // ===== CORRECCIÓN: Enlace y ruta de imagen =====
+  // Enlace correcto
   const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
 
-  // Obtener imagen principal
+  // Obtener imagen principal y normalizarla
   let rawImg = (p.gallery && p.gallery[0]) || p.image;
-  
-  // ===== IMPORTANTE: Normalizar la ruta de la imagen =====
   let img = fixRel(rawImg);
   
   console.log('🖼️ Imagen procesada:', { 
     sku: p.sku, 
     rawImg, 
-    img, 
-    PREFIX 
+    img
   });
   
   return `
@@ -89,7 +117,7 @@ function card(p){
              alt="${p.sku}" 
              class="max-h-full object-contain group-hover:scale-105 transition"
              loading="lazy"
-             onerror="console.error('❌ Error cargando imagen:', this.src); this.src='${LOGO_FALLBACK}'; this.onerror=null;">
+             onerror="console.error('❌ Error:', this.src); this.src='${LOGO_FALLBACK}'; this.onerror=null;">
       </div>
       <div class="pt-4 text-center">
         <h3 class="font-bold">${p.name}</h3>
@@ -100,12 +128,10 @@ function card(p){
 }
 
 function postRenderImageEnhancements(){
-  // Lazy + fallback tras renderizar
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
     
-    // Solo agregar listener si no existe
     if (!img.dataset.errorHandled) {
       img.dataset.errorHandled = 'true';
       img.addEventListener('error', function() {
@@ -120,23 +146,19 @@ function render(animate = true){
   const all = apply();
   const slice = all.slice(0, state.page * state.pageSize);
   
-  // Fade out rápido antes de cambiar contenido
   if (animate) {
     grid.style.opacity = '0';
     grid.style.transform = 'translateY(10px)';
   }
   
   setTimeout(() => {
-    // Renderizar las tarjetas
     grid.innerHTML = slice.map(card).join('');
     postRenderImageEnhancements();
     
-    // Fade in con animación escalonada
     if (animate) {
       grid.style.opacity = '1';
       grid.style.transform = 'translateY(0)';
       
-      // Animar cada tarjeta con retraso escalonado
       const cards = grid.querySelectorAll('.card');
       cards.forEach((card, index) => {
         card.style.opacity = '0';
@@ -149,14 +171,12 @@ function render(animate = true){
       });
     }
     
-    // Actualizar contador con animación
     if (countVisible) {
       countVisible.style.transform = 'scale(1.2)';
       countVisible.textContent = all.length;
       setTimeout(() => { countVisible.style.transform = 'scale(1)'; }, 200);
     }
     
-    // Actualizar botón "Cargar más"
     if (btnMore) {
       const totalShown = slice.length;
       const totalProducts = all.length;
@@ -177,11 +197,9 @@ function render(animate = true){
   }, animate ? 150 : 0);
 }
 
-// Eventos de filtros con animación
+// Eventos de filtros
 chips.forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    console.log('🔘 Filtro clickeado:', btn.getAttribute('data-filter'));
-    
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
@@ -197,7 +215,7 @@ chips.forEach(btn=>{
   });
 });
 
-// Evento de búsqueda (debounced)
+// Búsqueda
 if (inputQ) {
   let searchTimeout;
   inputQ.addEventListener('input', e=>{
@@ -210,7 +228,7 @@ if (inputQ) {
   });
 }
 
-// Evento de ordenamiento
+// Ordenamiento
 if (sortSel) {
   sortSel.addEventListener('change', e=>{
     state.sort = e.target.value;
@@ -219,7 +237,7 @@ if (sortSel) {
   });
 }
 
-// Botón "Cargar más"
+// Cargar más
 if (btnMore) {
   btnMore.addEventListener('click', ()=>{
     const all = apply();
@@ -227,14 +245,11 @@ if (btnMore) {
     
     if (currentShown < all.length) {
       state.page++;
-      
-      // Animar botón
       btnMore.style.transform = 'scale(0.95)';
       setTimeout(() => { btnMore.style.transform = 'scale(1)'; }, 100);
       
       render(false);
       
-      // Animar solo las nuevas tarjetas
       setTimeout(() => {
         const cards = grid.querySelectorAll('.card');
         const newCards = Array.from(cards).slice(currentShown);
@@ -249,7 +264,6 @@ if (btnMore) {
           }, index * 50);
         });
         
-        // Scroll suave a los nuevos productos
         if (newCards.length > 0) {
           setTimeout(() => {
             newCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -260,6 +274,6 @@ if (btnMore) {
   });
 }
 
-// Primera carga sin animación
-console.log('Iniciando renderizado inicial');
+// Primera carga
+console.log('🚀 Iniciando renderizado inicial');
 render(false);
