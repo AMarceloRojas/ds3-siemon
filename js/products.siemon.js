@@ -122,9 +122,9 @@ export const PRODUCTS = [
     category: 'cat5e',
     name: 'Cable UTP Cat5e 305m PVC (CM)',
     gallery: [
-      '/imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.jpg',
-      '/imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.rollo.jpg',
-      '/imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.Cable.jpg',
+      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.jpg',
+      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.rollo.jpg',
+      './imgs/siemon/cat5e/9C5M4-E2/9C5M4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
