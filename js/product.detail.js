@@ -3,7 +3,7 @@ import { PRODUCTS } from './products.siemon.js';
 
 /* ===================== helpers ===================== */
 const $ = (s) => document.querySelector(s);
-const DEFAULT_IMG = '/SIEMON/icons/Siemonlogo.png';
+const DEFAULT_IMG = './SIEMON/icons/Siemonlogo.png';
 
 function escapeHtml(s) {
   return (s ?? '').toString()

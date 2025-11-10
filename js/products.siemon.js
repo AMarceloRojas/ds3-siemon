@@ -42,8 +42,8 @@ export const PRODUCTS = [
       'Norma': 'IEC 60332-1'
     },
     downloads: [
-      { label: 'Ficha técnica (PDF)', href: '/docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
-      { label: 'Especificaciones (PDF)', href: '/docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
+      { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
+      { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
 
