@@ -211,9 +211,9 @@
   <!-- Barra decorativa inferior -->
   <div class="h-1 bg-gradient-to-r from-[#D52931] via-blue-600 to-[#D52931]"></div>
 </footer>
-<script type="module" src="./js/product.grid.js">console.log('📦 Cargando product.grid.js...');
+<script type="module">
+  console.log('📦 Cargando product.grid.js...');
   
-  // Asegurar que el DOM esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadGrid);
   } else {
@@ -228,5 +228,6 @@
     } catch (error) {
       console.error('❌ Error cargando product.grid.js:', error);
     }
-  }</script>
+  }
+</script>
 </body></html>
