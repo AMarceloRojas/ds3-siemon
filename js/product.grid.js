@@ -1,11 +1,26 @@
+// /SIEMON/js/product.grid.js
 import { PRODUCTS } from './products.siemon.js';
 
-const grid = document.getElementById('grid');
-const chips = document.querySelectorAll('[data-filter]');
-const inputQ = document.getElementById('q');
-const sortSel = document.getElementById('sort');
+// Detecta si estamos dentro de /productos/ para calcular prefijos robustos
+const IN_PRODUCT = /\/productos(\/|$)/.test(location.pathname);
+const PREFIX = IN_PRODUCT ? '../' : './';
+const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
+
+// Normaliza rutas: evita "/" absoluto (rompe en GitHub Pages)
+const fixRel = (u) => {
+  if (!u) return u;
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
+  if (u.startsWith('/'))   return '.' + u;  // "/imgs/x.png" -> "./imgs/x.png"
+  // si ya empieza con "./" o "../" lo dejamos
+  return u;
+};
+
+const grid         = document.getElementById('grid');
+const chips        = document.querySelectorAll('[data-filter]');
+const inputQ       = document.getElementById('q');
+const sortSel      = document.getElementById('sort');
 const countVisible = document.getElementById('countVisible');
-const btnMore = document.getElementById('btnMore');
+const btnMore      = document.getElementById('btnMore');
 
 let state = {
   filter: 'all',
@@ -29,15 +44,19 @@ function apply(){
     return catOK && qOK;
   });
 
-  if(state.sort === 'name') list.sort((a,b)=> a.name.localeCompare(b.name));
-  if(state.sort === 'model') list.sort((a,b)=> a.sku.localeCompare(b.sku));
+  if (state.sort === 'name')  list.sort((a,b)=> a.name.localeCompare(b.name));
+  if (state.sort === 'model') list.sort((a,b)=> a.sku.localeCompare(b.sku));
   
   return list;
 }
 
 function card(p){
-  const href = p.href || `./productos/index.html?sku=${encodeURIComponent(p.sku)}`;
-  const img = (p.gallery && p.gallery[0]) || p.image || '/SIEMON/icons/Siemonlogo.png';
+  // Enlace robusto: si estamos en productos/, subimos un nivel
+  const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
+
+  // Imagen principal (gallery[0] | image) normalizada; fallback seguro
+  const rawImg = (p.gallery && p.gallery[0]) || p.image;
+  const img = fixRel(rawImg) || LOGO_FALLBACK;
   
   return `
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
@@ -53,6 +72,15 @@ function card(p){
     </a>`;
 }
 
+function postRenderImageEnhancements(){
+  // Lazy + fallback tras renderizar
+  grid.querySelectorAll('img').forEach(img => {
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    img.addEventListener('error', () => { img.src = LOGO_FALLBACK; }, { once:true });
+  });
+}
+
 function render(animate = true){
   const all = apply();
   const slice = all.slice(0, state.page * state.pageSize);
@@ -66,6 +94,7 @@ function render(animate = true){
   setTimeout(() => {
     // Renderizar las tarjetas
     grid.innerHTML = slice.map(card).join('');
+    postRenderImageEnhancements();
     
     // Fade in con animación escalonada
     if (animate) {
@@ -86,16 +115,14 @@ function render(animate = true){
     }
     
     // Actualizar contador con animación
-    if(countVisible) {
+    if (countVisible) {
       countVisible.style.transform = 'scale(1.2)';
       countVisible.textContent = all.length;
-      setTimeout(() => {
-        countVisible.style.transform = 'scale(1)';
-      }, 200);
+      setTimeout(() => { countVisible.style.transform = 'scale(1)'; }, 200);
     }
     
     // Actualizar botón "Cargar más"
-    if(btnMore) {
+    if (btnMore) {
       const totalShown = slice.length;
       const totalProducts = all.length;
       const hasMore = totalShown < totalProducts;
@@ -118,7 +145,6 @@ function render(animate = true){
 // Eventos de filtros con animación
 chips.forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    // Animar el chip seleccionado
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
@@ -126,9 +152,7 @@ chips.forEach(btn=>{
     
     btn.classList.add('active');
     btn.style.transform = 'scale(1.05)';
-    setTimeout(() => {
-      btn.style.transform = 'scale(1)';
-    }, 200);
+    setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
     
     state.filter = btn.getAttribute('data-filter');
     state.page = 1;
@@ -136,13 +160,11 @@ chips.forEach(btn=>{
   });
 });
 
-// Evento de búsqueda
-if(inputQ) {
+// Evento de búsqueda (debounced)
+if (inputQ) {
   let searchTimeout;
   inputQ.addEventListener('input', e=>{
     clearTimeout(searchTimeout);
-    
-    // Debounce para evitar muchas animaciones seguidas
     searchTimeout = setTimeout(() => {
       state.q = e.target.value;
       state.page = 1;
@@ -152,7 +174,7 @@ if(inputQ) {
 }
 
 // Evento de ordenamiento
-if(sortSel) {
+if (sortSel) {
   sortSel.addEventListener('change', e=>{
     state.sort = e.target.value;
     state.page = 1;
@@ -160,8 +182,8 @@ if(sortSel) {
   });
 }
 
-// Evento del botón "Cargar más"
-if(btnMore) {
+// Botón "Cargar más"
+if (btnMore) {
   btnMore.addEventListener('click', ()=>{
     const all = apply();
     const currentShown = state.page * state.pageSize;
@@ -171,9 +193,7 @@ if(btnMore) {
       
       // Animar botón
       btnMore.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        btnMore.style.transform = 'scale(1)';
-      }, 100);
+      setTimeout(() => { btnMore.style.transform = 'scale(1)'; }, 100);
       
       render(false); // Sin fade out total, solo animar las nuevas
       
