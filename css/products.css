@@ -1,0 +1,334 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root{
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --ink: #1b2430;
+  --muted: #667085;
+  --brand: #0d6efd;
+  --brand-600:#0b5ed7;
+  --accent:#00b3a4;
+  --ring: rgba(13,110,253,.25);
+  --card: #ffffff;
+  --border:#e6e8ee;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(16,24,40,.08);
+  --container: 1200px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  background:linear-gradient(180deg,#f7f9fc 0%, #eef1f7 100%);
+  font:16px/1.6 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%; display:block; height:auto}
+a{color:var(--brand); text-decoration:none}
+a:hover{color:var(--brand-600)}
+
+/* Chips de filtro con animación mejorada */
+.chip{
+  padding:.4rem .65rem; 
+  border-radius:999px;
+  background:#f1f5f9; 
+  color:#334155; 
+  font-weight:600;
+  font-size:.875rem; 
+  cursor:pointer; 
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.chip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.chip:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.chip:hover{ 
+  background:#e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chip.active{ 
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color:#fff;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  transform: translateY(-2px);
+}
+
+.chip.active::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Grid de productos con transiciones suaves */
+#grid {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.products-grid .card{ 
+  transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+.card.fade-in {
+  animation: fadeIn .28s ease-out both;
+}
+
+@keyframes fadeIn { 
+  from {opacity:0; transform:translateY(20px) scale(0.95)} 
+  to {opacity:1; transform:translateY(0) scale(1)} 
+}
+
+.hidden-card { 
+  display: none !important; 
+}
+
+/* Carrusel vertical infinito de marcas */
+.brand-marquee{
+  position: relative;
+  height: calc(78vh - 44px);
+  overflow: hidden;
+  --gap: 8px;
+  --row-h: 64px;
+}
+
+.brand-track{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  --dur: 24s;
+  animation: marquee-up var(--dur) linear infinite;
+  will-change: transform;
+  padding-right: 2px;
+}
+
+.brand-marquee[data-direction="down"] .brand-track{ animation-name: marquee-down; }
+.brand-marquee[data-direction="up"]   .brand-track{ animation-name: marquee-up; }
+
+.brand-marquee:hover .brand-track,
+.brand-marquee:focus-within .brand-track{ animation-play-state: paused; }
+
+@keyframes marquee-up   { from {transform: translateY(0)}    to {transform: translateY(-50%)} }
+@keyframes marquee-down { from {transform: translateY(-50%)} to {transform: translateY(0)} }
+
+.brand-item{
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  height: var(--row-h,64px);
+  padding:10px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  background:#f9fafb;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+  will-change: box-shadow, transform;
+  contain: paint;
+}
+
+.brand-item:hover{
+  border-color:#cfe0ff;
+  box-shadow:
+    0 1px 0 rgba(16,24,40,.02),
+    0 8px 16px rgba(59,130,246,.14),
+    0 0 0 3px rgba(59,130,246,.12) inset;
+}
+
+.brand-logo{
+  max-height: 40px;
+  max-width: 120px;
+  width: auto; 
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .brand-track{ animation: none; }
+}
+
+/* Tabla de especificaciones */
+.spec-card{ 
+  background: white;
+  rounded: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Acordeones */
+.acc{
+  border:1px solid #e5e7eb;
+  border-radius:.75rem;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 1px 2px rgba(16,24,40,.04);
+}
+
+.acc-sum{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.75rem 1rem;
+  font-weight:600;
+  cursor:pointer;
+  background:linear-gradient(180deg,#f8fafc,#f3f6fb);
+  list-style: none;
+}
+
+.acc-sum::-webkit-details-marker{ 
+  display: none; 
+}
+
+.acc-body{
+  border-top:1px solid #e5e7eb;
+  padding:1rem;
+  color:#334155;
+}
+
+/* Tarjetas de producto */
+.product-card{
+  transition:all .3s ease;
+}
+.product-card:hover{
+  transform:translateY(-8px);
+}
+
+/* Botones de descarga MEJORADOS - SOLO 2 TIPOS */
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.65rem;
+  border:2px solid;
+  border-radius:.5rem;
+  padding:.65rem 1.2rem;
+  font-weight:600;
+  transition:all .3s ease;
+  text-decoration:none;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.download-btn:hover{
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  transform: translateY(-2px);
+}
+
+.download-btn i{
+  font-size:1.1rem;
+}
+
+/* PDF - Rojo */
+.btn-pdf{
+  color:#dc2626;
+  background:#fef2f2;
+  border-color:#fecaca;
+}
+
+.btn-pdf:hover{
+  background:#fee2e2;
+  border-color:#dc2626;
+}
+
+.btn-pdf i{
+  color:#dc2626;
+}
+
+/* Especificaciones - Verde */
+.btn-specs{
+  color:#059669;
+  background:#f0fdf4;
+  border-color:#bbf7d0;
+}
+
+.btn-specs:hover{
+  background:#dcfce7;
+  border-color:#059669;
+}
+
+.btn-specs i{
+  color:#059669;
+}
+
+/* Contador animado */
+#countVisible {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Botón Cargar más mejorado */
+#btnMore {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+#btnMore::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+#btnMore:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+#btnMore:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#btnMore:not(:disabled):active {
+  transform: translateY(0);
+}
+
+#btnMore:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#btnMore i {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#btnMore:not(:disabled):hover i {
+  transform: translateY(2px);
+}
+
+/* Scrollbar */
+*::-webkit-scrollbar{height:10px; width:10px}
+*::-webkit-scrollbar-thumb{background:#ced6e3; border-radius:20px}
+*::-webkit-scrollbar-thumb:hover{background:#b7c3d7}
+
+@media (max-width:640px){
+  .brand-marquee{display:none}
+}
