@@ -7,18 +7,25 @@ const isInProductos = path.includes('/productos/');
 const PREFIX = isInProductos ? '../' : './';
 const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
+console.log('🔍 product.grid.js - Ubicación:', { path, isInProductos, PREFIX });
+
 // Normaliza rutas
 const fixRel = (u) => {
-  if (!u) return u;
+  if (!u) return LOGO_FALLBACK;
   if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
   
-  // Si empieza con "/" -> agregar PREFIX
+  // Si empieza con "/" → agregar PREFIX
   if (u.startsWith('/')) return PREFIX + u.slice(1);
   
-  // Si empieza con "./" -> reemplazar con PREFIX
+  // Si empieza con "./" → reemplazar con PREFIX
   if (u.startsWith('./')) return PREFIX + u.slice(2);
   
-  // Si ya es correcto, dejarlo
+  // Si empieza con "../" y NO estamos en productos, quitar un nivel
+  if (u.startsWith('../') && !isInProductos) return u.slice(3);
+  
+  // Si no tiene prefijo, agregar PREFIX
+  if (!u.startsWith('../') && !u.startsWith('./')) return PREFIX + u;
+  
   return u;
 };
 
@@ -58,22 +65,31 @@ function apply(){
 }
 
 function card(p){
-  // ===== CORRECCIÓN: Enlace relativo correcto =====
-  // Si estamos en root (index.html principal), ir a productos/
-  // Si estamos en /productos/, quedarse en ./
+  // ===== CORRECCIÓN: Enlace y ruta de imagen =====
   const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
 
-  // ===== CORRECCIÓN: Imagen con ruta normalizada =====
-  const rawImg = (p.gallery && p.gallery[0]) || p.image;
-  const img = fixRel(rawImg) || LOGO_FALLBACK;
+  // Obtener imagen principal
+  let rawImg = (p.gallery && p.gallery[0]) || p.image;
+  
+  // ===== IMPORTANTE: Normalizar la ruta de la imagen =====
+  let img = fixRel(rawImg);
+  
+  console.log('🖼️ Imagen procesada:', { 
+    sku: p.sku, 
+    rawImg, 
+    img, 
+    PREFIX 
+  });
   
   return `
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
        data-cat="${p.category}" data-name="${p.name}" data-model="${p.sku}">
       <div class="h-40 flex items-center justify-center">
-        <img src="${img}" alt="${p.sku}" 
+        <img src="${img}" 
+             alt="${p.sku}" 
              class="max-h-full object-contain group-hover:scale-105 transition"
-             onerror="this.src='${LOGO_FALLBACK}'">
+             loading="lazy"
+             onerror="console.error('❌ Error cargando imagen:', this.src); this.src='${LOGO_FALLBACK}'; this.onerror=null;">
       </div>
       <div class="pt-4 text-center">
         <h3 class="font-bold">${p.name}</h3>
@@ -88,11 +104,13 @@ function postRenderImageEnhancements(){
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
-    // ===== CORRECCIÓN: Solo agregar listener si no existe =====
+    
+    // Solo agregar listener si no existe
     if (!img.dataset.errorHandled) {
       img.dataset.errorHandled = 'true';
-      img.addEventListener('error', () => { 
-        img.src = LOGO_FALLBACK; 
+      img.addEventListener('error', function() {
+        console.error('❌ Error en imagen:', this.src);
+        this.src = LOGO_FALLBACK;
       }, { once: true });
     }
   });
@@ -127,7 +145,7 @@ function render(animate = true){
         setTimeout(() => {
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
-        }, index * 50); // 50ms de retraso entre cada tarjeta
+        }, index * 50);
       });
     }
     
@@ -162,6 +180,8 @@ function render(animate = true){
 // Eventos de filtros con animación
 chips.forEach(btn=>{
   btn.addEventListener('click', ()=>{
+    console.log('🔘 Filtro clickeado:', btn.getAttribute('data-filter'));
+    
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
@@ -212,7 +232,7 @@ if (btnMore) {
       btnMore.style.transform = 'scale(0.95)';
       setTimeout(() => { btnMore.style.transform = 'scale(1)'; }, 100);
       
-      render(false); // Sin fade out total, solo animar las nuevas
+      render(false);
       
       // Animar solo las nuevas tarjetas
       setTimeout(() => {
@@ -241,4 +261,5 @@ if (btnMore) {
 }
 
 // Primera carga sin animación
+console.log('Iniciando renderizado inicial');
 render(false);
