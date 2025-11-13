@@ -147,7 +147,7 @@ JSON/JS para base de datos
 
 Arquitectura dinámica basada en plantillas reutilizables
 
-Ventajas del Sistema
+- - Ventajas del Sistema - -
 
 ✔ No se crean múltiples index.html para cada producto
 ✔ Fácil de escalar a más marcas (AMP, Panduit, Dixon, etc.)
