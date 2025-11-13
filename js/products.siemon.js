@@ -2457,7 +2457,7 @@ export const PRODUCTS = [
     category: 'fibra',
     name: 'Panel Fibra Óptica 6 Acopladoras LC Duplex MM/SM Beige',
     gallery: [
-      '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.jpg',
+      '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.png',
       '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.rollo.jpg',
       '../imgs/siemon/fibra/RIC-F-LC12-01C/RIC-F-LC12-01C.Cable.jpg',
     ],
