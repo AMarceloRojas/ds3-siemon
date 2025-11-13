@@ -81,7 +81,6 @@ export const PRODUCTS = [
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
-
   {
     sku: '9C5L4-E2',
     category: 'cat5e',
@@ -2255,7 +2254,6 @@ export const PRODUCTS = [
     name: 'Patch Panel 48 Puertos Modular MAX Negro',
     gallery: [
       '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.jpg',
-      '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.rollo.jpg',
       '../imgs/siemon/panel/MX-PNL-48/MX-PNL-48.Cable.jpg',
     ],
     summary: [
