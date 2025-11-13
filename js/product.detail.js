@@ -1,7 +1,7 @@
 // /SIEMON/js/product.detail.js
 import { PRODUCTS } from './products.siemon.js';
 
-/* ===================== DETECCIÓN DE RUTAS MEJORADA ===================== */
+
 const path = window.location.pathname;
 const isInProductos = path.includes('/productos/');
 const PREFIX = isInProductos ? '../' : './';
@@ -42,7 +42,6 @@ function getSku() {
   return null;
 }
 
-/* ===================== templates ===================== */
 function galleryTpl(imgs) {
   const listRaw = (Array.isArray(imgs) && imgs.length ? imgs : [DEFAULT_IMG]).slice(0, 4);
   const list = listRaw.map(fixRel);

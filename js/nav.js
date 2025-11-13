@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         img.loading = 'lazy';
         img.onerror = function() {
-          console.warn('❌ Imagen de producto no cargó:', this.src);
+          console.warn(' Imagen de producto no cargó:', this.src);
           this.src = paths.logo;
           this.onerror = null;
         };

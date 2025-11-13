@@ -146,7 +146,7 @@ function render(animate = true){
   }, animate ? 150 : 0);
 }
 
-// Eventos filtros
+
 chips.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     chips.forEach(b => {
@@ -162,7 +162,7 @@ chips.forEach(btn=>{
   });
 });
 
-// Búsqueda
+
 if (inputQ) {
   let searchTimeout;
   inputQ.addEventListener('input', e=>{
@@ -175,7 +175,7 @@ if (inputQ) {
   });
 }
 
-// Ordenamiento
+
 if (sortSel) {
   sortSel.addEventListener('change', e=>{
     state.sort = e.target.value;
@@ -184,7 +184,7 @@ if (sortSel) {
   });
 }
 
-// Cargar más
+
 if (btnMore) {
   btnMore.addEventListener('click', ()=>{
     const all = apply();
@@ -215,9 +215,7 @@ if (btnMore) {
   });
 }
 
-// ============================================
-// 🔥 INICIALIZACIÓN FORZADA
-// ============================================
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initGrid);
 } else {
@@ -225,12 +223,12 @@ if (document.readyState === 'loading') {
 }
 
 function initGrid() {
-  console.log('🚀 Inicializando grid...');
+  console.log(' Inicializando grid...');
   
-  // Limpiar contenido previo
+  
   if (grid) grid.innerHTML = '';
   
-  // Activar filtro "Todos"
+  
   chips.forEach(chip => {
     if (chip.getAttribute('data-filter') === 'all') {
       chip.classList.add('active');
@@ -239,7 +237,7 @@ function initGrid() {
     }
   });
   
-  // Reset estado
+  
   state.filter = 'all';
   state.page = 1;
   state.q = '';
