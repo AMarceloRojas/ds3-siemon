@@ -10,6 +10,7 @@ export const PRODUCTS = [
   // ==========================================================================
   // CABLES UTP CAT 5E
   // ==========================================================================
+  
   {
     sku: '9A5M4-E2',
     category: 'cat5e',
@@ -31,12 +32,12 @@ export const PRODUCTS = [
       'Aplicaciones: 10/100/1000BASE-T',
       'RoHS Compliant'
     ],
-    description: 'Rollo de 305 metros de cable F/UTP sólido de 04 pares Cat 5e PVC (CM, IEC 60332-1), color gris, marca SIEMON.',
+    description: 'Este es un rollo de 305 metros de cable Cat 5e **F/UTP (Par Trenzado Apantallado con Lámina Global)**. A diferencia del UTP estándar, este cable cuenta con un blindaje de lámina de aluminio general (Foil) que envuelve los cuatro pares trenzados. Esta pantalla protege la transmisión de datos contra la interferencia electromagnética (EMI) externa, asegurando una conexión más estable en entornos con ruido eléctrico. La **chaqueta PVC (CM)** es para uso general en instalaciones horizontales (paredes, bandejas) y cumple con la norma IEC 60332-1 de no propagación de llama. Es ideal para redes 10/100/1000BASE-T (Gigabit Ethernet) en oficinas o áreas comerciales con niveles moderados de EMI.',
     specs: {
       'Categoría': 'Cat 5e',
-      'Tipo': 'F/UTP',
+      'Tipo': 'F/UTP (Apantallado con lámina global)',
       'Conductor': 'Sólido 24 AWG',
-      'Longitud': '305 metros',
+      'Longitud': '305 metros (1000 ft)',
       'Chaqueta': 'PVC (CM)',
       'Color': 'Gris',
       'Norma': 'IEC 60332-1'
@@ -46,7 +47,6 @@ export const PRODUCTS = [
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
-
   {
     sku: '9A5R4-E2',
     category: 'cat5e',
@@ -59,7 +59,7 @@ export const PRODUCTS = [
     summary: [
       'Rollo de 305 metros',
       'Cable F/UTP sólido de 04 pares Cat 5e',
-      'Chaqueta PVC (RISER)',
+      'Chaqueta PVC (RISER - CMR)',
       'Color azul'
     ],
     standards: [
@@ -67,12 +67,12 @@ export const PRODUCTS = [
       'UL Listed CMR (Riser)',
       'Aplicaciones: Ethernet 10/100/1000'
     ],
-    description: 'Rollo de 305 metros de cable F/UTP sólido de 04 pares Cat 5e PVC (RISER), color azul, marca SIEMON.',
+    description: 'Rollo de 305m de cable Cat 5e **F/UTP (Apantallado)**, diseñado para un rendimiento superior en redes Gigabit Ethernet. Su característica principal es la **chaqueta PVC tipo Riser (CMR)**. Esta chaqueta tiene una clasificación de resistencia al fuego superior (UL Listed CMR) comparada con la CM. Está diseñada específicamente para **instalaciones verticales** (risers) que conectan diferentes pisos de un edificio, ya que sus materiales retardan la propagación vertical del fuego. También es perfectamente apto para cualquier instalación horizontal estándar. El blindaje F/UTP lo protege de interferencias.',
     specs: {
       'Categoría': 'Cat 5e',
-      'Tipo': 'F/UTP',
+      'Tipo': 'F/UTP (Apantallado con lámina global)',
       'Conductor': 'Sólido 24 AWG',
-      'Longitud': '305 metros',
+      'Longitud': '305 metros (1000 ft)',
       'Chaqueta': 'PVC (CMR - Riser)',
       'Color': 'Azul'
     },
@@ -98,15 +98,15 @@ export const PRODUCTS = [
     ],
     standards: [
       'ANSI/TIA-568.2-D — Cat 5e',
-      'LSOH según IEC 60332-1',
+      'LSOH según IEC 60332-1, IEC 61034, IEC 60754',
       'Baja emisión de humos tóxicos'
     ],
-    description: 'Rollo de 305 metros de cable UTP sólido de 04 pares Cat 5e LSOH-1, color violeta, marca SIEMON.',
+    description: 'Este rollo de 305m es un cable **UTP (Par Trenzado No Apantallado)** Cat 5e con una chaqueta de seguridad especial **LSOH-1 (Baja Emisión de Humo, Cero Halógenos)**. A diferencia del PVC estándar, este material no emite gases tóxicos (halógenos) ni humo denso y oscuro cuando se expone al fuego. Su uso es crítico y a menudo obligatorio en instalaciones de alta afluencia de público o en áreas poco ventiladas como hospitales, escuelas, aeropuertos, túneles y centros de datos, donde la protección de la vida humana y el equipo sensible es primordial en caso de incendio. Cumple con normas IEC de baja propagación de llama (60332-1), baja emisión de humos (61034) y acidez de gases (60754).',
     specs: {
       'Categoría': 'Cat 5e',
-      'Tipo': 'UTP',
+      'Tipo': 'UTP (No Apantallado)',
       'Conductor': 'Sólido 24 AWG',
-      'Longitud': '305 metros',
+      'Longitud': '305 metros (1000 ft)',
       'Chaqueta': 'LSOH-1 (Low Smoke Zero Halogen)',
       'Color': 'Violeta'
     },
@@ -115,7 +115,6 @@ export const PRODUCTS = [
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9C5L4-E2/9C5L4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
-
   {
     sku: '9C5M4-E2',
     category: 'cat5e',
@@ -136,12 +135,12 @@ export const PRODUCTS = [
       'UL Listed CM',
       'Aplicaciones: Ethernet, VoIP, PoE'
     ],
-    description: 'Rollo de 305 metros de cable UTP sólido de 04 pares Cat 5e PVC (CM), color gris, marca SIEMON.',
+    description: 'El cable estándar Cat 5e **UTP (Par Trenzado No Apantallado)** en rollo de 305 metros. Es la solución más común y rentable para redes LAN. Presenta una **chaqueta de PVC con clasificación CM** (Comunicaciones Multiuso), diseñada para instalaciones de cableado horizontal (en el mismo piso, dentro de paredes, canaletas o bandejas). No debe usarse en tramos verticales (Riser) ni en espacios de manejo de aire (Plenum). Es el cable de trabajo por excelencia para conectar estaciones de trabajo, teléfonos VoIP, cámaras IP y puntos de acceso. Soporta de manera confiable aplicaciones 10/100/1000BASE-T (Gigabit Ethernet) y Power over Ethernet (PoE).',
     specs: {
       'Categoría': 'Cat 5e',
-      'Tipo': 'UTP',
+      'Tipo': 'UTP (No Apantallado)',
       'Conductor': 'Sólido 24 AWG',
-      'Longitud': '305 metros',
+      'Longitud': '305 metros (1000 ft)',
       'Chaqueta': 'PVC (CM)',
       'Color': 'Gris'
     },

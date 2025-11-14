@@ -1,35 +1,36 @@
 // /SIEMON/js/product.grid.js
 import { PRODUCTS } from './products.siemon.js';
 
-// ===== DETECCIÓN DE RUTAS PARA GITHUB PAGES =====
-const path = window.location.pathname;
-const isInProductos = path.includes('/productos/');
-const isGitHubPages = path.includes('/ds3-siemon/');
-const repoName = isGitHubPages ? '/ds3-siemon/' : '/';
+/* ============================================================
+   🔥 DETECCIÓN DE RUTA SEGURA EN GITHUB PAGES
+   ============================================================ */
 
-let PREFIX = isInProductos ? '../' : './';
-if (isGitHubPages && !isInProductos) {
-  PREFIX = repoName;
+// Detecta si está en GitHub Pages
+const isGitHub = window.location.hostname.includes("github.io");
+
+// Base path correcto
+//   GitHub Pages  → /ds3-siemon/
+//   Local         → /
+const BASE_PATH = isGitHub ? "/ds3-siemon/" : "/";
+
+/**
+ * Construye rutas ABSOLUTAS siempre correctas
+ * sin duplicar /ds3-siemon/
+ */
+function asset(path) {
+  const clean = path.replace(/^(\.\/|\/|..\/)+/, "");
+  return BASE_PATH + clean;
 }
 
-const LOGO_FALLBACK = PREFIX + 'SIEMON/icons/Siemonlogo.png';
+// Imagen fallback global
+const LOGO_FALLBACK = asset("SIEMON/icons/Siemonlogo.png");
 
-console.log('🔍 Configuración:', { path, isGitHubPages, PREFIX });
+console.log("🧭 BASE_PATH:", BASE_PATH);
+console.log("🖼 LOGO_FALLBACK:", LOGO_FALLBACK);
 
-// Normaliza rutas
-const fixRel = (u) => {
-  if (!u) return LOGO_FALLBACK;
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
-  
-  let cleanUrl = u;
-  if (cleanUrl.startsWith('../')) cleanUrl = cleanUrl.slice(3);
-  else if (cleanUrl.startsWith('./')) cleanUrl = cleanUrl.slice(2);
-  else if (cleanUrl.startsWith('/')) cleanUrl = cleanUrl.slice(1);
-  
-  if (isGitHubPages && !isInProductos) return repoName + cleanUrl;
-  if (isInProductos) return '../' + cleanUrl;
-  return './' + cleanUrl;
-};
+/* ============================================================
+   GRID
+   ============================================================ */
 
 const grid = document.getElementById('grid');
 const chips = document.querySelectorAll('[data-filter]');
@@ -46,27 +47,38 @@ let state = {
   pageSize: 9,
 };
 
-const normalize = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
+const normalize = s =>
+  (s || '')
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
 
-function apply(){
+function apply() {
   const term = normalize(state.q);
+
   let list = PRODUCTS.filter(p => {
     const catOK = state.filter === 'all' || p.category === state.filter;
     const txt = `${p.name} ${p.sku}`;
     const qOK = !term || normalize(txt).includes(term);
     return catOK && qOK;
   });
-  
-  if (state.sort === 'name') list.sort((a,b)=> a.name.localeCompare(b.name));
-  if (state.sort === 'model') list.sort((a,b)=> a.sku.localeCompare(b.sku));
+
+  if (state.sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name));
+  if (state.sort === 'model') list.sort((a, b) => a.sku.localeCompare(b.sku));
+
   return list;
 }
 
-function card(p){
-  const href = p.href || `${PREFIX}productos/index.html?sku=${encodeURIComponent(p.sku)}`;
+function card(p) {
+
+  // href del producto (siempre seguro)
+  const href = p.href || asset(`productos/index.html?sku=${encodeURIComponent(p.sku)}`);
+
+  // imagen principal
   let rawImg = (p.gallery && p.gallery[0]) || p.image;
-  let img = fixRel(rawImg);
-  
+  let img = asset(rawImg);
+
   return `
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
        data-cat="${p.category}" data-name="${p.name}" data-model="${p.sku}">
@@ -85,36 +97,41 @@ function card(p){
     </a>`;
 }
 
-function postRenderImageEnhancements(){
+function postRenderImageEnhancements() {
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
+
     if (!img.dataset.errorHandled) {
       img.dataset.errorHandled = 'true';
-      img.addEventListener('error', function() {
-        this.src = LOGO_FALLBACK;
-      }, { once: true });
+      img.addEventListener(
+        'error',
+        function () {
+          this.src = LOGO_FALLBACK;
+        },
+        { once: true }
+      );
     }
   });
 }
 
-function render(animate = true){
+function render(animate = true) {
   const all = apply();
   const slice = all.slice(0, state.page * state.pageSize);
-  
+
   if (animate) {
     grid.style.opacity = '0';
     grid.style.transform = 'translateY(10px)';
   }
-  
+
   setTimeout(() => {
     grid.innerHTML = slice.map(card).join('');
     postRenderImageEnhancements();
-    
+
     if (animate) {
       grid.style.opacity = '1';
       grid.style.transform = 'translateY(0)';
-      
+
       const cards = grid.querySelectorAll('.card');
       cards.forEach((c, i) => {
         c.style.opacity = '0';
@@ -125,15 +142,18 @@ function render(animate = true){
         }, i * 50);
       });
     }
-    
+
     if (countVisible) {
       countVisible.style.transform = 'scale(1.2)';
       countVisible.textContent = all.length;
-      setTimeout(() => { countVisible.style.transform = 'scale(1)'; }, 200);
+      setTimeout(() => {
+        countVisible.style.transform = 'scale(1)';
+      }, 200);
     }
-    
+
     if (btnMore) {
       const hasMore = slice.length < all.length;
+
       if (hasMore) {
         const remaining = all.length - slice.length;
         btnMore.style.display = 'inline-flex';
@@ -146,26 +166,29 @@ function render(animate = true){
   }, animate ? 150 : 0);
 }
 
-
-chips.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
+chips.forEach(btn => {
+  btn.addEventListener('click', () => {
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
     });
+
     btn.classList.add('active');
     btn.style.transform = 'scale(1.05)';
-    setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+    }, 200);
+
     state.filter = btn.getAttribute('data-filter');
     state.page = 1;
+
     render(true);
   });
 });
 
-
 if (inputQ) {
   let searchTimeout;
-  inputQ.addEventListener('input', e=>{
+  inputQ.addEventListener('input', e => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
       state.q = e.target.value;
@@ -175,46 +198,25 @@ if (inputQ) {
   });
 }
 
-
 if (sortSel) {
-  sortSel.addEventListener('change', e=>{
+  sortSel.addEventListener('change', e => {
     state.sort = e.target.value;
     state.page = 1;
     render(true);
   });
 }
 
-
 if (btnMore) {
-  btnMore.addEventListener('click', ()=>{
+  btnMore.addEventListener('click', () => {
     const all = apply();
     const currentShown = state.page * state.pageSize;
+
     if (currentShown < all.length) {
       state.page++;
-      btnMore.style.transform = 'scale(0.95)';
-      setTimeout(() => { btnMore.style.transform = 'scale(1)'; }, 100);
       render(false);
-      setTimeout(() => {
-        const cards = grid.querySelectorAll('.card');
-        const newCards = Array.from(cards).slice(currentShown);
-        newCards.forEach((card, index) => {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, index * 50);
-        });
-        if (newCards.length > 0) {
-          setTimeout(() => {
-            newCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 200);
-        }
-      }, 100);
     }
   });
 }
-
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initGrid);
@@ -223,12 +225,10 @@ if (document.readyState === 'loading') {
 }
 
 function initGrid() {
-  console.log(' Inicializando grid...');
-  
-  
+  console.log('⚙️ Inicializando grid...');
+
   if (grid) grid.innerHTML = '';
-  
-  
+
   chips.forEach(chip => {
     if (chip.getAttribute('data-filter') === 'all') {
       chip.classList.add('active');
@@ -236,14 +236,13 @@ function initGrid() {
       chip.classList.remove('active');
     }
   });
-  
-  
+
   state.filter = 'all';
   state.page = 1;
   state.q = '';
   state.sort = '';
-  
-  // Renderizar
+
   render(false);
+
   console.log('✅ Grid listo');
 }
