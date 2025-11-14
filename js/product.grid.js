@@ -18,7 +18,16 @@ const BASE_PATH = isGitHub ? "/ds3-siemon/" : "/";
  * sin duplicar /ds3-siemon/
  */
 function asset(path) {
-  const clean = path.replace(/^(\.\/|\/|..\/)+/, "");
+  if (!path) return LOGO_FALLBACK;
+  
+  // Limpia prefijos comunes
+  let clean = path.replace(/^(\.\/|\/|..\/)+/, "");
+  
+  // ✅ Elimina todas las ocurrencias de ds3-siemon/ al inicio
+  while (clean.startsWith('ds3-siemon/')) {
+    clean = clean.replace(/^ds3-siemon\//, '');
+  }
+  
   return BASE_PATH + clean;
 }
 
@@ -47,6 +56,9 @@ let state = {
   pageSize: 9,
 };
 
+// Bandera para evitar inicialización múltiple
+let isInitialized = false;
+
 const normalize = s =>
   (s || '')
     .toString()
@@ -71,7 +83,6 @@ function apply() {
 }
 
 function card(p) {
-
   // href del producto (siempre seguro)
   const href = p.href || asset(`productos/index.html?sku=${encodeURIComponent(p.sku)}`);
 
@@ -225,9 +236,22 @@ if (document.readyState === 'loading') {
 }
 
 function initGrid() {
+  // ✅ Evitar inicialización múltiple
+  if (isInitialized) {
+    console.warn('⚠️ Grid ya inicializado, evitando duplicación');
+    return;
+  }
+  
+  isInitialized = true;
   console.log('⚙️ Inicializando grid...');
 
-  if (grid) grid.innerHTML = '';
+  // ✅ Limpiar completamente el grid
+  const gridElement = document.getElementById('grid');
+  if (gridElement) {
+    gridElement.innerHTML = '';
+    gridElement.style.opacity = '1';
+    gridElement.style.transform = 'translateY(0)';
+  }
 
   chips.forEach(chip => {
     if (chip.getAttribute('data-filter') === 'all') {
