@@ -1,9 +1,3 @@
-// ============================================================================
-// CATÁLOGO COMPLETO DE PRODUCTOS SIEMON
-// ============================================================================
-// Archivo generado con todos los productos del catálogo SIEMON
-// Última actualización: 2025
-// ============================================================================
 
 export const PRODUCTS = [
 
@@ -16,9 +10,9 @@ export const PRODUCTS = [
     category: 'cat5e',
     name: 'Cable UTP Cat5e F/UTP 305m PVC (CM)',
     gallery: [
-      'imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.jpg',
-      'imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.rollo.jpg',
-      'imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.Cable.jpg',
+      './imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.jpg',
+      './imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.rollo.jpg',
+      './imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.Cable.jpg',
     ],
     summary: [
       'Rollo de 305 metros',
