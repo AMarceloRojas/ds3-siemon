@@ -13,10 +13,26 @@ const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 // Normaliza rutas
 const fixRel = (u) => {
   if (!u) return u;
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
-  if (u.startsWith('/'))   return PREFIX + u.slice(1);
-  if (u.startsWith('./'))  return PREFIX + u.slice(2);
-  return u;
+
+  // 1. Ignorar rutas externas (http, mailto, data, etc.)
+  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) {
+    return u;
+  }
+
+  let relativePath = u;
+
+  // 2. Normalizar la ruta, quitando CUALQUIER prefijo relativo
+  if (u.startsWith('../')) {
+    relativePath = u.slice(3); // Quita '../'
+  } else if (u.startsWith('./')) {
+    relativePath = u.slice(2); // Quita './'
+  } else if (u.startsWith('/')) {
+    relativePath = u.slice(1); // Quita '/'
+  }
+  
+  // 3. Ahora que 'relativePath' es una ruta limpia (ej: 'imgs/siemon/...'),
+  //    le aplicamos el prefijo correcto para la página actual.
+  return PREFIX + relativePath;
 };
 
 function escapeHtml(s) {
