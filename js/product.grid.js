@@ -2,40 +2,42 @@
 import { PRODUCTS } from './products.siemon.js';
 
 /* ============================================================
-   🔥 DETECCIÓN DE RUTA SEGURA EN GITHUB PAGES
+   🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
    ============================================================ */
 
-// Detecta si está en GitHub Pages
-const isGitHub = window.location.hostname.includes("github.io");
+// ¿Estoy en GitHub Pages?
+const isGitHub = window.location.hostname.includes('github.io');
 
-// Base path correcto
-//   GitHub Pages  → /ds3-siemon/
-//   Local         → /
-const BASE_PATH = isGitHub ? "/ds3-siemon/" : "/";
+// BASE:
+//  - En GitHub:  /ds3-siemon/SIEMON/
+//  - En local:   /SIEMON/
+const BASE_SIEMON = isGitHub ? '/ds3-siemon/' : '/';
 
 /**
- * Construye rutas ABSOLUTAS siempre correctas
- * sin duplicar /ds3-siemon/
+ * Construye la ruta ABSOLUTA de una imagen de producto.
+ * Espera paths relativos a la carpeta SIEMON, por ejemplo:
+ *   imgs/siemon/cat5e/xxxxx.jpg
  */
-function asset(path) {
-  if (!path) return LOGO_FALLBACK;
-  
-  // Limpia prefijos comunes
-  let clean = path.replace(/^(\.\/|\/|..\/)+/, "");
-  
-  // ✅ Elimina todas las ocurrencias de ds3-siemon/ al inicio
-  while (clean.startsWith('ds3-siemon/')) {
-    clean = clean.replace(/^ds3-siemon\//, '');
+function imgAsset(path) {
+  if (!path) return null;
+
+  let clean = path.trim();
+
+  // Quita ./, ../ y / iniciales
+  while (clean.startsWith('./') || clean.startsWith('../') || clean.startsWith('/')) {
+    if (clean.startsWith('./')) clean = clean.slice(2);
+    else if (clean.startsWith('../')) clean = clean.slice(3);
+    else if (clean.startsWith('/')) clean = clean.slice(1);
   }
-  
-  return BASE_PATH + clean;
+
+  return BASE_SIEMON + clean;
 }
 
-// Imagen fallback global
-const LOGO_FALLBACK = asset("SIEMON/icons/Siemonlogo.png");
+// Logo fallback (absoluto)
+const LOGO_FALLBACK = BASE_SIEMON + 'icons/Siemonlogo.png';
 
-console.log("🧭 BASE_PATH:", BASE_PATH);
-console.log("🖼 LOGO_FALLBACK:", LOGO_FALLBACK);
+console.log('🧭 BASE_SIEMON:', BASE_SIEMON);
+console.log('🖼 LOGO_FALLBACK:', LOGO_FALLBACK);
 
 /* ============================================================
    GRID
@@ -56,7 +58,6 @@ let state = {
   pageSize: 9,
 };
 
-// Bandera para evitar inicialización múltiple
 let isInitialized = false;
 
 const normalize = s =>
@@ -82,13 +83,14 @@ function apply() {
   return list;
 }
 
-function card(p) {
-  // href del producto (siempre seguro)
-  const href = p.href || asset(`productos/index.html?sku=${encodeURIComponent(p.sku)}`);
+// URL ABSOLUTA para detalle de producto
+const DETAIL_URL_BASE = BASE_SIEMON + 'productos/index.html';
 
-  // imagen principal
-  let rawImg = (p.gallery && p.gallery[0]) || p.image;
-  let img = asset(rawImg);
+function card(p) {
+  const href = p.href || `${DETAIL_URL_BASE}?sku=${encodeURIComponent(p.sku)}`;
+
+  const rawImg = (p.gallery && p.gallery[0]) || p.image;
+  let img = imgAsset(rawImg) || LOGO_FALLBACK;
 
   return `
     <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
@@ -109,6 +111,8 @@ function card(p) {
 }
 
 function postRenderImageEnhancements() {
+  if (!grid) return;
+
   grid.querySelectorAll('img').forEach(img => {
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
@@ -127,6 +131,8 @@ function postRenderImageEnhancements() {
 }
 
 function render(animate = true) {
+  if (!grid) return;
+
   const all = apply();
   const slice = all.slice(0, state.page * state.pageSize);
 
@@ -236,21 +242,18 @@ if (document.readyState === 'loading') {
 }
 
 function initGrid() {
-  // ✅ Evitar inicialización múltiple
   if (isInitialized) {
     console.warn('⚠️ Grid ya inicializado, evitando duplicación');
     return;
   }
-  
+
   isInitialized = true;
   console.log('⚙️ Inicializando grid...');
 
-  // ✅ Limpiar completamente el grid
-  const gridElement = document.getElementById('grid');
-  if (gridElement) {
-    gridElement.innerHTML = '';
-    gridElement.style.opacity = '1';
-    gridElement.style.transform = 'translateY(0)';
+  if (grid) {
+    grid.innerHTML = '';
+    grid.style.opacity = '1';
+    grid.style.transform = 'translateY(0)';
   }
 
   chips.forEach(chip => {
