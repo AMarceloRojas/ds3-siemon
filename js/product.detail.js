@@ -11,29 +11,41 @@ const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 
 // Normaliza rutas
+const REPO_NAME = 'ds3-siemon';
+
+// Normaliza rutas
 const fixRel = (u) => {
   if (!u) return u;
 
-  // 1. Ignorar rutas externas (http, mailto, data, etc.)
-  if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) {
+  // URLs absolutas: las dejamos como están
+  if (
+    /^https?:\/\//i.test(u) ||
+    u.startsWith('data:') ||
+    u.startsWith('mailto:') ||
+    u.startsWith('tel:')
+  ) {
     return u;
   }
 
-  let relativePath = u;
+  let clean = u.trim();
 
-  // 2. Normalizar la ruta, quitando CUALQUIER prefijo relativo
-  if (u.startsWith('../')) {
-    relativePath = u.slice(3); // Quita '../'
-  } else if (u.startsWith('./')) {
-    relativePath = u.slice(2); // Quita './'
-  } else if (u.startsWith('/')) {
-    relativePath = u.slice(1); // Quita '/'
+  // 1) Si la ruta ya viene con /ds3-siemon/ o ds3-siemon/ al inicio, lo quitamos
+  const repoRegex = new RegExp(`^\\/?${REPO_NAME}\\/`, 'i');
+  while (repoRegex.test(clean)) {
+    clean = clean.replace(repoRegex, '');
   }
-  
-  // 3. Ahora que 'relativePath' es una ruta limpia (ej: 'imgs/siemon/...'),
-  //    le aplicamos el prefijo correcto para la página actual.
-  return PREFIX + relativePath;
+
+  // 2) Quitamos ./  ../  y / iniciales extra
+  while (clean.startsWith('./') || clean.startsWith('../') || clean.startsWith('/')) {
+    if (clean.startsWith('./')) clean = clean.slice(2);
+    else if (clean.startsWith('../')) clean = clean.slice(3);
+    else if (clean.startsWith('/')) clean = clean.slice(1);
+  }
+
+  // 3) Devolvemos siempre PREFIX + ruta limpia
+  return PREFIX + clean;
 };
+
 
 function escapeHtml(s) {
   return (s ?? '').toString()
