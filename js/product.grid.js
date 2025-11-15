@@ -306,7 +306,7 @@ if (navigationType === 'reload') {
       } else {
         console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
       }
-    }, 3000); // 3000 milisegundos = 3 segundos
+    }, 1000); // 3000 milisegundos = 3 segundos
 
   });
 
