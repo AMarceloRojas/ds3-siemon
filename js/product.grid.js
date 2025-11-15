@@ -276,58 +276,31 @@ function initGrid() {
 // --- CÓDIGO AÑADIDO PARA FORZAR CLICK EN RECARGA (CON DELAY) ---
 // --- INICIO DEL CÓDIGO AÑADIDO (Versión 2: Recarga + Volver) ---
 
-/**
- * Función unificada para buscar el botón [data-filter="all"]
- * y hacerle click después de 3 segundos.
- */
 function triggerDelayedResetClick() {
-  // 1. Esperar 3 segundos
   setTimeout(() => {
     console.log('3 segundos han pasado. Buscando botón [data-filter="all"] para hacer click...');
     
-    // 2. Buscar el botón "Limpiar filtros" (el que tiene data-filter="all")
     const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
     
     if (btnLimpiarFiltros) {
       console.log('Botón "Limpiar filtros" encontrado. Forzando click...');
-      // 3. Simular el click
       btnLimpiarFiltros.click();
     } else {
       console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
     }
-  }, 3000); // 3000 milisegundos = 3 segundos
+  }, 3000);
 }
 
-// --- ESCENARIO 1: RECARGA DE PÁGINA (F5) ---
-// Espera a que la página cargue completamente (imágenes, etc.)
+// CUALQUIER carga completa de la página (F5, escribir URL, hacer click en la casita, etc.)
 window.addEventListener('load', () => {
-  console.log('Página completamente cargada (evento load).');
-  
-  // Verificamos el tipo de navegación
-  const navigationEntries = performance.getEntriesByType("navigation");
-  let navigationType = '';
-  if (navigationEntries.length > 0) {
-    navigationType = navigationEntries[0].type;
-  }
-
-  // Solo si fue una RECARGA (F5)
-  if (navigationType === 'reload') {
-     console.log('Recarga (F5) detectada. Iniciando espera de 3 segundos...');
-     triggerDelayedResetClick();
-  } else {
-     console.log(`Navegación normal (${navigationType}). El evento "load" no activará el click esta vez.`);
-  }
+  console.log('Página completamente cargada (evento load). Iniciando espera de 3 segundos...');
+  triggerDelayedResetClick();
 });
 
-// --- ESCENARIO 2: VOLVER A LA PÁGINA (Botón "Atrás") ---
-// Se dispara CADA vez que la página se vuelve visible
+// Volver desde el historial (bfcache: botón Atrás / Adelante)
 window.addEventListener('pageshow', (event) => {
-  // event.persisted es 'true' si la página se restauró desde el
-  // bfcache (Back/Forward Cache), que es lo que pasa al presionar "Atrás".
   if (event.persisted) {
     console.log('Página restaurada desde bfcache (botón "Atrás"). Iniciando espera de 3 segundos...');
     triggerDelayedResetClick();
   }
 });
-
-// --- FIN DEL CÓDIGO AÑADIDO ---
