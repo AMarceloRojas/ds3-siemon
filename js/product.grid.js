@@ -273,10 +273,10 @@ function initGrid() {
 
   console.log('✅ Grid listo');
 }
-// --- CÓDIGO AÑADIDO PARA FORZAR CLICK EN RECARGA ---
+// --- CÓDIGO AÑADIDO PARA FORZAR CLICK EN RECARGA (CON DELAY) ---
 
 // 1. Detectar si la página fue recargada
-// performance.getEntriesByType("navigation") es la API moderna para esto.
+// (Usamos performance.getEntriesByType para compatibilidad moderna)
 const navigationEntries = performance.getEntriesByType("navigation");
 let navigationType = '';
 if (navigationEntries.length > 0) {
@@ -289,18 +289,25 @@ if (navigationType === 'reload') {
 
   // 3. Esperar a que *todo* cargue (evento 'load')
   window.addEventListener('load', () => {
-    console.log('Página completamente cargada (evento load).');
+    console.log('Página completamente cargada (evento load). Iniciando espera de 3 segundos...');
 
-    // 4. Buscar el botón "Limpiar filtros" (el que tiene data-filter="all")
-    const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
+    // 4. Esperar 3 segundos (3000 ms)
+    setTimeout(() => {
+      console.log('3 segundos han pasado. Ejecutando click en [data-filter="all"]');
 
-    if (btnLimpiarFiltros) {
-      console.log('Botón "Limpiar filtros" [data-filter="all"] encontrado. Forzando click...');
-      // 5. Simular el click
-      btnLimpiarFiltros.click();
-    } else {
-      console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
-    }
+      // 5. Buscar el botón "Limpiar filtros" (el que tiene data-filter="all")
+      const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
+
+      if (btnLimpiarFiltros) {
+        console.log('Botón "Limpiar filtros" encontrado. Forzando click...');
+        
+        // 6. Simular el click
+        btnLimpiarFiltros.click();
+      } else {
+        console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
+      }
+    }, 3000); // 3000 milisegundos = 3 segundos
+
   });
 
 } else {
