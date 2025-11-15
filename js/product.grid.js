@@ -273,34 +273,100 @@ function initGrid() {
 
   console.log('✅ Grid listo');
 }
-// --- CÓDIGO AÑADIDO PARA FORZAR CLICK EN RECARGA (CON DELAY) ---
-// --- INICIO DEL CÓDIGO AÑADIDO (Versión 2: Recarga + Volver) ---
 
-function triggerDelayedResetClick() {
+/* ============================================================
+    🔥 RESET AUTOMÁTICO AL CARGAR/VOLVER (MOBILE + DESKTOP)
+    ============================================================ */
+
+/**
+ * Función robusta que resetea los filtros de manera manual
+ * Compatible con móviles y desktop
+ */
+function forceResetFilters() {
+  // Detectar si es móvil para ajustar el delay
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const delay = isMobile ? 1500 : 800;
+  
+  console.log(`📱 Dispositivo: ${isMobile ? 'Móvil' : 'Desktop'} - Delay: ${delay}ms`);
+  
   setTimeout(() => {
-    console.log('3 segundos han pasado. Buscando botón [data-filter="all"] para hacer click...');
+    console.log('⏰ Ejecutando reset de filtros...');
     
     const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
     
     if (btnLimpiarFiltros) {
-      console.log('Botón "Limpiar filtros" encontrado. Forzando click...');
-      btnLimpiarFiltros.click();
+      console.log('✅ Botón [data-filter="all"] encontrado');
+      
+      // MÉTODO 1: Resetear estado manualmente (más confiable)
+      state.filter = 'all';
+      state.page = 1;
+      state.q = '';
+      state.sort = '';
+      
+      // MÉTODO 2: Actualizar UI de chips manualmente
+      chips.forEach(chip => {
+        chip.classList.remove('active');
+        chip.style.transform = 'scale(1)';
+      });
+      btnLimpiarFiltros.classList.add('active');
+      
+      // MÉTODO 3: Limpiar input de búsqueda si existe
+      if (inputQ) {
+        inputQ.value = '';
+      }
+      
+      // MÉTODO 4: Resetear select de ordenamiento si existe
+      if (sortSel) {
+        sortSel.value = '';
+      }
+      
+      // MÉTODO 5: Re-renderizar sin animación
+      render(false);
+      
+      console.log('✅ Filtros reseteados correctamente');
+      console.log('📊 Estado actual:', state);
+      
+      // MÉTODO 6 (opcional): Intentar click programático como respaldo
+      try {
+        btnLimpiarFiltros.click();
+      } catch (error) {
+        console.log('ℹ️ Click programático no necesario, reset manual exitoso');
+      }
+      
     } else {
-      console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
+      console.warn('❌ No se encontró el botón [data-filter="all"]');
+      console.log('🔍 Chips disponibles:', chips.length);
+      
+      // Fallback: resetear de todas formas
+      state.filter = 'all';
+      state.page = 1;
+      state.q = '';
+      state.sort = '';
+      render(false);
+      
+      console.log('⚠️ Reset ejecutado sin botón (fallback)');
     }
-  }, 1300);
+  }, delay);
 }
 
-// CUALQUIER carga completa de la página (F5, escribir URL, hacer click en la casita, etc.)
+// EVENTO 1: Carga completa de página (F5, escribir URL, click en home)
 window.addEventListener('load', () => {
-  console.log('Página completamente cargada (evento load). Iniciando espera de 3 segundos...');
-  triggerDelayedResetClick();
+  console.log('🌐 Página completamente cargada (evento: load)');
+  forceResetFilters();
 });
 
-// Volver desde el historial (bfcache: botón Atrás / Adelante)
+// EVENTO 2: Volver desde historial (botón Atrás/Adelante)
 window.addEventListener('pageshow', (event) => {
   if (event.persisted) {
-    console.log('Página restaurada desde bfcache (botón "Atrás"). Iniciando espera de 3 segundos...');
-    triggerDelayedResetClick();
+    console.log('⏮️ Página restaurada desde bfcache (botón Atrás/Adelante)');
+    forceResetFilters();
   }
 });
+
+// EVENTO 3 (OPCIONAL): Por si el usuario navega usando popstate
+window.addEventListener('popstate', () => {
+  console.log('🔙 Navegación detectada (popstate)');
+  forceResetFilters();
+});
+
+console.log('🎯 Sistema de reset automático inicializado');
