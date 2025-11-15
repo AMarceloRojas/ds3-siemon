@@ -79,10 +79,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       return path;
     };
 
-    // ===== BLOQUE DE IMÁGENES ELIMINADO =====
-    // El bloque que estaba aquí fue eliminado 
-    // para evitar el conflicto con product.grid.js
-    // ==========================================
+    // Corregir imágenes
+    document.querySelectorAll('img[src]').forEach(img => {
+      const originalSrc = img.getAttribute('src');
+      const fixedSrc = fixPath(originalSrc);
+      if (fixedSrc !== originalSrc) {
+        img.setAttribute('src', fixedSrc);
+        console.log('🔧 Imagen corregida:', originalSrc, '→', fixedSrc);
+      }
+      
+      // Lazy loading y fallback
+      img.loading = 'lazy';
+      img.onerror = function() {
+        console.warn('❌ Imagen no cargó:', this.src);
+        this.src = prefix + 'SIEMON/icons/Siemonlogo.png';
+        this.onerror = null; // Evitar loop infinito
+      };
+    });
 
     // Corregir enlaces
     document.querySelectorAll('a[href]').forEach(link => {

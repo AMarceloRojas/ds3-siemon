@@ -34,7 +34,7 @@ function imgAsset(path) {
 }
 
 // Logo fallback (absoluto)
-const LOGO_FALLBACK = BASE_SIEMON + 'SIEMON/icons/Siemonlogo.png';
+const LOGO_FALLBACK = BASE_SIEMON + 'icons/Siemonlogo.png';
 
 console.log('🧭 BASE_SIEMON:', BASE_SIEMON);
 console.log('🖼 LOGO_FALLBACK:', LOGO_FALLBACK);
