@@ -288,7 +288,7 @@ function triggerDelayedResetClick() {
     } else {
       console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
     }
-  }, 3000);
+  }, 300);
 }
 
 // CUALQUIER carga completa de la página (F5, escribir URL, hacer click en la casita, etc.)
