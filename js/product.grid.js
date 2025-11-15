@@ -2,21 +2,21 @@
 import { PRODUCTS } from './products.siemon.js';
 
 /* ============================================================
-   🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
-   ============================================================ */
+    🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
+    ============================================================ */
 
 // ¿Estoy en GitHub Pages?
 const isGitHub = window.location.hostname.includes('github.io');
 
 // BASE:
-//  - En GitHub:  /ds3-siemon/SIEMON/
-//  - En local:   /SIEMON/
+//   - En GitHub:  /ds3-siemon/SIEMON/
+//   - En local:   /SIEMON/
 const BASE_SIEMON = isGitHub ? '/ds3-siemon/' : '/';
 
 /**
  * Construye la ruta ABSOLUTA de una imagen de producto.
  * Espera paths relativos a la carpeta SIEMON, por ejemplo:
- *   imgs/siemon/cat5e/xxxxx.jpg
+ * imgs/siemon/cat5e/xxxxx.jpg
  */
 function imgAsset(path) {
   if (!path) return null;
@@ -34,14 +34,14 @@ function imgAsset(path) {
 }
 
 // Logo fallback (absoluto)
-const LOGO_FALLBACK = BASE_SIEMON + 'icons/Siemonlogo.png';
+const LOGO_FALLBACK = BASE_SIEMON + 'SIEMON/icons/Siemonlogo.png';
 
 console.log('🧭 BASE_SIEMON:', BASE_SIEMON);
 console.log('🖼 LOGO_FALLBACK:', LOGO_FALLBACK);
 
 /* ============================================================
-   GRID
-   ============================================================ */
+    GRID
+    ============================================================ */
 
 const grid = document.getElementById('grid');
 const chips = document.querySelectorAll('[data-filter]');

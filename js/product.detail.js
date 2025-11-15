@@ -1,51 +1,45 @@
 // /SIEMON/js/product.detail.js
 import { PRODUCTS } from './products.siemon.js';
 
+/* ============================================================
+  🔥 CONFIGURACIÓN DE RUTAS (Consistente con grid.js)
+ ============================================================ */
 
-const path = window.location.pathname;
-const isInProductos = path.includes('/productos/');
-const PREFIX = isInProductos ? '../' : './';
+// ¿Estoy en GitHub Pages?
+const isGitHub = window.location.hostname.includes('github.io');
 
-/* ===================== UTILIDADES ===================== */
-const $ = (s) => document.querySelector(s);
-const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
+// BASE:
+//  - En GitHub:  /ds3-siemon/
+//  - En local:   /
+const BASE_SIEMON = isGitHub ? '/ds3-siemon/' : '/';
 
-// Normaliza rutas
-const REPO_NAME = 'ds3-siemon';
+/**
+ * Construye la ruta ABSOLUTA de un recurso.
+ */
+function fixRel(path) {
+  if (!path) return null;
 
-// Normaliza rutas
-const fixRel = (u) => {
-  if (!u) return u;
+  let clean = path.trim();
 
-  // URLs absolutas: las dejamos como están
-  if (
-    /^https?:\/\//i.test(u) ||
-    u.startsWith('data:') ||
-    u.startsWith('mailto:') ||
-    u.startsWith('tel:')
-  ) {
-    return u;
+  // 1. Ignorar rutas externas (http, mailto, data, etc.)
+  if (/^https?:\/\//i.test(path) || path.startsWith('data:') || path.startsWith('mailto:') || path.startsWith('tel:')) {
+    return path;
   }
-
-  let clean = u.trim();
-
-  // 1) Si la ruta ya viene con /ds3-siemon/ o ds3-siemon/ al inicio, lo quitamos
-  const repoRegex = new RegExp(`^\\/?${REPO_NAME}\\/`, 'i');
-  while (repoRegex.test(clean)) {
-    clean = clean.replace(repoRegex, '');
-  }
-
-  // 2) Quitamos ./  ../  y / iniciales extra
+  
+  // 2. Normalizar la ruta, quitando CUALQUIER prefijo relativo
   while (clean.startsWith('./') || clean.startsWith('../') || clean.startsWith('/')) {
     if (clean.startsWith('./')) clean = clean.slice(2);
     else if (clean.startsWith('../')) clean = clean.slice(3);
     else if (clean.startsWith('/')) clean = clean.slice(1);
   }
 
-  // 3) Devolvemos siempre PREFIX + ruta limpia
-  return PREFIX + clean;
-};
+  // 3. Aplicar el prefijo correcto para la página actual
+  return BASE_SIEMON + clean;
+}
 
+/* ===================== UTILIDADES ===================== */
+const $ = (s) => document.querySelector(s);
+const DEFAULT_IMG = fixRel('SIEMON/icons/Siemonlogo.png');
 
 function escapeHtml(s) {
   return (s ?? '').toString()
@@ -221,7 +215,7 @@ function renderProduct(p) {
       ${p.description ? `
         <section class="mt-8">
           <h2 class="text-lg font-semibold mb-2">Descripción</h2>
-          <p class="text-slate-700">${escapeHtml(p.description)}</p>
+          <p class="text-slate-700">${p.description.replace(/\n/g, '<br>')}</p>
         </section>
       ` : ''}
 
@@ -260,7 +254,7 @@ function renderProduct(p) {
     const btn = e.target.closest('[data-thumb]');
     if (!btn || !imgMain) return;
     imgMain.style.opacity = '0.2';
-    imgMain.src = fixRel(btn.getAttribute('data-thumb'));
+    imgMain.src = btn.getAttribute('data-thumb'); // Ya tiene la ruta absoluta de fixRel
     imgMain.onload = () => imgMain.style.opacity = '1';
   });
 
@@ -294,11 +288,16 @@ function renderSimilar(current) {
       cards.push(r);
     }
   }
+  
+  // URL ABSOLUTA para detalle de producto
+  const DETAIL_URL_BASE = fixRel('productos/index.html');
 
   const cardTpl = (p) => {
     const imgSrc = fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG;
+    const href = `${DETAIL_URL_BASE}?sku=${encodeURIComponent(p.sku)}`;
+    
     return `
-      <a href="./index.html?sku=${encodeURIComponent(p.sku)}"
+      <a href="${href}"
          class="product-card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5">
         <div class="h-40 flex items-center justify-center">
           <img src="${imgSrc}"

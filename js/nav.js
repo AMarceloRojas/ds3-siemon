@@ -79,23 +79,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       return path;
     };
 
-    // Corregir imágenes
-    document.querySelectorAll('img[src]').forEach(img => {
-      const originalSrc = img.getAttribute('src');
-      const fixedSrc = fixPath(originalSrc);
-      if (fixedSrc !== originalSrc) {
-        img.setAttribute('src', fixedSrc);
-        console.log('🔧 Imagen corregida:', originalSrc, '→', fixedSrc);
-      }
-      
-      // Lazy loading y fallback
-      img.loading = 'lazy';
-      img.onerror = function() {
-        console.warn('❌ Imagen no cargó:', this.src);
-        this.src = prefix + 'SIEMON/icons/Siemonlogo.png';
-        this.onerror = null; // Evitar loop infinito
-      };
-    });
+    // ===== BLOQUE DE IMÁGENES ELIMINADO =====
+    // El bloque que estaba aquí fue eliminado 
+    // para evitar el conflicto con product.grid.js
+    // ==========================================
 
     // Corregir enlaces
     document.querySelectorAll('a[href]').forEach(link => {
@@ -141,7 +128,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       </nav>
 
-      <!-- Offcanvas -->
       <div id="offcanvas" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black/40"></div>
         <aside class="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl p-6">
@@ -165,7 +151,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         </aside>
       </div>
 
-      <!-- Search Panel -->
       <div id="searchPanel" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute left-1/2 -translate-x-1/2 top-10 w-[92vw] max-w-2xl">

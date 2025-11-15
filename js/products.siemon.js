@@ -1,10 +1,7 @@
-
 export const PRODUCTS = [
-
   // ==========================================================================
   // CABLES UTP CAT 5E
   // ==========================================================================
-  
   {
     sku: '9A5M4-E2',
     category: 'cat5e',
@@ -2681,5 +2678,4 @@ export const PRODUCTS = [
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/accesorio/MX-HFP-02-02B/MX-HFP-02-02B-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
     ]
   },
-
 ];
