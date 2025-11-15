@@ -273,3 +273,38 @@ function initGrid() {
 
   console.log('✅ Grid listo');
 }
+// --- CÓDIGO AÑADIDO PARA FORZAR CLICK EN RECARGA ---
+
+// 1. Detectar si la página fue recargada
+// performance.getEntriesByType("navigation") es la API moderna para esto.
+const navigationEntries = performance.getEntriesByType("navigation");
+let navigationType = '';
+if (navigationEntries.length > 0) {
+  navigationType = navigationEntries[0].type;
+}
+
+// 2. Comprobar si el tipo de navegación fue 'reload'
+if (navigationType === 'reload') {
+  console.log('RECARGA de página detectada.');
+
+  // 3. Esperar a que *todo* cargue (evento 'load')
+  window.addEventListener('load', () => {
+    console.log('Página completamente cargada (evento load).');
+
+    // 4. Buscar el botón "Limpiar filtros" (el que tiene data-filter="all")
+    const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
+
+    if (btnLimpiarFiltros) {
+      console.log('Botón "Limpiar filtros" [data-filter="all"] encontrado. Forzando click...');
+      // 5. Simular el click
+      btnLimpiarFiltros.click();
+    } else {
+      console.warn('No se pudo encontrar el botón "Limpiar filtros" [data-filter="all"] para el click automático.');
+    }
+  });
+
+} else {
+  // 'navigate', 'back_forward', etc.
+  console.log(`Navegación normal (${navigationType}). No se forzará click.`);
+}
+// --- FIN DEL CÓDIGO AÑADIDO ---
