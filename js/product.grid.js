@@ -2,21 +2,22 @@
 import { PRODUCTS } from './products.siemon.js';
 
 /* ============================================================
-    🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
-    ============================================================ */
+   🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
+   ============================================================ */
 
 // ¿Estoy en GitHub Pages?
 const isGitHub = window.location.hostname.includes('github.io');
 
 // BASE:
-//   - En GitHub:  /ds3-siemon/SIEMON/
-//   - En local:   /SIEMON/
+//   - En GitHub:  /ds3-siemon/
+//   - En local:   /
 const BASE_SIEMON = isGitHub ? '/ds3-siemon/' : '/';
 
 /**
  * Construye la ruta ABSOLUTA de una imagen de producto.
- * Espera paths relativos a la carpeta SIEMON, por ejemplo:
- * imgs/siemon/cat5e/xxxxx.jpg
+ * Espera paths RELATIVOS al repo, por ejemplo:
+ *   imgs/siemon/cat5e/xxxxx.jpg    ✅
+ * NO pongas "ds3-siemon/" en products.siemon.js
  */
 function imgAsset(path) {
   if (!path) return null;
@@ -30,6 +31,12 @@ function imgAsset(path) {
     else if (clean.startsWith('/')) clean = clean.slice(1);
   }
 
+  // 👇 Fix para cuando en products.siemon.js quedó "ds3-siemon/..."
+  const GH_PREFIX = 'ds3-siemon/';
+  if (clean.startsWith(GH_PREFIX)) {
+    clean = clean.slice(GH_PREFIX.length);
+  }
+
   return BASE_SIEMON + clean;
 }
 
@@ -40,8 +47,8 @@ console.log('🧭 BASE_SIEMON:', BASE_SIEMON);
 console.log('🖼 LOGO_FALLBACK:', LOGO_FALLBACK);
 
 /* ============================================================
-    GRID
-    ============================================================ */
+   GRID
+   ============================================================ */
 
 const grid = document.getElementById('grid');
 const chips = document.querySelectorAll('[data-filter]');
@@ -183,22 +190,64 @@ function render(animate = true) {
   }, animate ? 150 : 0);
 }
 
+/* ============================================================
+   🔄 RESET DE FILTROS (REUTILIZABLE)
+   ============================================================ */
+
+function resetFiltersAndUI(animate = false) {
+  // Estado
+  state.filter = 'all';
+  state.q = '';
+  state.sort = '';
+  state.page = 1;
+
+  // Chips
+  chips.forEach(chip => {
+    const isAll = chip.getAttribute('data-filter') === 'all';
+    chip.classList.toggle('active', isAll);
+    chip.style.transform = 'scale(1)';
+  });
+
+  // Buscador
+  if (inputQ) inputQ.value = '';
+
+  // Orden
+  if (sortSel) sortSel.value = '';
+
+  // Render
+  render(animate);
+}
+
+/* ============================================================
+   EVENTOS: CHIPS, BUSCADOR, ORDEN, CARGAR MÁS
+   ============================================================ */
+
 chips.forEach(btn => {
   btn.addEventListener('click', () => {
+    const filter = btn.getAttribute('data-filter');
+
+    // Quitar "active" de todos
     chips.forEach(b => {
       b.classList.remove('active');
       b.style.transform = 'scale(1)';
     });
 
+    // Marcar el chip clickeado
     btn.classList.add('active');
     btn.style.transform = 'scale(1.05)';
     setTimeout(() => {
       btn.style.transform = 'scale(1)';
     }, 200);
 
-    state.filter = btn.getAttribute('data-filter');
-    state.page = 1;
+    // Si es "Todos", reseteamos todo
+    if (filter === 'all') {
+      resetFiltersAndUI(true);
+      return;
+    }
 
+    // Si es otra categoría, solo cambiamos filtro
+    state.filter = filter;
+    state.page = 1;
     render(true);
   });
 });
@@ -235,11 +284,9 @@ if (btnMore) {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initGrid);
-} else {
-  initGrid();
-}
+/* ============================================================
+   INIT GRID
+   ============================================================ */
 
 function initGrid() {
   if (isInitialized) {
@@ -256,117 +303,27 @@ function initGrid() {
     grid.style.transform = 'translateY(0)';
   }
 
-  chips.forEach(chip => {
-    if (chip.getAttribute('data-filter') === 'all') {
-      chip.classList.add('active');
-    } else {
-      chip.classList.remove('active');
-    }
-  });
-
-  state.filter = 'all';
-  state.page = 1;
-  state.q = '';
-  state.sort = '';
-
-  render(false);
+  resetFiltersAndUI(false);
 
   console.log('✅ Grid listo');
 }
 
-/* ============================================================
-    🔥 RESET AUTOMÁTICO AL CARGAR/VOLVER (MOBILE + DESKTOP)
-    ============================================================ */
-
-/**
- * Función robusta que resetea los filtros de manera manual
- * Compatible con móviles y desktop
- */
-function forceResetFilters() {
-  // Detectar si es móvil para ajustar el delay
-  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const delay = isMobile ? 1500 : 800;
-  
-  console.log(`📱 Dispositivo: ${isMobile ? 'Móvil' : 'Desktop'} - Delay: ${delay}ms`);
-  
-  setTimeout(() => {
-    console.log('⏰ Ejecutando reset de filtros...');
-    
-    const btnLimpiarFiltros = document.querySelector('[data-filter="all"]');
-    
-    if (btnLimpiarFiltros) {
-      console.log('✅ Botón [data-filter="all"] encontrado');
-      
-      // MÉTODO 1: Resetear estado manualmente (más confiable)
-      state.filter = 'all';
-      state.page = 1;
-      state.q = '';
-      state.sort = '';
-      
-      // MÉTODO 2: Actualizar UI de chips manualmente
-      chips.forEach(chip => {
-        chip.classList.remove('active');
-        chip.style.transform = 'scale(1)';
-      });
-      btnLimpiarFiltros.classList.add('active');
-      
-      // MÉTODO 3: Limpiar input de búsqueda si existe
-      if (inputQ) {
-        inputQ.value = '';
-      }
-      
-      // MÉTODO 4: Resetear select de ordenamiento si existe
-      if (sortSel) {
-        sortSel.value = '';
-      }
-      
-      // MÉTODO 5: Re-renderizar sin animación
-      render(false);
-      
-      console.log('✅ Filtros reseteados correctamente');
-      console.log('📊 Estado actual:', state);
-      
-      // MÉTODO 6 (opcional): Intentar click programático como respaldo
-      try {
-        btnLimpiarFiltros.click();
-      } catch (error) {
-        console.log('ℹ️ Click programático no necesario, reset manual exitoso');
-      }
-      
-    } else {
-      console.warn('❌ No se encontró el botón [data-filter="all"]');
-      console.log('🔍 Chips disponibles:', chips.length);
-      
-      // Fallback: resetear de todas formas
-      state.filter = 'all';
-      state.page = 1;
-      state.q = '';
-      state.sort = '';
-      render(false);
-      
-      console.log('⚠️ Reset ejecutado sin botón (fallback)');
-    }
-  }, delay);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGrid);
+} else {
+  initGrid();
 }
 
-// EVENTO 1: Carga completa de página (F5, escribir URL, click en home)
-window.addEventListener('load', () => {
-  console.log('🌐 Página completamente cargada (evento: load)');
-  forceResetFilters();
-});
+/* ============================================================
+   🔥 RESET AL VOLVER DESDE DETALLE (bfcache)
+   ============================================================ */
 
-// EVENTO 2: Volver desde historial (botón Atrás/Adelante)
 window.addEventListener('pageshow', (event) => {
+  // Cuando vuelves con el botón Atrás, el navegador puede restaurar del bfcache
   if (event.persisted) {
-    console.log('⏮️ Página restaurada desde bfcache (botón Atrás/Adelante)');
-    forceResetFilters();
+    console.log('⏮️ Página restaurada desde bfcache → reset filtros');
+    resetFiltersAndUI(false);
   }
 });
 
-// EVENTO 3 (OPCIONAL): Por si el usuario navega usando popstate
-window.addEventListener('popstate', () => {
-  console.log('🔙 Navegación detectada (popstate)');
-  forceResetFilters();
-});
-
-console.log('🎯 Sistema de reset automático inicializado');
+console.log('🎯 Sistema de grid inicializado');
