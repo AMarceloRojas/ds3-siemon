@@ -1,28 +1,28 @@
-// /SIEMON/js/nav.js - Versión mejorada para GitHub Pages
+
 document.addEventListener('DOMContentLoaded', async () => {
   
-  // ===== DETECCIÓN INTELIGENTE DE UBICACIÓN =====
+  
   const path = window.location.pathname;
   const isInProductos = path.includes('/productos/');
   const isInRoot = path.endsWith('/') || path.endsWith('index.html') || !path.includes('/productos');
   
-  // Prefijo para recursos según ubicación
+  
   const PREFIX = isInProductos ? '../' : './';
   
-  console.log('📍 Ubicación detectada:', {
+  console.log(' Ubicación detectada:', {
     path,
     isInProductos,
     PREFIX
   });
 
-  // ===== RUTAS DE RECURSOS =====
+  
   const PATHS = {
     logo: PREFIX + 'SIEMON/icons/Siemonlogo.png',
     logoDS3: PREFIX + 'SIEMON/icons/Logods3.png',
     navbar: PREFIX + 'components/navbar.html'
   };
 
-  // ===== CARGAR NAVBAR =====
+  
   const mount = document.querySelector('#navbar');
   
   try {
@@ -40,21 +40,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.insertAdjacentHTML('afterbegin', html);
       }
       
-      // Corregir todas las rutas después de insertar
+      
       fixAllPaths(PREFIX);
       setupNavbar(PREFIX, PATHS);
       
-      console.log('✅ Navbar cargado correctamente');
+      console.log(' Navbar cargado correctamente');
     } else {
-      console.warn('⚠️ Navbar no encontrado, usando versión inline');
+      console.warn(' Navbar no encontrado, usando versión inline');
       createInlineNavbar(PREFIX, PATHS);
     }
   } catch (error) {
-    console.error('❌ Error cargando navbar:', error);
+    console.error(' Error cargando navbar:', error);
     createInlineNavbar(PREFIX, PATHS);
   }
 
-  // ===== CORREGIR TODAS LAS RUTAS =====
+  
   function fixAllPaths(prefix) {
     const isExternal = (url) => {
       if (!url) return false;
@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fixPath = (path) => {
       if (!path || isExternal(path)) return path;
       
-      // Si ya empieza con el prefijo correcto, no modificar
+      
       if (path.startsWith(prefix)) return path;
       
-      // Limpiar y normalizar
-      path = path.replace(/^\.?\/?/, ''); // Quita ./ o /
       
-      // Si es una ruta a SIEMON o components, agregar prefijo
+      path = path.replace(/^\.?\/?/, '');
+      
+      
       if (path.startsWith('SIEMON/') || path.startsWith('components/') || 
           path.startsWith('css/') || path.startsWith('js/')) {
         return prefix + path;
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return path;
     };
 
-    // Corregir imágenes
+    
     document.querySelectorAll('img[src]').forEach(img => {
       const originalSrc = img.getAttribute('src');
       const fixedSrc = fixPath(originalSrc);
@@ -88,16 +88,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('🔧 Imagen corregida:', originalSrc, '→', fixedSrc);
       }
       
-      // Lazy loading y fallback
+      
       img.loading = 'lazy';
       img.onerror = function() {
         console.warn('❌ Imagen no cargó:', this.src);
         this.src = prefix + 'SIEMON/icons/Siemonlogo.png';
-        this.onerror = null; // Evitar loop infinito
+        this.onerror = null; 
       };
     });
 
-    // Corregir enlaces
+    
     document.querySelectorAll('a[href]').forEach(link => {
       const originalHref = link.getAttribute('href');
       if (!isExternal(originalHref) && !originalHref.startsWith('#')) {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // Corregir CSS
+    
     document.querySelectorAll('link[rel="stylesheet"][href]').forEach(link => {
       const originalHref = link.getAttribute('href');
       const fixedHref = fixPath(originalHref);
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // ===== NAVBAR INLINE (FALLBACK) =====
+  
   function createInlineNavbar(prefix, paths) {
     const navbarHTML = `
       <nav class="bg-white border-b sticky top-0 z-40 shadow-sm">
@@ -384,11 +384,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       render();
     });
 
-    // Render inicial
     resetAndRender();
   }
 
-  // ===== CARRUSEL DE MARCAS =====
+  
   function setupBrandCarousel() {
     const marquees = document.querySelectorAll('.brand-marquee');
     
@@ -396,12 +395,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const track = marquee.querySelector('.brand-track');
       if (!track) return;
 
-      // Clonar para loop infinito
       const items = Array.from(track.children);
       const clones = items.map(item => item.cloneNode(true));
       track.append(...clones);
 
-      // Configurar animación
       const itemCount = items.length;
       const speed = parseFloat(marquee.dataset.speed || '2');
       const duration = Math.max(10, (itemCount * 2.2) / speed);

@@ -56,6 +56,7 @@ const inputQ = document.getElementById('q');
 const sortSel = document.getElementById('sort');
 const countVisible = document.getElementById('countVisible');
 const btnMore = document.getElementById('btnMore');
+const btnClearFilters = document.getElementById('clearFilters'); // 👈 botón "Limpiar filtros"
 
 let state = {
   filter: 'all',
@@ -100,8 +101,9 @@ function card(p) {
   let img = imgAsset(rawImg) || LOGO_FALLBACK;
 
   return `
-    <a href="${href}" class="card group bg-white rounded-xl shadow border hover:shadow-lg transition p-5"
+    <a href="${href}" class="card card-neomorphic group bg-white rounded-xl shadow border hover:shadow-lg transition p-5 relative overflow-hidden"
        data-cat="${p.category}" data-name="${p.name}" data-model="${p.sku}">
+      <div class="card-overlay"></div>
       <div class="h-40 flex items-center justify-center">
         <img src="${img}" 
              alt="${p.sku}" 
@@ -110,9 +112,12 @@ function card(p) {
              onerror="this.src='${LOGO_FALLBACK}'; this.onerror=null;">
       </div>
       <div class="pt-4 text-center">
-        <h3 class="font-bold">${p.name}</h3>
+        <h3 class="font-bold text-slate-900">${p.name}</h3>
         <p class="text-sm text-gray-600 mt-1">Ref. ${p.sku}</p>
-        <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+        <div class="mt-3 text-blue-600 font-semibold text-sm flex items-center justify-center gap-1">
+          <span>Ver producto</span>
+          <i class="fa-solid fa-arrow-right-long text-xs"></i>
+        </div>
       </div>
     </a>`;
 }
@@ -239,13 +244,13 @@ chips.forEach(btn => {
       btn.style.transform = 'scale(1)';
     }, 200);
 
-    // Si es "Todos", reseteamos todo
+    
     if (filter === 'all') {
       resetFiltersAndUI(true);
       return;
     }
 
-    // Si es otra categoría, solo cambiamos filtro
+    
     state.filter = filter;
     state.page = 1;
     render(true);
@@ -284,9 +289,15 @@ if (btnMore) {
   });
 }
 
-/* ============================================================
-   INIT GRID
-   ============================================================ */
+
+if (btnClearFilters) {
+  btnClearFilters.addEventListener('click', (e) => {
+    e.preventDefault();
+    resetFiltersAndUI(true);
+  });
+}
+
+
 
 function initGrid() {
   if (isInitialized) {
@@ -314,16 +325,12 @@ if (document.readyState === 'loading') {
   initGrid();
 }
 
-/* ============================================================
-   🔥 RESET AL VOLVER DESDE DETALLE (bfcache)
-   ============================================================ */
-
 window.addEventListener('pageshow', (event) => {
-  // Cuando vuelves con el botón Atrás, el navegador puede restaurar del bfcache
+  
   if (event.persisted) {
     console.log('⏮️ Página restaurada desde bfcache → reset filtros');
     resetFiltersAndUI(false);
   }
 });
 
-console.log('🎯 Sistema de grid inicializado');
+console.log(' Sistema de grid inicializado');

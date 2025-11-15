@@ -9,6 +9,20 @@ const PREFIX = isInProductos ? '../' : './';
 /* ===================== UTILIDADES ===================== */
 const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
+const WHATSAPP_PHONE = '51994428965'; // 51 + 994428965
+
+function buildWhatsAppUrl(product, qty) {
+  const brand = product.brand || 'SIEMON';
+  const safeQty = qty && qty > 0 ? qty : 1;
+  const currentUrl = location.href;
+
+  const text =
+    `Deseo comprar el producto de la marca ${brand}, ` +
+    `modelo ${product.sku}, cantidad ${safeQty}. ` +
+    `Link del producto: ${currentUrl}`;
+
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+}
 
 // Normaliza rutas
 const fixRel = (u) => {
@@ -141,6 +155,7 @@ function standardsContent(items) {
 }
 
 /* ===================== render ===================== */
+/* ===================== render ===================== */
 function renderProduct(p) {
   // Breadcrumb
   const crumbSku = $('#crumbSku');
@@ -148,17 +163,58 @@ function renderProduct(p) {
 
   // Info block
   const infoBlock = `
-    <div>
-      <h1 class="text-xl md:text-2xl font-extrabold text-[#0D274D] leading-snug">
-        ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
-      </h1>
+  <div>
+    <h1 class="text-xl md:text-2xl font-extrabold text-[#0D274D] leading-snug">
+      ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
+    </h1>
 
-      <div class="mt-3">
-        <a href="https://www.ds3comunicaciones.com/pedido.html" target="_blank"
-           class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-          <i class="fa-solid fa-paper-plane"></i> Solicitar cotización
+    <div class="mt-4 p-4 border rounded-xl bg-slate-50 space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-slate-500">
+            Compra / cotización rápida
+          </p>
+          <p class="text-sm text-slate-700">
+            Marca:
+            <span class="font-semibold">
+              ${escapeHtml(p.brand || 'SIEMON')}
+            </span>
+          </p>
+          <p class="text-sm text-slate-700">
+            Modelo:
+            <span class="font-mono">
+              ${escapeHtml(p.sku)}
+            </span>
+          </p>
+        </div>
+
+        <div class="flex sm:flex-col items-end sm:items-end gap-2">
+          <label for="qtyInput" class="text-xs text-slate-500 mb-0 sm:mb-1">
+            Cantidad
+          </label>
+          <input
+            id="qtyInput"
+            type="number"
+            min="1"
+            value="1"
+            class="w-24 rounded-md border border-slate-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2">
+        <a
+          id="btnWsp"
+          href="#"
+          class="inline-flex justify-center items-center gap-2 px-4 py-2 rounded-md bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-600 w-full sm:w-auto">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Solicitar por WhatsApp</span>
         </a>
       </div>
+    </div>
+
+    
+
 
       ${p.summary ? `
         <ul class="mt-5 space-y-2 text-slate-700">
@@ -197,30 +253,49 @@ function renderProduct(p) {
         </section>
       ` : ''}
 
-      ${downloadsTpl(p.downloads)}
-
-      <section class="mt-8">
-        <h2 class="text-lg font-semibold mb-3">Especificaciones Técnicas</h2>
-        ${specTable(p.specs)}
-      </section>
+            ${downloadsTpl(p.downloads)}
 
       <div class="mt-8 space-y-4">
-        ${p.standards && p.standards.length ? accordionTpl(
-          'Normas y desempeño',
-          standardsContent(p.standards),
-          'fa-award'
-        ) : ''}
-        ${accordionTpl(
-          'Certificaciones y ambiente',
-          `
-            <p><span class="font-medium">Clasificación de chaqueta:</span> ${escapeHtml(p.summary || 'Ver ficha técnica')}</p>
-            <p><span class="font-medium">Cumplimiento:</span> RoHS — libre de sustancias restringidas</p>
-          `,
-          'fa-leaf'
-        )}
-      </div>
+
+      ${accordionTpl(
+        'Especificaciones técnicas',
+        specTable(p.specs),
+        'fa-table-list'
+      )}
+
+      ${p.standards && p.standards.length ? accordionTpl(
+        'Normas y desempeño',
+        standardsContent(p.standards),
+        'fa-award'
+      ) : ''}
+
+      ${accordionTpl(
+        'Certificaciones y ambiente',
+        `
+          <p><span class="font-medium">Clasificación de chaqueta:</span> ${escapeHtml(p.summary || 'Ver ficha técnica')}</p>
+          <p><span class="font-medium">Cumplimiento:</span> RoHS — libre de sustancias restringidas</p>
+        `,
+        'fa-leaf'
+      )}
+
     </div>
   `;
+
+  // === LÓGICA WHATSAPP + CANTIDAD ===
+  const qtyInput = document.getElementById('qtyInput');
+  const btnWsp = document.getElementById('btnWsp');
+
+  if (btnWsp && qtyInput) {
+    btnWsp.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      let qty = parseInt(qtyInput.value, 10);
+      if (!qty || qty < 1) qty = 1;
+
+      const waUrl = buildWhatsAppUrl(p, qty);
+      window.open(waUrl, '_blank');
+    });
+  }
 
   // Fallback para imagen principal
   const imgMain = $('#img_main');
@@ -238,6 +313,7 @@ function renderProduct(p) {
 
   document.title = `SIEMON ${p.sku} • DS3`;
 }
+
 
 function renderSimilar(current) {
   const MAX = 6;
