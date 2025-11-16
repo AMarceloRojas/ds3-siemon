@@ -281,7 +281,7 @@ function renderProduct(p) {
     </div>
   `;
 
-  // === LÓGICA WHATSAPP + CANTIDAD ===
+  
   const qtyInput = document.getElementById('qtyInput');
   const btnWsp = document.getElementById('btnWsp');
 
@@ -297,11 +297,11 @@ function renderProduct(p) {
     });
   }
 
-  // Fallback para imagen principal
+  
   const imgMain = $('#img_main');
   if (imgMain) imgMain.addEventListener('error', () => { imgMain.src = DEFAULT_IMG; }, { once:true });
 
-  // Clicks en thumbnails
+  
   const view = $('#productView');
   view.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-thumb]');
@@ -367,7 +367,6 @@ function renderSimilar(current) {
   grid.innerHTML = cards.map(cardTpl).join('');
 }
 
-/* ===================== boot ===================== */
 (function boot() {
   const sku = getSku();
   const mount = $('#productView');
