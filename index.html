@@ -514,9 +514,10 @@
 
 <body class="bg-gradient-to-b from-gray-50 to-white text-slate-800 antialiased">
 
+<div id="navbar"></div>
 <script src="./js/nav.js" defer></script>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<main class="container mx-auto px-4 py-8 lg:py-12">
 
   
   <section class="hero-elegant rounded-3xl p-8 lg:p-12 mb-8 relative z-10">
@@ -531,7 +532,6 @@
                class="h-16 lg:h-20 object-contain logo-elegant">
         </div>
 
-        <!-- Título y descripción -->
         <div class="space-y-3 animate-fade-soft delay-100">
           <h1 class="text-3xl lg:text-5xl font-bold tracking-tight text-slate-900">
             Excellence in
@@ -544,7 +544,6 @@
           </p>
         </div>
 
-        <!-- Badges minimalistas -->
         <div class="flex flex-wrap gap-3 animate-fade-soft delay-200">
           <div class="badge-minimal px-4 py-2 rounded-full">
             <div class="flex items-center gap-2">
@@ -568,7 +567,6 @@
 
       </div>
 
-      <!-- Contador sofisticado -->
       <div class="lg:col-span-4 animate-scale-soft delay-300">
         <div class="counter-sophisticated rounded-2xl p-6 text-center">
           <div class="text-5xl font-bold text-slate-900 mb-2" id="countVisible">0</div>
@@ -585,7 +583,6 @@
     
     <div class="space-y-5">
       
-      <!-- Header de filtros -->
       <div class="flex items-center justify-between">
         <h2 class="text-lg font-semibold text-slate-900">Filtrar Productos</h2>
         <button id="clearFilters" 
@@ -594,7 +591,6 @@
         </button>
       </div>
 
-      <!-- Chips de categorías -->
       <div class="flex flex-wrap gap-2">
         <button data-filter="all" class="chip-elegant active">
           <i class="fas fa-th text-xs mr-1.5"></i>Todos
@@ -628,7 +624,6 @@
         </button>
       </div>
 
-      <!-- Búsqueda y ordenamiento -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
         <div class="md:col-span-9 relative">
           <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
@@ -651,7 +646,6 @@
 
   <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"></div>
 
-  <!-- Estado vacío elegante -->
   <div id="emptyState" class="hidden text-center py-20">
     <div class="inline-block p-6 rounded-full bg-slate-50 mb-4">
       <i class="fas fa-search text-4xl text-slate-300"></i>
@@ -660,7 +654,6 @@
     <p class="text-slate-500">Intenta ajustar los filtros o términos de búsqueda</p>
   </div>
 
-  <!-- Botón cargar más -->
   <div class="flex justify-center">
     <button id="btnMore" class="btn-premium flex items-center gap-2">
       <span>Cargar más productos</span>
@@ -706,11 +699,10 @@
 
 <footer class="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100 mt-20">
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="container mx-auto px-4 py-12">
     
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
       
-      <!-- Logo y descripción -->
       <div class="space-y-4">
         <div class="inline-block bg-white rounded-xl p-4 shadow-sm border border-slate-100">
           <img src="./SIEMON/icons/Logods3.png" 
@@ -732,7 +724,6 @@
         </div>
       </div>
 
-      <!-- Soluciones -->
       <div>
         <h3 class="font-semibold text-slate-900 mb-4">Soluciones</h3>
         <ul class="space-y-2">
@@ -742,7 +733,6 @@
         </ul>
       </div>
 
-      <!-- Soporte -->
       <div>
         <h3 class="font-semibold text-slate-900 mb-4">Soporte</h3>
         <ul class="space-y-2">
@@ -751,7 +741,6 @@
         </ul>
       </div>
 
-      <!-- Contacto -->
       <div>
         <h3 class="font-semibold text-slate-900 mb-4">Contacto</h3>
         <ul class="space-y-3 text-sm text-slate-600">
@@ -772,7 +761,6 @@
 
     </div>
 
-    <!-- Línea divisoria -->
     <div class="border-t border-slate-100 pt-6">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
         <p>© 2025 DS3 Comunicaciones. Todos los derechos reservados.</p>

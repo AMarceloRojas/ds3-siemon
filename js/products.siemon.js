@@ -6,6 +6,7 @@ export const PRODUCTS = [
     sku: '9A5M4-E2',
     category: 'cat5e',
     name: 'Cable UTP Cat5e F/UTP 305m PVC (CM)',
+    price: 209,
     gallery: [
       '../imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.jpg',
       '../imgs/siemon/cat5e/9A5M4-E2/9A5M4-E2.rollo.jpg',

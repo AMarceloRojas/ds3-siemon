@@ -1,58 +1,115 @@
-<!-- NAV DS3 (3 filas, mobile-first) -->
-<nav class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4">
-    <!-- ===== Fila 1: logo + links básicos + buscador ===== -->
-    <div class="h-14 flex items-center justify-between gap-3">
-      <a href="../SIEMON/index.html" class="flex items-center gap-3">
-        <img src="./SIEMON/icons/Logods3.png" alt="DS3" class="h-7 w-auto">
-        <img src="./SIEMON/icons/cisco.png" alt="Cisco" class="h-7 w-auto">
-        <span class="font-semibold text-slate-700 hidden sm:block"></span>
-      </a>
+<nav class="bg-white w-full border-b">
+  <div class="container mx-auto px-4">
+    
+    <div class="hidden lg:flex justify-between items-center py-3">
+      
+      <div class="flex items-center flex-shrink-0">
+        <a href="https://www.ds3comunicaciones.com/index.html">
+          <img
+            src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg"
+            alt="NetPeru Logo"
+            class="h-12 mr-3"
+          />
+        </a>
+      </div>
 
-      <!-- Links de navegación desktop -->
-      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-700">
-        <a href="https://www.ds3comunicaciones.com/index.html" class="hover:text-blue-700">Inicio</a>
-        <a href="./SIEMON/index.html" class="hover:text-blue-700">SIEMON</a>
-        <a href="https://www.ds3comunicaciones.com/soporte.html" target="_blank" class="hover:text-blue-700">Soporte</a>
-      </nav>
+      <div class="flex flex-1 justify-center items-center gap-4 xl:gap-8 text-black">
+        
+        <div class="flex items-center gap-2">
+          <i class="fas fa-phone-alt text-black text-lg"></i>
+          <div class="leading-tight">
+            <p class="text-sm font-bold whitespace-nowrap">533-4339</p>
+            <p class="text-sm font-bold whitespace-nowrap">994-428-965</p>
+          </div>
+        </div>
 
-      <!-- Botones: búsqueda + menú responsive -->
-      <div class="flex items-center gap-2">
-        <!-- ⬇️ ESTE ID LO USA nav.js -->
-        <button id="btnSearch" class="p-2 rounded hover:bg-gray-100" aria-label="Buscar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <!-- ⬇️ ESTE ID LO USA nav.js -->
-        <button id="btnMenu" class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Menú">
-          <i class="fa-solid fa-bars"></i>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-phone-alt text-black text-lg"></i>
+          <div class="leading-tight">
+            <p class="text-sm font-bold whitespace-nowrap">99653-3223</p>
+            <p class="text-sm font-bold whitespace-nowrap">937-514-867</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <i class="fas fa-envelope text-black text-lg"></i>
+          <span class="text-sm font-bold whitespace-nowrap">netperu100@hotmail.com</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-black text-lg"></i>
+          <span class="text-sm font-bold whitespace-nowrap">Lima, PERÚ</span>
+        </div>
+
+        <div class="flex-shrink-0">
+          <img
+            src="https://www.ds3comunicaciones.com/cisco/images/cisco-gif.gif"
+            alt="cisco"
+            class="h-10 w-auto object-contain"
+          />
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end flex-shrink-0 ml-4">
+        <button
+          id="search-button"
+          class="p-2 hover:bg-gray-100 rounded-full transition-colors"
+        >
+          <i class="fas fa-search text-black text-lg"></i>
         </button>
       </div>
     </div>
 
-    <!-- ===== Fila 2: contactos (solo >= md) ===== -->
-    <div class="hidden md:flex items-center gap-6 pb-2">
-      <a href="tel:+51996533223" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
-        <i class="fa-solid fa-phone text-base"></i> 996533223
-      </a>
-      <a href="tel:+51994428965" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
-        <i class="fa-solid fa-phone text-base"></i> 994428965
-      </a>
-      <a href="mailto:netperu100@hotmail.com" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
-        <i class="fa-solid fa-envelope text-base"></i> netperu100@hotmail.com
-      </a>
+    <div class="lg:hidden flex flex-col gap-2">
+      <div class="flex justify-between items-center py-2">
+        <div class="flex gap-1">
+          <button
+            id="mobile-menu-button"
+            class="p-2 rounded-full hover:bg-gray-300 transition-colors"
+          >
+            <i class="fas fa-bars text-black"></i>
+          </button>
 
-      <div class="ml-auto hidden lg:flex items-center gap-4">
-        <a href="https://www.ds3comunicaciones.com/AMP/index.html"
-           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">AMP</a>
-        <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html"
-           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">Cables UTP</a>
+          <div class="flex items-center gap-2">
+            <img
+              src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg"
+              alt="NetPeru Logo"
+              class="h-10"
+            />
+            <img
+              src="http://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif"
+              alt="NetPeru Logo"
+              class="h-10"
+            />
+          </div>
+        </div>
+
+        <button
+          id="mobile-search-button"
+          class="p-2 rounded-md hover:bg-gray-300 transition-colors border border-black flex gap-3 items-center"
+        >
+          <i class="fas fa-search text-black"></i>
+        </button>
+      </div>
+
+      <div class="py-2 pl-3">
+        <div class="flex items-start">
+          <i class="fas fa-phone-alt mt-1 mr-1 text-black"></i>
+          <p>996533223</p>
+          <i class="pl-4 fas fa-phone-alt mt-1 mr-1 text-black"></i>
+          <p>994428965</p>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-envelope mr-1 text-black"></i>
+          <span>netperu100@hotmail.com</span>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- ===== Fila 3: carrusel categorías ===== -->
-    <div class="relative">
-      <div class="flex justify-evenly overflow-x-auto md:py-2 px-1 md:px-4 space-x-2 scrollbar-hide">
-        <a href="https://www.ds3comunicaciones.com/cisco/catalys_9200l.html"
+  <div class="relative border-t">
+    <div class="flex justify-evenly overflow-x-auto md:py-2 px-1 md:px-4 space-x-2 scrollbar-hide">
+      <a href="https://www.ds3comunicaciones.com/cisco/catalys_9200l.html"
            class="flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
           <div class="h-6 w-6 flex items-center justify-center">
             <img src="./SIEMON/icons/Switch Catalyst.png" class="max-h-full max-w-full" alt="Switch Catalyst" />
@@ -106,14 +163,10 @@
           </div>
           <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Transceiver</span>
         </a>
-      </div>
     </div>
   </div>
 </nav>
 
-<!-- =========================
-     OFFCANVAS (MENÚ MOBILE)
-     ========================= -->
 <div id="offcanvas" class="fixed inset-0 z-50 hidden">
   <div class="absolute inset-0 bg-black/40"></div>
   <aside class="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl p-6">
@@ -158,16 +211,12 @@
   </aside>
 </div>
 
-<!-- =========================
-     PANEL DE BÚSQUEDA
-     ========================= -->
 <div id="searchPanel" class="fixed inset-0 z-50 hidden">
   <div class="absolute inset-0 bg-black/40"></div>
   <div class="absolute left-1/2 -translate-x-1/2 top-10 w-[92vw] max-w-2xl">
     <div class="bg-white rounded-xl shadow-lg p-4">
       <div class="flex items-center gap-3">
         <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
-        <!-- ⬇️ ESTE ID LO USA nav.js PARA FOCUS -->
         <input id="searchInput" type="search" placeholder="Buscar productos..." 
                class="flex-1 outline-none text-sm">
         <button id="btnCloseSearch" class="p-2 hover:bg-gray-100 rounded" aria-label="Cerrar búsqueda">

@@ -1,28 +1,23 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
-  
   
   const path = window.location.pathname;
   const isInProductos = path.includes('/productos/');
   const isInRoot = path.endsWith('/') || path.endsWith('index.html') || !path.includes('/productos');
   
-  
   const PREFIX = isInProductos ? '../' : './';
   
-  console.log(' Ubicación detectada:', {
+  console.log('📍 Ubicación detectada:', {
     path,
     isInProductos,
     PREFIX
   });
 
-  
   const PATHS = {
     logo: PREFIX + 'SIEMON/icons/Siemonlogo.png',
     logoDS3: PREFIX + 'SIEMON/icons/Logods3.png',
     navbar: PREFIX + 'components/navbar.html'
   };
 
-  
   const mount = document.querySelector('#navbar');
   
   try {
@@ -40,21 +35,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.insertAdjacentHTML('afterbegin', html);
       }
       
-      
       fixAllPaths(PREFIX);
       setupNavbar(PREFIX, PATHS);
       
-      console.log(' Navbar cargado correctamente');
+      console.log('✅ Navbar cargado correctamente');
     } else {
-      console.warn(' Navbar no encontrado, usando versión inline');
+      console.warn('⚠️ Navbar no encontrado, usando versión inline');
       createInlineNavbar(PREFIX, PATHS);
     }
   } catch (error) {
-    console.error(' Error cargando navbar:', error);
+    console.error('❌ Error cargando navbar:', error);
     createInlineNavbar(PREFIX, PATHS);
   }
 
-  
+  // ===== CORRECCIÓN DE RUTAS =====
   function fixAllPaths(prefix) {
     const isExternal = (url) => {
       if (!url) return false;
@@ -63,80 +57,86 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fixPath = (path) => {
       if (!path || isExternal(path)) return path;
-      
-      
       if (path.startsWith(prefix)) return path;
       
-      
       path = path.replace(/^\.?\/?/, '');
-      
       
       if (path.startsWith('SIEMON/') || path.startsWith('components/') || 
           path.startsWith('css/') || path.startsWith('js/')) {
         return prefix + path;
       }
-      
       return path;
     };
 
-    
     document.querySelectorAll('img[src]').forEach(img => {
       const originalSrc = img.getAttribute('src');
       const fixedSrc = fixPath(originalSrc);
       if (fixedSrc !== originalSrc) {
         img.setAttribute('src', fixedSrc);
-        console.log('🔧 Imagen corregida:', originalSrc, '→', fixedSrc);
       }
-      
       
       img.loading = 'lazy';
       img.onerror = function() {
-        console.warn('❌ Imagen no cargó:', this.src);
+        // console.warn('❌ Imagen no cargó:', this.src);
         this.src = prefix + 'SIEMON/icons/Siemonlogo.png';
         this.onerror = null; 
       };
     });
 
-    
     document.querySelectorAll('a[href]').forEach(link => {
       const originalHref = link.getAttribute('href');
       if (!isExternal(originalHref) && !originalHref.startsWith('#')) {
         const fixedHref = fixPath(originalHref);
         if (fixedHref !== originalHref) {
           link.setAttribute('href', fixedHref);
-          console.log('🔧 Link corregido:', originalHref, '→', fixedHref);
         }
       }
     });
 
-    
     document.querySelectorAll('link[rel="stylesheet"][href]').forEach(link => {
       const originalHref = link.getAttribute('href');
       const fixedHref = fixPath(originalHref);
       if (fixedHref !== originalHref) {
         link.setAttribute('href', fixedHref);
-        console.log('🔧 CSS corregido:', originalHref, '→', fixedHref);
       }
     });
   }
 
-  
+  // ===== CREAR NAVBAR INLINE (RESPALDO) =====
   function createInlineNavbar(prefix, paths) {
+    // Este HTML es el respaldo por si falla la carga del archivo navbar.html
+    // Se ha actualizado para reflejar tu nuevo diseño con Flexbox
     const navbarHTML = `
-      <nav class="bg-white border-b sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a href="${prefix}index.html" class="flex items-center gap-3">
-            <img src="${paths.logo}" alt="Siemon" class="h-10" onerror="this.style.display='none'">
-            <span class="font-bold text-xl text-[#D52931]">SIEMON</span>
-          </a>
-          
-          <div class="flex items-center gap-3">
-            <button id="btnSearch" class="p-2 hover:bg-gray-100 rounded-lg">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button id="btnMenu" class="p-2 hover:bg-gray-100 rounded-lg lg:hidden">
-              <i class="fa-solid fa-bars"></i>
-            </button>
+      <nav class="bg-white w-full border-b sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+          <div class="hidden lg:flex justify-between items-center py-3">
+            <div class="flex items-center flex-shrink-0">
+              <a href="${prefix}index.html">
+                <img src="${prefix}SIEMON/icons/Logods3.png" alt="Logo" class="h-12 mr-3">
+              </a>
+            </div>
+            <div class="flex flex-1 justify-center items-center gap-4 xl:gap-8 text-black">
+               <div class="flex items-center gap-2"><i class="fas fa-phone-alt"></i><span class="font-bold">996 533 223</span></div>
+               <div class="flex items-center gap-2"><i class="fas fa-envelope"></i><span>netperu100@hotmail.com</span></div>
+            </div>
+            <div class="flex items-center justify-end flex-shrink-0 ml-4">
+              <button id="search-button" class="p-2 hover:bg-gray-100 rounded-full">
+                <i class="fas fa-search text-black"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:hidden flex flex-col gap-2">
+            <div class="flex justify-between items-center py-2">
+              <div class="flex gap-1">
+                <button id="mobile-menu-button" class="p-2 rounded-full hover:bg-gray-300">
+                  <i class="fas fa-bars text-black"></i>
+                </button>
+              </div>
+              <button id="mobile-search-button" class="p-2 rounded-md hover:bg-gray-300 border border-black">
+                <i class="fas fa-search text-black"></i>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -151,15 +151,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             </button>
           </div>
           <div class="space-y-3">
-            <a href="tel:+51996533223" class="flex items-center gap-2 text-gray-800 hover:text-[#D52931]">
-              <i class="fa-solid fa-phone"></i> 996 533 223
-            </a>
-            <a href="tel:+51994428965" class="flex items-center gap-2 text-gray-800 hover:text-[#D52931]">
-              <i class="fa-solid fa-phone"></i> 994 428 965
-            </a>
-            <a href="mailto:netperu100@hotmail.com" class="flex items-center gap-2 text-gray-800 hover:text-[#D52931]">
-              <i class="fa-solid fa-envelope"></i> netperu100@hotmail.com
-            </a>
+             <a href="#" class="block">Inicio</a>
+             <a href="#" class="block">Siemon</a>
           </div>
         </aside>
       </div>
@@ -170,8 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <div class="bg-white rounded-xl shadow-lg p-4">
             <div class="flex items-center gap-3">
               <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
-              <input id="searchInput" type="search" placeholder="Buscar productos..." 
-                     class="flex-1 outline-none">
+              <input id="searchInput" type="search" placeholder="Buscar..." class="flex-1 outline-none">
               <button id="btnCloseSearch" class="p-2 hover:bg-gray-100 rounded">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -190,14 +182,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupNavbar(prefix, paths);
   }
 
-  // ===== FUNCIONALIDAD DEL NAVBAR =====
+  // ===== LÓGICA DEL NAVBAR (Eventos) =====
   function setupNavbar(prefix, paths) {
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => [...document.querySelectorAll(s)];
 
-    // Offcanvas
+    // 1. MENÚ RESPONSIVE (Offcanvas)
     const offcanvas = $('#offcanvas');
-    $$('#btnMenu').forEach(btn => {
+    
+    // Seleccionamos tanto el botón viejo (#btnMenu) como el nuevo (#mobile-menu-button)
+    // para asegurar que funcione con cualquier versión del HTML
+    const menuButtons = [...$$('#btnMenu'), ...$$('#mobile-menu-button')];
+    
+    menuButtons.forEach(btn => {
       btn?.addEventListener('click', (e) => {
         e.preventDefault();
         offcanvas?.classList.remove('hidden');
@@ -219,11 +216,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // Search Panel
+    // 2. BUSCADOR (Search Panel)
     const searchPanel = $('#searchPanel');
     const searchInput = $('#searchInput');
     
-    $$('#btnSearch').forEach(btn => {
+    // Seleccionamos botones de búsqueda de escritorio (#search-button) y móvil (#mobile-search-button)
+    const searchButtons = [
+      ...$$('#btnSearch'), // Por si acaso
+      ...$$('#search-button'), 
+      ...$$('#mobile-search-button')
+    ];
+    
+    searchButtons.forEach(btn => {
       btn?.addEventListener('click', (e) => {
         e.preventDefault();
         searchPanel?.classList.remove('hidden');
@@ -241,7 +245,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // Escape key
+    // Tecla Escape para cerrar
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         searchPanel?.classList.add('hidden');
@@ -250,10 +254,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // ===== GRID DE PRODUCTOS CON PAGINACIÓN =====
+    // ===== INICIALIZAR GRID Y CARRUSEL =====
     setupProductGrid(prefix, paths);
-
-    // ===== CARRUSEL DE MARCAS =====
     setupBrandCarousel();
   }
 
@@ -275,20 +277,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnMore = document.getElementById('btnMore');
     const countVisible = document.getElementById('countVisible');
 
-    // Configurar imágenes de productos
     cards.forEach(card => {
       const img = card.querySelector('img');
       if (img) {
         const originalSrc = img.getAttribute('src');
-        
-        // Si la imagen no tiene el prefijo, agregarlo
         if (originalSrc && !originalSrc.startsWith('http') && !originalSrc.startsWith(prefix)) {
           img.src = prefix + originalSrc.replace(/^\.?\/?/, '');
         }
-        
         img.loading = 'lazy';
         img.onerror = function() {
-          console.warn(' Imagen de producto no cargó:', this.src);
           this.src = paths.logo;
           this.onerror = null;
         };
@@ -313,22 +310,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const sortCards = (arr, mode) => {
       if (mode === 'name') {
-        return arr.sort((a, b) => 
-          (a.dataset.name || '').localeCompare(b.dataset.name || '')
-        );
+        return arr.sort((a, b) => (a.dataset.name || '').localeCompare(b.dataset.name || ''));
       }
       if (mode === 'model') {
-        return arr.sort((a, b) => 
-          (a.dataset.model || '').localeCompare(b.dataset.model || '')
-        );
+        return arr.sort((a, b) => (a.dataset.model || '').localeCompare(b.dataset.model || ''));
       }
       return arr;
     };
 
     const render = () => {
-      let list = cards.filter(c => 
-        matchFilter(c, currentFilter) && matchQuery(c, currentQuery)
-      );
+      let list = cards.filter(c => matchFilter(c, currentFilter) && matchQuery(c, currentQuery));
       list = sortCards(list, currentSort);
 
       cards.forEach(c => c.classList.add('hidden-card'));
@@ -347,9 +338,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const hasMore = cursor < list.length;
       if (btnMore) {
         btnMore.disabled = !hasMore;
-        btnMore.style.display = list.length > PER_PAGE 
-          ? 'inline-flex' 
-          : (hasMore ? 'inline-flex' : 'none');
+        btnMore.style.display = list.length > PER_PAGE ? 'inline-flex' : (hasMore ? 'inline-flex' : 'none');
         if (list.length === 0) btnMore.style.display = 'none';
       }
     };
@@ -359,7 +348,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       render();
     };
 
-    // Event listeners
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
         chips.forEach(c => c.classList.remove('active'));
@@ -387,7 +375,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     resetAndRender();
   }
 
-  
+  // ===== CARRUSEL DE MARCAS =====
   function setupBrandCarousel() {
     const marquees = document.querySelectorAll('.brand-marquee');
     
@@ -405,7 +393,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       track.style.setProperty('--dur', duration + 's');
 
-      // Pausar en hover
       marquee.addEventListener('mouseenter', () => {
         track.style.animationPlayState = 'paused';
       });

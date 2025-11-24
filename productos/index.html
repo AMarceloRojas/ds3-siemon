@@ -19,13 +19,11 @@
 </head>
 <body class="bg-gray-50 text-slate-800">
 
-  <!-- Offcanvas -->
   <div id="offcanvas" class="fixed inset-0 z-50 hidden">
     <div class="absolute inset-0 bg-black/40"></div>
     <aside class="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl p-4 flex flex-col">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <!-- Logo relativo al nivel del proyecto -->
           <img src="../SIEMON/icons/Logods3.png" class="h-8" alt="DS3">
           <span class="text-sm font-semibold text-gray-700">Menú</span>
         </div>
@@ -47,7 +45,6 @@
     </aside>
   </div>
 
-  <!-- Buscador -->
   <div id="searchPanel" class="fixed inset-0 z-50 hidden">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute left-1/2 -translate-x-1/2 top-10 w-[92vw] max-w-2xl">
@@ -62,7 +59,6 @@
         </div>
         <div class="px-4 pb-3 text-sm text-gray-600">
           <div class="flex flex-wrap gap-2">
-            <!-- enlace a home de SIEMON con 3 niveles arriba -->
             <a href="../index.html" class="px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">SIEMON</a>
           </div>
         </div>
@@ -70,13 +66,12 @@
     </div>
   </div>
 
-  <!-- Navbar compartido -->
+  <div id="navbar"></div>
   <script src="../js/nav.js" defer></script>
 
   <main>
-    <!-- Breadcrumb -->
     <div class="border-y bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-2 text-xs md:text-sm text-slate-600 flex flex-nowrap items-center gap-2 overflow-x-auto">
+      <div class="container mx-auto px-4 py-2 text-xs md:text-sm text-slate-600 flex flex-nowrap items-center gap-2 overflow-x-auto">
         <a href="../index.html" class="shrink-0 hover:text-blue-600"><i class="fa-solid fa-house"></i></a>
         <i class="fa-solid fa-angle-right text-gray-400 shrink-0"></i>
         <span class="shrink-0">SIEMON</span>
@@ -85,173 +80,171 @@
       </div>
     </div>
 
-    <!-- Layout 3 columnas -->
-    <div class="max-w-7xl mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6">
       <div class="flex flex-col md:flex-row md:gap-6">
 
-        <!-- Sidebar Izquierdo (Marcas) -->
-          <aside class="hidden lg:block bg-white p-3 rounded-lg shadow w-56 h-[78vh] overflow-hidden">
-            <h2 class="text-lg font-bold mb-3 border-b pb-2">Nuestras Marcas</h2>
+        <aside class="hidden lg:block bg-white p-3 rounded-lg shadow w-56 h-[78vh] overflow-hidden self-start">
+          <h2 class="text-lg font-bold mb-3 border-b pb-2">Nuestras Marcas</h2>
 
-            <!-- Carrusel vertical infinito -->
+          <div class="brand-marquee" data-direction="down" data-speed="2.2">
+            <div class="brand-track">
+              <a href="https://www.ds3comunicaciones.com/alfa/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/ALFA_logo1.gif" class="brand-logo" alt="Alfa">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/airlive/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/airlivelogo.gif" class="brand-logo" alt="Airlive">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/andrew/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/andrew/images/logo_andrew.jpg" class="brand-logo" alt="Andrew">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/amp_logo2-91x20.jpg" class="brand-logo" alt="AMP">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/amphenol/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/amphenol_logo-100x21.jpg" class="brand-logo" alt="Amphenol">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/belden/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/Belden-Logo-93x15.jpg" class="brand-logo" alt="Belden">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/cisco/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif" class="brand-logo" alt="Cisco">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/dahua/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/dahua/images/dahua_logo.jpg" class="brand-logo" alt="Dahua">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/dlink/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/D-Link_Logo-100x26.jpg" class="brand-logo" alt="D-Link">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/dixon/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/belden/images/dixon_logo-100x19.jpg" class="brand-logo" alt="Dixon">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/FibreFab/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/FibreFab/images/logo_fibrefab.png" class="brand-logo" alt="FibreFab">
+              </a>
+              <a href="https://www.ds3comunicaciones.com/siemon/index.html" class="brand-item">
+                <img src="https://www.ds3comunicaciones.com/siemon/images/siemon_logo1.GIF" class="brand-logo" alt="Siemon">
+              </a>
+            </div>
+          </div>
+        </aside>
 
-<div class="brand-marquee" data-direction="down" data-speed="2.2">
-  <div class="brand-track">
-    <a href="https://www.ds3comunicaciones.com/alfa/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/ALFA_logo1.gif" class="brand-logo" alt="Alfa">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/airlive/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/airlivelogo.gif" class="brand-logo" alt="Airlive">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/andrew/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/andrew/images/logo_andrew.jpg" class="brand-logo" alt="Andrew">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/amp_logo2-91x20.jpg" class="brand-logo" alt="AMP">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/amphenol/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/amphenol_logo-100x21.jpg" class="brand-logo" alt="Amphenol">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/belden/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/Belden-Logo-93x15.jpg" class="brand-logo" alt="Belden">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/cisco/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif" class="brand-logo" alt="Cisco">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/dahua/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/dahua/images/dahua_logo.jpg" class="brand-logo" alt="Dahua">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/dlink/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/D-Link_Logo-100x26.jpg" class="brand-logo" alt="D-Link">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/dixon/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/belden/images/dixon_logo-100x19.jpg" class="brand-logo" alt="Dixon">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/FibreFab/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/FibreFab/images/logo_fibrefab.png" class="brand-logo" alt="FibreFab">
-    </a>
-    <a href="https://www.ds3comunicaciones.com/siemon/index.html" class="brand-item">
-      <img src="https://www.ds3comunicaciones.com/siemon/images/siemon_logo1.GIF" class="brand-logo" alt="Siemon">
-    </a>
-  </div>
-</div>
-
-          </aside>
-
-
-        <!-- Contenido principal (ficha) -->
         <section id="productView" class="w-full lg:flex-1 bg-white rounded-lg shadow"></section>
-
         
-        <!-- Sidebar Derecho (Listas) -->
-        <aside class="hidden lg:block w-60 bg-white p-3 rounded-lg shadow h-[78vh] overflow-y-auto">
+        <aside class="hidden lg:block w-60 bg-white p-3 rounded-lg shadow h-[78vh] overflow-y-auto self-start">
           <h3 class="text-base font-bold mb-3 border-b pb-2">Listas de Precios</h3>
           <ul class="space-y-1 text-sm text-blue-700">
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/AMP/precios_amp.html">Lista de precios AMP</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/amphenol/precios_amphenol.html">Lista de precios Amphenol</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/andrew/precios_andrew.html">Lista de precios Andrew</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/apc/precios_apc.html">Lista de precios APC</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/cisco/precios_cisco.html">Lista de precios CISCO</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/dlink/precios_dlink.html">Lista de precios D-Link</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/dixon/precios_dixon.html">Lista de precios Dixon</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/Energit/precios_energit.html">Lista de precios Energit</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/FibreFab/precios_fibrefab.html">Lista de precios Fibra</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/hp/precios_hp.html">Lista de precios HP</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/mikrotik/precios_mikrotik.html">Lista de precios Mikrotik</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/nexxt_solutions/precios_nexxt_solutions.html">Lista de precios Nexxt Solutions</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/panduit/precios_panduit.html">Lista de precios Panduit</a></li>
             <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/siemon/precios_siemon.html">Lista de precios SIEMON</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/Teldor/precios_teldor.html">Lista de precios Teldor</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/trendnet/precios_trendnet.html">Lista de precios TRENDnet</a></li>
+            <li><a class="hover:underline" target="_blank" href="https://www.ds3comunicaciones.com/ubiquiti/precios_ubiquiti.html">Lista de precios Ubiquiti</a></li>
           </ul>
         </aside>
 
       </div>
     </div>
 
-
     <section class="py-10 bg-gray-100">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-white bg-[#049FD9] py-4 px-6 rounded-lg shadow-md inline-block mb-6">
-      También disponible — Productos SIEMON
-    </h2>
-    <div id="similarGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-  </div>
-</section>
-
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-white bg-[#049FD9] py-4 px-6 rounded-lg shadow-md inline-block mb-6">
+          También disponible — Productos SIEMON
+        </h2>
+        <div id="similarGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
   <footer class="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100 mt-20">
-  
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+    <div class="container mx-auto px-4 py-12">
       
-      <!-- Logo y descripción -->
-      <div class="space-y-4">
-        <div class="inline-block bg-white rounded-xl p-4 shadow-sm border border-slate-100">
-          <img src="./SIEMON/icons/Logods3.png" 
-               alt="DS3" 
-               class="h-12 w-auto object-contain">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+        
+        <div class="space-y-4">
+          <div class="inline-block bg-white rounded-xl p-4 shadow-sm border border-slate-100">
+            <img src="../SIEMON/icons/Logods3.png" 
+                 alt="DS3" 
+                 class="h-12 w-auto object-contain">
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Soluciones integrales en telecomunicaciones para empresas.
+          </p>
+          <div class="flex gap-2">
+            <a href="https://facebook.com" 
+               class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-blue-500 flex items-center justify-center transition-all duration-300 hover:shadow-lg group">
+              <i class="fab fa-facebook-f text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+            <a href="https://wa.me/51994428965" 
+               class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-green-500 flex items-center justify-center transition-all duration-300 hover:shadow-lg group">
+              <i class="fab fa-whatsapp text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+          </div>
         </div>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Soluciones integrales en telecomunicaciones para empresas.
-        </p>
-        <div class="flex gap-2">
-          <a href="https://facebook.com" 
-             class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-blue-500 flex items-center justify-center transition-all duration-300 hover:shadow-lg group">
-            <i class="fab fa-facebook-f text-slate-600 group-hover:text-white transition-colors"></i>
-          </a>
-          <a href="https://wa.me/51994428965" 
-             class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-green-500 flex items-center justify-center transition-all duration-300 hover:shadow-lg group">
-            <i class="fab fa-whatsapp text-slate-600 group-hover:text-white transition-colors"></i>
-          </a>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-4">Soluciones</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Access Points</a></li>
+            <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Antenas MIMO</a></li>
+            <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Antenas de Panel</a></li>
+          </ul>
         </div>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-4">Soporte</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Soporte Técnico</a></li>
+            <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Acerca de Nosotros</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-4">Contacto</h3>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-phone-alt text-xs"></i>
+              <a href="tel:+51994428965" class="hover:text-[#DC2931] transition-colors">994 428 965</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-envelope text-xs"></i>
+              <a href="mailto:netperu100@hotmail.com" class="hover:text-[#DC2931] transition-colors">netperu100@hotmail.com</a>
+            </li>
+            <li class="text-xs text-slate-500">
+              Lun - Vie: 9:00 - 18:00<br>
+              Sábados: 9:00 - 13:00
+            </li>
+          </ul>
+        </div>
+
       </div>
 
-      <!-- Soluciones -->
-      <div>
-        <h3 class="font-semibold text-slate-900 mb-4">Soluciones</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Access Points</a></li>
-          <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Antenas MIMO</a></li>
-          <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Antenas de Panel</a></li>
-        </ul>
-      </div>
-
-      <!-- Soporte -->
-      <div>
-        <h3 class="font-semibold text-slate-900 mb-4">Soporte</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Soporte Técnico</a></li>
-          <li><a href="#" class="text-sm text-slate-600 hover:text-[#DC2931] transition-colors">Acerca de Nosotros</a></li>
-        </ul>
-      </div>
-
-      <!-- Contacto -->
-      <div>
-        <h3 class="font-semibold text-slate-900 mb-4">Contacto</h3>
-        <ul class="space-y-3 text-sm text-slate-600">
-          <li class="flex items-center gap-2">
-            <i class="fas fa-phone-alt text-xs"></i>
-            <a href="tel:+51994428965" class="hover:text-[#DC2931] transition-colors">994 428 965</a>
-          </li>
-          <li class="flex items-center gap-2">
-            <i class="fas fa-envelope text-xs"></i>
-            <a href="mailto:netperu100@hotmail.com" class="hover:text-[#DC2931] transition-colors">netperu100@hotmail.com</a>
-          </li>
-          <li class="text-xs text-slate-500">
-            Lun - Vie: 9:00 - 18:00<br>
-            Sábados: 9:00 - 13:00
-          </li>
-        </ul>
+      <div class="border-t border-slate-100 pt-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+          <p>© 2025 DS3 Comunicaciones. Todos los derechos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-slate-900 transition-colors">Privacidad</a>
+            <a href="#" class="hover:text-slate-900 transition-colors">Términos</a>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <!-- Línea divisoria -->
-    <div class="border-t border-slate-100 pt-6">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-        <p>© 2025 DS3 Comunicaciones. Todos los derechos reservados.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-slate-900 transition-colors">Privacidad</a>
-          <a href="#" class="hover:text-slate-900 transition-colors">Términos</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
+  </footer>
+  
   <script type="module" src="../js/product.detail.js"></script>
-
 
 </body>
 </html>

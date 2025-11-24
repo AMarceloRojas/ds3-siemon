@@ -11,15 +11,20 @@ const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 const WHATSAPP_PHONE = '51994428965'; // 51 + 994428965
 
-function buildWhatsAppUrl(product, qty) {
+function buildWhatsAppUrl(product, qty, includePrice = false) {
   const brand = product.brand || 'SIEMON';
   const safeQty = qty && qty > 0 ? qty : 1;
   const currentUrl = location.href;
 
-  const text =
-    `Deseo comprar el producto de la marca ${brand}, ` +
-    `modelo ${product.sku}, cantidad ${safeQty}. ` +
-    `Link del producto: ${currentUrl}`;
+  let text = `Deseo comprar el producto de la marca ${brand}, modelo ${product.sku}, cantidad ${safeQty}.`;
+  
+  // Si tiene precio y se solicita incluirlo
+  if (includePrice && product.price) {
+    const totalPrice = (product.price * safeQty).toFixed(2);
+    text += ` Precio unitario: U$ ${product.price}. Total: U$ ${totalPrice}.`;
+  }
+  
+  text += ` Link del producto: ${currentUrl}`;
 
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
@@ -155,87 +160,58 @@ function standardsContent(items) {
 }
 
 /* ===================== render ===================== */
-/* ===================== render ===================== */
 function renderProduct(p) {
   // Breadcrumb
   const crumbSku = $('#crumbSku');
   if (crumbSku) crumbSku.textContent = p.sku;
 
-  // Info block
+  // Info block con PRECIO y BOTÓN DE COMPRA (estilo imagen azul)
+  const priceAndButtonHtml = p.price ? `
+    <div class="mt-6 flex items-center gap-4">
+      <p class="text-4xl font-bold text-[#2563eb]">U$ ${p.price}</p>
+      <button
+        id="btnComprar"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-[#2563eb] text-white text-base font-medium hover:bg-[#1d4ed8] transition-all shadow-md hover:shadow-lg">
+        <i class="fa-solid fa-shopping-cart"></i>
+        <span>Comprar ahora</span>
+      </button>
+    </div>
+  ` : '';
+
   const infoBlock = `
   <div>
     <h1 class="text-xl md:text-2xl font-extrabold text-[#0D274D] leading-snug">
       ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
     </h1>
 
-    <div class="mt-4 p-4 border rounded-xl bg-slate-50 space-y-3">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <p class="text-xs uppercase tracking-wide text-slate-500">
-            Compra / cotización rápida
-          </p>
-          <p class="text-sm text-slate-700">
-            Marca:
-            <span class="font-semibold">
-              ${escapeHtml(p.brand || 'SIEMON')}
-            </span>
-          </p>
-          <p class="text-sm text-slate-700">
-            Modelo:
-            <span class="font-mono">
-              ${escapeHtml(p.sku)}
-            </span>
-          </p>
-        </div>
+    ${priceAndButtonHtml}
 
-        <div class="flex sm:flex-col items-end sm:items-end gap-2">
-          <label for="qtyInput" class="text-xs text-slate-500 mb-0 sm:mb-1">
-            Cantidad
-          </label>
-          <input
-            id="qtyInput"
-            type="number"
-            min="1"
-            value="1"
-            class="w-24 rounded-md border border-slate-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-2">
-        <a
-          id="btnWsp"
-          href="#"
-          class="inline-flex justify-center items-center gap-2 px-4 py-2 rounded-md bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-600 w-full sm:w-auto">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>Solicitar por WhatsApp</span>
-        </a>
-      </div>
+    <div class="mt-6">
+      <h3 class="text-base font-bold mb-3">Especificaciones técnicas:</h3>
     </div>
 
-    
-
-
-      ${p.summary ? `
-        <ul class="mt-5 space-y-2 text-slate-700">
+    ${p.summary ? `
+      <ul class="mt-5 space-y-2 text-slate-700">
+        ${p.summary.map(s => `
           <li class="flex items-start">
             <i class="fa-solid fa-circle text-[8px] mt-2 mr-2 text-[#0D274D]"></i>
-            <span>${escapeHtml(p.summary)}</span>
+            <span>${escapeHtml(s)}</span>
           </li>
-        </ul>
-      ` : ''}
+        `).join('')}
+      </ul>
+    ` : ''}
 
-      ${p.standards && p.standards.length ? `
-        <ul class="mt-3 space-y-2 text-slate-700">
-          ${p.standards.slice(0, 4).map(s => `
-            <li class="flex items-start">
-              <i class="fa-solid fa-circle text-[8px] mt-2 mr-2 text-[#0D274D]"></i>
-              <span>${escapeHtml(s)}</span>
-            </li>
-          `).join('')}
-        </ul>
-      ` : ''}
-    </div>
+    ${p.standards && p.standards.length ? `
+      <ul class="mt-3 space-y-2 text-slate-700">
+        ${p.standards.slice(0, 4).map(s => `
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle text-[8px] mt-2 mr-2 text-[#0D274D]"></i>
+            <span>${escapeHtml(s)}</span>
+          </li>
+        `).join('')}
+      </ul>
+    ` : ''}
+  </div>
   `;
 
   // Galería + info
@@ -253,7 +229,7 @@ function renderProduct(p) {
         </section>
       ` : ''}
 
-            ${downloadsTpl(p.downloads)}
+      ${downloadsTpl(p.downloads)}
 
       <div class="mt-8 space-y-4">
 
@@ -272,7 +248,7 @@ function renderProduct(p) {
       ${accordionTpl(
         'Certificaciones y ambiente',
         `
-          <p><span class="font-medium">Clasificación de chaqueta:</span> ${escapeHtml(p.summary || 'Ver ficha técnica')}</p>
+          <p><span class="font-medium">Clasificación de chaqueta:</span> ${escapeHtml(p.summary ? p.summary[2] : 'Ver ficha técnica')}</p>
           <p><span class="font-medium">Cumplimiento:</span> RoHS — libre de sustancias restringidas</p>
         `,
         'fa-leaf'
@@ -282,17 +258,14 @@ function renderProduct(p) {
   `;
 
   
-  const qtyInput = document.getElementById('qtyInput');
-  const btnWsp = document.getElementById('btnWsp');
+  const btnComprar = document.getElementById('btnComprar');
 
-  if (btnWsp && qtyInput) {
-    btnWsp.addEventListener('click', (e) => {
+  // Botón "Comprar ahora" - con precio (cantidad fija = 1)
+  if (btnComprar && p.price) {
+    btnComprar.addEventListener('click', (e) => {
       e.preventDefault();
-
-      let qty = parseInt(qtyInput.value, 10);
-      if (!qty || qty < 1) qty = 1;
-
-      const waUrl = buildWhatsAppUrl(p, qty);
+      const qty = 1; // Cantidad fija
+      const waUrl = buildWhatsAppUrl(p, qty, true); // true = incluir precio
       window.open(waUrl, '_blank');
     });
   }
@@ -366,6 +339,7 @@ function renderSimilar(current) {
 
   grid.innerHTML = cards.map(cardTpl).join('');
 }
+
 
 (function boot() {
   const sku = getSku();
