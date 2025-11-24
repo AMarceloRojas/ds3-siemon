@@ -104,8 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // ===== CREAR NAVBAR INLINE (RESPALDO) =====
   function createInlineNavbar(prefix, paths) {
-    // Este HTML es el respaldo por si falla la carga del archivo navbar.html
-    // Se ha actualizado para reflejar tu nuevo diseño con Flexbox
+    // Este HTML ha sido actualizado para incluir la sección de contactos en móvil
     const navbarHTML = `
       <nav class="bg-white w-full border-b sticky top-0 z-40">
         <div class="container mx-auto px-4">
@@ -126,16 +125,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
           </div>
 
-          <div class="lg:hidden flex flex-col gap-2">
+          <div class="lg:hidden flex flex-col gap-2 pb-2">
             <div class="flex justify-between items-center py-2">
-              <div class="flex gap-1">
+              <div class="flex gap-1 items-center">
                 <button id="mobile-menu-button" class="p-2 rounded-full hover:bg-gray-300">
-                  <i class="fas fa-bars text-black"></i>
+                  <i class="fas fa-bars text-black text-xl"></i>
                 </button>
+                <div class="flex items-center gap-2 ml-2">
+                   <img src="${paths.logoDS3}" alt="Logo" class="h-8 sm:h-10">
+                </div>
               </div>
               <button id="mobile-search-button" class="p-2 rounded-md hover:bg-gray-300 border border-black">
                 <i class="fas fa-search text-black"></i>
               </button>
+            </div>
+            
+            <div class="py-1 pl-3 text-sm text-gray-800">
+               <div class="flex items-center mb-1">
+                 <i class="fas fa-phone-alt mr-2 text-black w-4 text-center"></i>
+                 <span class="font-semibold">996-533-223 / 994-428-965</span>
+               </div>
+               <div class="flex items-center">
+                 <i class="fas fa-envelope mr-2 text-black w-4 text-center"></i>
+                 <span class="font-semibold">netperu100@hotmail.com</span>
+               </div>
             </div>
           </div>
         </div>
@@ -153,6 +166,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           <div class="space-y-3">
              <a href="#" class="block">Inicio</a>
              <a href="#" class="block">Siemon</a>
+             <div class="pt-4 border-t">
+                <p class="text-xs text-gray-500 font-bold mb-2">CONTACTO</p>
+                <p class="text-sm"><i class="fas fa-phone mr-2"></i> 996 533 223</p>
+                <p class="text-sm mt-1"><i class="fas fa-envelope mr-2"></i> netperu100@hotmail.com</p>
+             </div>
           </div>
         </aside>
       </div>
@@ -190,8 +208,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. MENÚ RESPONSIVE (Offcanvas)
     const offcanvas = $('#offcanvas');
     
-    // Seleccionamos tanto el botón viejo (#btnMenu) como el nuevo (#mobile-menu-button)
-    // para asegurar que funcione con cualquier versión del HTML
     const menuButtons = [...$$('#btnMenu'), ...$$('#mobile-menu-button')];
     
     menuButtons.forEach(btn => {
@@ -220,9 +236,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchPanel = $('#searchPanel');
     const searchInput = $('#searchInput');
     
-    // Seleccionamos botones de búsqueda de escritorio (#search-button) y móvil (#mobile-search-button)
     const searchButtons = [
-      ...$$('#btnSearch'), // Por si acaso
+      ...$$('#btnSearch'), 
       ...$$('#search-button'), 
       ...$$('#mobile-search-button')
     ];
@@ -400,6 +415,151 @@ document.addEventListener('DOMContentLoaded', async () => {
       marquee.addEventListener('mouseleave', () => {
         track.style.animationPlayState = 'running';
       });
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', async () => {
+  
+  // 1. CONFIGURACIÓN DE RUTAS RELATIVAS
+  const path = window.location.pathname;
+  const isInProductos = path.includes('/productos/');
+  const PREFIX = isInProductos ? '../' : './';
+  
+  console.log('📍 Ubicación:', { path, isInProductos, PREFIX });
+
+  const PATHS = {
+    logo: PREFIX + 'SIEMON/icons/Siemonlogo.png',
+    logoDS3: PREFIX + 'SIEMON/icons/Logods3.png',
+    navbar: PREFIX + 'components/navbar.html'
+  };
+
+  const mount = document.querySelector('#navbar');
+  
+  // 2. CARGA DEL HTML
+  try {
+    const response = await fetch(PATHS.navbar, { 
+      cache: 'no-store',
+      headers: { 'Content-Type': 'text/html' }
+    });
+    
+    if (response.ok) {
+      const html = await response.text();
+      
+      if (mount) {
+        mount.innerHTML = html;
+      } else {
+        document.body.insertAdjacentHTML('afterbegin', html);
+      }
+      
+      fixAllPaths(PREFIX);
+      initializeFeatures();
+      console.log('✅ Navbar cargado correctamente');
+    } else {
+      console.error('❌ Error: navbar.html no encontrado');
+    }
+  } catch (error) {
+    console.error('❌ Error fetching navbar:', error);
+  }
+
+  // 3. CORRECCIÓN DE RUTAS EN EL HTML INYECTADO
+  function fixAllPaths(prefix) {
+    const isExternal = (url) => /^(https?:\/\/|mailto:|tel:|#|data:)/i.test(url);
+
+    const fixPath = (path) => {
+      if (!path || isExternal(path) || path.startsWith(prefix)) return path;
+      path = path.replace(/^\.?\/?/, '');
+      if (path.startsWith('SIEMON/') || path.startsWith('components/') || 
+          path.startsWith('css/') || path.startsWith('js/')) {
+        return prefix + path;
+      }
+      return path;
+    };
+
+    document.querySelectorAll('img[src], a[href], link[href]').forEach(el => {
+      const attr = el.tagName === 'LINK' || el.tagName === 'A' ? 'href' : 'src';
+      const original = el.getAttribute(attr);
+      const fixed = fixPath(original);
+      if (fixed !== original) el.setAttribute(attr, fixed);
+    });
+  }
+
+  // 4. INICIALIZACIÓN DE INTERACTIVIDAD
+  function initializeFeatures() {
+    initializeMobileMenu();
+    initializeSearchModal();
+    
+    // Configuración extra para grids si existen
+    if (typeof setupProductGrid === 'function') setupProductGrid();
+    if (typeof setupBrandCarousel === 'function') setupBrandCarousel();
+  }
+
+  // LÓGICA DEL MENÚ LATERAL (Offcanvas)
+  function initializeMobileMenu() {
+    const btnOpen = document.getElementById('mobile-menu-button');
+    const btnClose = document.getElementById('close-menu');
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('menu-overlay');
+
+    if (!btnOpen || !menu) return;
+
+    const openMenu = () => {
+        menu.classList.remove('-translate-x-full');
+        overlay?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Bloquear scroll fondo
+    };
+
+    const closeMenu = () => {
+        menu.classList.add('-translate-x-full');
+        overlay?.classList.add('hidden');
+        document.body.style.overflow = ''; // Activar scroll
+    };
+
+    btnOpen.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMenu();
+    });
+
+    btnClose?.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', closeMenu);
+
+    // Cerrar al hacer clic fuera o en links (opcional)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+  }
+
+  // LÓGICA DEL MODAL DE BÚSQUEDA
+  function initializeSearchModal() {
+    const modal = document.getElementById('search-modal');
+    const btnOpenDesktop = document.getElementById('search-button');
+    const btnOpenMobile = document.getElementById('mobile-search-button');
+    const btnClose = document.getElementById('close-search');
+    const input = document.getElementById('modal-search-input');
+
+    if (!modal) return;
+
+    const openModal = () => {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => input?.focus(), 100);
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
+
+    btnOpenDesktop?.addEventListener('click', openModal);
+    btnOpenMobile?.addEventListener('click', openModal);
+    btnClose?.addEventListener('click', closeModal);
+
+    // Cerrar al dar clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
     });
   }
 });
