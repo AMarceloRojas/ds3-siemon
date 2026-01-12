@@ -43,6 +43,7 @@ export const PRODUCTS = [
     sku: '9A5R4-E2',
     category: 'cat5e',
     name: 'Cable UTP Cat5e F/UTP 305m PVC RISER',
+    price: 225,
     gallery: [
       '../imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.jpg',
       '../imgs/siemon/cat5e/9A5R4-E2/9A5R4-E2.rollo.jpg',

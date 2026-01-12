@@ -9,23 +9,22 @@ const PREFIX = isInProductos ? '../' : './';
 /* ===================== UTILIDADES ===================== */
 const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
-const WHATSAPP_PHONE = '51994428965'; // 51 + 994428965
+const WHATSAPP_PHONE = '51937514867'; // Nuevo número solicitado
 
-function buildWhatsAppUrl(product, qty, includePrice = false) {
+function buildWhatsAppUrl(product, actionType = 'comprar') {
   const brand = product.brand || 'SIEMON';
-  const safeQty = qty && qty > 0 ? qty : 1;
   const currentUrl = location.href;
-
-  let text = `Deseo comprar el producto de la marca ${brand}, modelo ${product.sku}, cantidad ${safeQty}.`;
   
-  // Si tiene precio y se solicita incluirlo
-  if (includePrice && product.price) {
-    const totalPrice = (product.price * safeQty).toFixed(2);
-    text += ` Precio unitario: U$ ${product.price}. Total: U$ ${totalPrice}.`;
+  // Mensaje dinámico según el botón presionado
+  let text = actionType === 'cotizar' 
+    ? `Hola, deseo cotizar el producto de la marca ${brand}, modelo ${product.sku}.` 
+    : `Hola, deseo comprar el producto de la marca ${brand}, modelo ${product.sku}.`;
+  
+  if (product.price && actionType === 'comprar') {
+    text += ` Precio: U$ ${product.price}.`;
   }
   
-  text += ` Link del producto: ${currentUrl}`;
-
+  text += ` Link: ${currentUrl}`;
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
 
@@ -67,18 +66,17 @@ function galleryTpl(imgs) {
   const main = list[0] || DEFAULT_IMG;
 
   const thumbs = list.map((src, idx) => `
-    <button class="w-20 h-20 border rounded p-1 hover:border-blue-500 transition" 
+    <button class="w-20 h-20 border rounded p-1 hover:border-blue-500 transition bg-white" 
             data-thumb="${src}" data-index="${idx}">
-      <img src="${src}" alt="Vista ${idx + 1}" class="w-full h-full object-contain" loading="lazy"
-           onerror="this.src='${DEFAULT_IMG}'">
+      <img src="${src}" class="w-full h-full object-contain" onerror="this.src='${DEFAULT_IMG}'">
     </button>
   `).join('');
 
   return `
-    <div class="bg-white rounded-lg border p-4">
+    <div class="w-full">
       <div class="w-full h-[360px] md:h-[420px] flex items-center justify-center overflow-hidden">
         <img id="img_main" src="${main}" alt="Producto" 
-             class="max-w-full max-h-full object-contain transition-opacity duration-200"
+             class="max-w-full max-h-full object-contain transition-opacity duration-200 cursor-zoom-in"
              onerror="this.src='${DEFAULT_IMG}'">
       </div>
       <div class="flex gap-3 mt-4 justify-center">${thumbs}</div>
@@ -166,60 +164,70 @@ function renderProduct(p) {
   if (crumbSku) crumbSku.textContent = p.sku;
 
   // Info block con PRECIO y BOTÓN DE COMPRA (estilo imagen azul)
-  const priceAndButtonHtml = p.price ? `
-    <div class="mt-6 flex items-center gap-4">
-      <p class="text-4xl font-bold text-[#2563eb]">U$ ${p.price}</p>
-      <button
-        id="btnComprar"
-        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-[#2563eb] text-white text-base font-medium hover:bg-[#1d4ed8] transition-all shadow-md hover:shadow-lg">
-        <i class="fa-solid fa-shopping-cart"></i>
-        <span>Comprar ahora</span>
-      </button>
-    </div>
-  ` : '';
+  
 
   const infoBlock = `
-  <div>
-    <h1 class="text-xl md:text-2xl font-extrabold text-[#0D274D] leading-snug">
-      ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
-    </h1>
+  <div class="text-slate-700 w-full">
+    <div class="border p-5 rounded-md bg-white shadow-sm">
+      <h1 class="font-medium mb-3 text-lg md:text-xl">
+        ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
+      </h1>
+      
+      <ul class="text-sm text-slate-500 mb-4 space-y-1">
+        <li>- Rollo de 305 metros</li>
+        <li>- Cable F/UTP sólido de 04 pares Cat 5e</li>
+        <li>- Chaqueta PVC (CM, IEC 60332-1)</li>
+        <li>- Color gris</li>
+        <li>- ANSI/TIA-568.2-D — Cat 5e</li>
+        <li>- IEC 60332-1</li>
+        <li>- Aplicaciones: 10/100/1000BASE-T</li>
+        <li>- RoHS Compliant</li>
+      </ul>
 
-    ${priceAndButtonHtml}
+      <div class="mt-3 flex gap-2 justify-between items-center border-t pt-4">
+          <span class="font-bold text-lg text-slate-800">$ ${p.price || '0.00'} + IGV</span>
+          
+          <a href="${buildWhatsAppUrl(p, 'comprar')}" target="_blank"
+             class="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1 text-sm font-medium border rounded-md px-3 py-2 transition duration-200">
+             <i class="fa-solid fa-cart-shopping"></i>
+             <span>Comprar</span>
+          </a>
+      </div>
 
-    <div class="mt-6">
-      <h3 class="text-base font-bold mb-3">Especificaciones técnicas:</h3>
+      <div class="mt-2">
+          <a href="${buildWhatsAppUrl(p, 'cotizar')}" target="_blank"
+             class="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1 text-sm font-medium border rounded-md px-3 py-2 transition duration-200">
+             <i class="fa-solid fa-file-lines"></i>
+             <span>Cotizar</span>
+          </a>
+      </div>
     </div>
 
-    ${p.summary ? `
-      <ul class="mt-5 space-y-2 text-slate-700">
-        ${p.summary.map(s => `
-          <li class="flex items-start">
-            <i class="fa-solid fa-circle text-[8px] mt-2 mr-2 text-[#0D274D]"></i>
-            <span>${escapeHtml(s)}</span>
-          </li>
+    <div class="mt-4 flex flex-col items-start gap-2">
+        <span class="text-blue-600 font-bold text-sm uppercase">Download</span>
+        ${(p.downloads || []).map(d => `
+          <a href="${fixRel(d.href)}" target="_blank" class="text-sm font-medium border rounded-md px-3 py-2 hover:bg-gray-100 flex items-center gap-2 transition w-full md:w-auto">
+            <i class="fa-solid fa-download"></i> 
+            ${escapeHtml(d.label)}
+          </a>
         `).join('')}
-      </ul>
-    ` : ''}
-
-    ${p.standards && p.standards.length ? `
-      <ul class="mt-3 space-y-2 text-slate-700">
-        ${p.standards.slice(0, 4).map(s => `
-          <li class="flex items-start">
-            <i class="fa-solid fa-circle text-[8px] mt-2 mr-2 text-[#0D274D]"></i>
-            <span>${escapeHtml(s)}</span>
-          </li>
-        `).join('')}
-      </ul>
-    ` : ''}
+    </div>
   </div>
   `;
 
   // Galería + info
   $('#productView').innerHTML = `
     <div class="p-4 md:p-6">
-      <div class="grid gap-6 lg:grid-cols-2">
-        ${galleryTpl(p.gallery && p.gallery.length ? p.gallery : (p.image ? [p.image] : [DEFAULT_IMG]))}
-        ${infoBlock}
+      <div class="flex flex-col lg:flex-row-reverse gap-8 items-start">
+        
+        <div class="w-full lg:w-1/2">
+          ${galleryTpl(p.gallery && p.gallery.length ? p.gallery : (p.image ? [p.image] : [DEFAULT_IMG]))}
+        </div>
+
+        <div class="w-full lg:w-1/2">
+          ${infoBlock}
+        </div>
+
       </div>
 
       ${p.description ? `
@@ -229,7 +237,7 @@ function renderProduct(p) {
         </section>
       ` : ''}
 
-      ${downloadsTpl(p.downloads)}
+      
 
       <div class="mt-8 space-y-4">
 
@@ -358,4 +366,105 @@ function renderSimilar(current) {
 
   renderProduct(product);
   renderSimilar(product);
+})();
+// --- ZOOM MODAL PRO (mejora visual + UX) ---
+(function setupZoom() {
+  if (document.getElementById('zoomContainer')) return;
+
+  const zoomDiv = document.createElement('div');
+  zoomDiv.id = 'zoomContainer';
+  zoomDiv.className = `
+    fixed inset-0 z-[100] hidden
+    bg-black/70 backdrop-blur-sm
+    flex items-center justify-center p-4
+  `;
+
+  zoomDiv.innerHTML = `
+    <div id="zoomPanel"
+      class="
+        relative w-full max-w-6xl
+        rounded-2xl overflow-hidden
+        shadow-2xl ring-1 ring-white/10
+        bg-gradient-to-b from-white/5 to-white/0
+        transform transition duration-200 ease-out scale-95 opacity-0
+      "
+    >
+      <button id="zoomClose"
+        class="
+          absolute top-3 right-3 z-10
+          w-11 h-11 rounded-full
+          bg-black/50 hover:bg-black/70
+          text-white text-2xl leading-none
+          flex items-center justify-center
+          transition
+        "
+        aria-label="Cerrar"
+      >&times;</button>
+
+      <div class="p-3 md:p-5">
+        <div class="w-full h-[70vh] flex items-center justify-center">
+          <img id="zoomImg"
+            src=""
+            class="
+              max-w-full max-h-full object-contain
+              rounded-xl
+              shadow-lg
+              select-none
+            "
+            alt="Zoom"
+            draggable="false"
+          />
+        </div>
+
+        <p class="mt-3 text-center text-white/70 text-sm">
+          Click fuera o ESC para cerrar
+        </p>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(zoomDiv);
+
+  const zoomPanel = zoomDiv.querySelector('#zoomPanel');
+  const zoomImg = zoomDiv.querySelector('#zoomImg');
+  const closeBtn = zoomDiv.querySelector('#zoomClose');
+
+  function openZoom(src) {
+    zoomImg.src = src;
+    zoomDiv.classList.remove('hidden');
+
+    // animación
+    requestAnimationFrame(() => {
+      zoomPanel.classList.remove('scale-95', 'opacity-0');
+      zoomPanel.classList.add('scale-100', 'opacity-100');
+    });
+  }
+
+  function closeZoom() {
+    zoomPanel.classList.remove('scale-100', 'opacity-100');
+    zoomPanel.classList.add('scale-95', 'opacity-0');
+
+    setTimeout(() => zoomDiv.classList.add('hidden'), 150);
+  }
+
+  // cerrar si haces click fuera del panel
+  zoomDiv.addEventListener('click', (e) => {
+    if (e.target === zoomDiv) closeZoom();
+  });
+
+  // no cerrar si haces click dentro del panel
+  zoomPanel.addEventListener('click', (e) => e.stopPropagation());
+
+  closeBtn.addEventListener('click', closeZoom);
+
+  document.addEventListener('keydown', (e) => {
+    if (!zoomDiv.classList.contains('hidden') && e.key === 'Escape') closeZoom();
+  });
+
+
+  document.addEventListener('click', (e) => {
+    const imgMain = e.target.closest('#img_main');
+    if (!imgMain) return;
+    openZoom(imgMain.src);
+  });
 })();

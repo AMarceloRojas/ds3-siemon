@@ -2,23 +2,14 @@
 import { PRODUCTS } from './products.siemon.js';
 
 /* ============================================================
-   🔥 CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
+    CONFIGURACIÓN DE RUTAS (GITHUB PAGES + LOCAL)
    ============================================================ */
 
-// ¿Estoy en GitHub Pages?
 const isGitHub = window.location.hostname.includes('github.io');
 
-// BASE:
-//   - En GitHub:  /ds3-siemon/
-//   - En local:   /
+
 const BASE_SIEMON = isGitHub ? '/ds3-siemon/' : '/';
 
-/**
- * Construye la ruta ABSOLUTA de una imagen de producto.
- * Espera paths RELATIVOS al repo, por ejemplo:
- *   imgs/siemon/cat5e/xxxxx.jpg    ✅
- * NO pongas "ds3-siemon/" en products.siemon.js
- */
 function imgAsset(path) {
   if (!path) return null;
 
@@ -31,7 +22,7 @@ function imgAsset(path) {
     else if (clean.startsWith('/')) clean = clean.slice(1);
   }
 
-  // 👇 Fix para cuando en products.siemon.js quedó "ds3-siemon/..."
+  //  Fix para cuando en products.siemon.js quedó "
   const GH_PREFIX = 'ds3-siemon/';
   if (clean.startsWith(GH_PREFIX)) {
     clean = clean.slice(GH_PREFIX.length);
