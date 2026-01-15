@@ -102,68 +102,105 @@ a:hover{color:var(--brand-600)}
   display: none !important; 
 }
 
-/* Carrusel vertical infinito de marcas */
-.brand-marquee{
-  position: relative;
-  height: calc(78vh - 44px);
-  overflow: hidden;
-  --gap: 8px;
-  --row-h: 64px;
-}
+/* ===== Overlay "Ver productos" (para .brand-overlay) ===== */
+/* =========================
+   MARCAS (UNICO CSS LIMPIO)
+   ========================= */
 
-.brand-track{
+/* Contenedor con scroll y separación REAL */
+.brands-scroll{
+  height: calc(78vh - 56px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
-  --dur: 24s;
-  animation: marquee-up var(--dur) linear infinite;
-  will-change: transform;
-  padding-right: 2px;
+
+  gap:9px;          /* <-- separación fuerte (antes no se notaba por duplicados) */
+  padding: 10px 8px;  /* aire alrededor */
 }
 
-.brand-marquee[data-direction="down"] .brand-track{ animation-name: marquee-down; }
-.brand-marquee[data-direction="up"]   .brand-track{ animation-name: marquee-up; }
+/* Tarjeta: todas iguales, mismo tamaño */
+.brand-card{
+  position: relative;
+  overflow: hidden;
 
-.brand-marquee:hover .brand-track,
-.brand-marquee:focus-within .brand-track{ animation-play-state: paused; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@keyframes marquee-up   { from {transform: translateY(0)}    to {transform: translateY(-50%)} }
-@keyframes marquee-down { from {transform: translateY(-50%)} to {transform: translateY(0)} }
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;    /* <-- rectángulos iguales */
+  min-height: 76px;       /* <-- más alto = más espacio visual */
+  padding: 13px;
 
-.brand-item{
-  display:flex; 
-  align-items:center; 
-  justify-content:center;
-  height: var(--row-h,64px);
-  padding:10px;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  background:#f9fafb;
-  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
-  will-change: box-shadow, transform;
-  contain: paint;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-.brand-item:hover{
-  border-color:#cfe0ff;
-  box-shadow:
-    0 1px 0 rgba(16,24,40,.02),
-    0 8px 16px rgba(59,130,246,.14),
-    0 0 0 3px rgba(59,130,246,.12) inset;
+/* Hover */
+.brand-card:hover{
+  transform: translateY(-2px);
+  border-color: #93c5fd;
+  box-shadow: 0 10px 20px rgba(59,130,246,.14);
 }
 
+/* Logo grande y centrado */
 .brand-logo{
-  max-height: 40px;
-  max-width: 120px;
-  width: auto; 
+  max-height: 42px;     /* <-- más grande */
+  max-width: 100px;
+  width: auto;
   height: auto;
   object-fit: contain;
-  margin: 0 auto;
+  display: block;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .brand-track{ animation: none; }
+/* Overlay "Ver productos" */
+.brand-overlay{
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(29,78,216,.95));
+  color: #fff;
+  font-weight: 700;
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all .22s ease;
+
+  border-radius: inherit;   /* <-- overlay EXACTO al rectángulo */
 }
+
+.brand-card:hover .brand-overlay{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar suave (opcional) */
+.brands-scroll::-webkit-scrollbar{ width: 10px; }
+.brands-scroll::-webkit-scrollbar-thumb{ background: #ced6e3; border-radius: 20px; }
+.brands-scroll::-webkit-scrollbar-thumb:hover{ background: #b7c3d7; }
+
+/* IMPORTANTÍSIMO: desactiva cualquier estilo especial de SIEMON */
+.brand-card[href*="siemon"]{
+  background:#fff !important;
+  border-color:#e5e7eb !important;
+  box-shadow:none !important;
+}
+.brand-card[href*="siemon"] img{
+  filter:none !important;
+}
+
+
+/* Carrusel vertical infinito de marcas */
+
+
+
 
 /* Tabla de especificaciones */
 .spec-card{ 
@@ -332,3 +369,50 @@ a:hover{color:var(--brand-600)}
 @media (max-width:640px){
   .brand-marquee{display:none}
 }
+.brand-card {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  transition: all .25s ease;
+}
+
+.brand-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.brand-logo {
+  max-height: 42px;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+
+.brand-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 99, 235, 0.92);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  border-radius: 12px;
+  font-size: 13px;
+  gap: 6px;
+  transition: opacity .25s ease;
+}
+
+.brand-card:hover .brand-overlay {
+  opacity: 1;
+}
+  .product-card { transition: all .3s ease; position: relative; }
+  .product-card:hover { transform: translateY(-8px); }
+  
+  /* Estilo para el scrollbar del resumen pequeño */
+  .custom-scroll::-webkit-scrollbar { width: 4px; }
+  .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }

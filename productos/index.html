@@ -15,6 +15,7 @@
   <style>
     .product-card{transition:all .3s ease}
     .product-card:hover{transform:translateY(-8px)}
+    
   </style>
 </head>
 <body class="bg-gray-50 text-slate-800">
@@ -79,58 +80,122 @@
         <span id="crumbSku" class="font-medium text-slate-800 shrink-0">—</span>
       </div>
     </div>
+    
+    <main class="max-w-screen-2xl mx-auto px-2 xl:px-3 2xl:px-4 py-6 overflow-x-hidden">
 
-    <div class="container mx-auto px-4 py-6">
-      <div class="flex flex-col md:flex-row md:gap-6">
+      <div class="flex flex-col lg:flex-row gap-7 min-w-0">
 
-        <aside class="hidden lg:block bg-white p-3 rounded-lg shadow w-56 h-[78vh] overflow-hidden self-start">
-          <h2 class="text-lg font-bold mb-3 border-b pb-2">Nuestras Marcas</h2>
 
-          <div class="brand-marquee" data-direction="down" data-speed="2.2">
-            <div class="brand-track">
-              <a href="https://www.ds3comunicaciones.com/alfa/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/ALFA_logo1.gif" class="brand-logo" alt="Alfa">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/airlive/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/airlivelogo.gif" class="brand-logo" alt="Airlive">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/andrew/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/andrew/images/logo_andrew.jpg" class="brand-logo" alt="Andrew">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/amp_logo2-91x20.jpg" class="brand-logo" alt="AMP">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/amphenol/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/amphenol_logo-100x21.jpg" class="brand-logo" alt="Amphenol">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/belden/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/Belden-Logo-93x15.jpg" class="brand-logo" alt="Belden">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/cisco/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif" class="brand-logo" alt="Cisco">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/dahua/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/dahua/images/dahua_logo.jpg" class="brand-logo" alt="Dahua">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/dlink/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/D-Link_Logo-100x26.jpg" class="brand-logo" alt="D-Link">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/dixon/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/belden/images/dixon_logo-100x19.jpg" class="brand-logo" alt="Dixon">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/FibreFab/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/FibreFab/images/logo_fibrefab.png" class="brand-logo" alt="FibreFab">
-              </a>
-              <a href="https://www.ds3comunicaciones.com/siemon/index.html" class="brand-item">
-                <img src="https://www.ds3comunicaciones.com/siemon/images/siemon_logo1.GIF" class="brand-logo" alt="Siemon">
-              </a>
-            </div>
-          </div>
-        </aside>
+          <aside class="hidden lg:block bg-white p-4 rounded-xl shadow-lg w-64 h-[82vh] self-start">
 
-        <section id="productView" class="w-full lg:flex-1 bg-white rounded-lg shadow"></section>
+  <h2 class="text-lg font-bold mb-3 border-b pb-2">Nuestras Marcas</h2>
+
+  <div class="brands-scroll">
+
+    <a href="https://www.ds3comunicaciones.com/alfa/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/ALFA_logo1.gif" class="brand-logo" alt="Alfa">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/airlive/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/airlivelogo.gif" class="brand-logo" alt="Airlive">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/andrew/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/andrew/images/logo_andrew.jpg" class="brand-logo" alt="Andrew">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/amp_logo2-91x20.jpg" class="brand-logo" alt="AMP">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/amphenol/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/amphenol_logo-100x21.jpg" class="brand-logo" alt="Amphenol">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/belden/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/Belden-Logo-93x15.jpg" class="brand-logo" alt="Belden">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/cisco/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif" class="brand-logo" alt="Cisco">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/dahua/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/dahua/images/dahua_logo.jpg" class="brand-logo" alt="Dahua">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/dlink/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/D-Link_Logo-100x26.jpg" class="brand-logo" alt="D-Link">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/dixon/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/belden/images/dixon_logo-100x19.jpg" class="brand-logo" alt="Dixon">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/FibreFab/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/FibreFab/images/logo_fibrefab.png" class="brand-logo" alt="FibreFab">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+    <a href="https://www.ds3comunicaciones.com/siemon/index.html" class="brand-card" target="_blank">
+      <img src="https://www.ds3comunicaciones.com/siemon/images/siemon_logo1.GIF" class="brand-logo" alt="Siemon">
+      <div class="brand-overlay">
+        <span>Ver productos</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
+  </div>
+</aside>
+
+
+        <section id="productView" class="w-full lg:flex-1 min-w-0 bg-white rounded-lg shadow"></section>
+
         
-        <aside class="hidden lg:block w-60 bg-white p-3 rounded-lg shadow h-[78vh] overflow-y-auto self-start">
+        <aside class="hidden lg:block w-48 bg-white p-3 rounded-lg shadow h-[78vh] overflow-y-auto self-start">
           <h3 class="text-base font-bold mb-3 border-b pb-2">Listas de Precios</h3>
           <ul class="space-y-1 text-sm text-slate-700">
             <li><a class="hover:hover:text-slate-900 hover:bg-gray-50 px-2 py-1 rounded transition" target="_blank" href="https://www.ds3comunicaciones.com/AMP/precios_amp.html">Lista de precios AMP</a></li>
@@ -154,7 +219,6 @@
         </aside>
 
       </div>
-    </div>
 
     <section class="py-10 bg-gray-100">
       <div class="container mx-auto px-4">
@@ -164,12 +228,12 @@
         <div id="similarGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </div>
     </section>
+</main>
+   
 
-  </main>
-
-  <footer class="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100 mt-20">
-    <div class="container mx-auto px-4 py-12">
-      
+<div id="dynamic-faq-container"></div>
+  <footer class="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100 mt-20 w-full">
+  <div class="w-full px-6 md:px-12 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
         
         <div class="space-y-4">
@@ -241,9 +305,26 @@
       </div>
 
     </div>
-
+    
   </footer>
-  
+  <div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml: true,
+      version: 'v19.0'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
   <script type="module" src="../js/product.detail.js"></script>
 
 </body>

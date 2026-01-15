@@ -34,6 +34,22 @@ export const PRODUCTS = [
       'Color': 'Gris',
       'Norma': 'IEC 60332-1'
     },
+    faqTitle: 'Preguntas Frecuentes sobre 9A5M4-E2',
+  faq: [
+    {
+      q: '¿Para qué tipo de instalaciones es recomendado este cable?',
+      a: 'Ideal para instalaciones horizontales en oficinas y áreas comerciales. Soporta 10/100/1000BASE-T.'
+    },
+    {
+      q: '¿Qué significa F/UTP?',
+      a: 'Tiene una lámina global (foil) que ayuda a reducir interferencias electromagnéticas.'
+    },
+    {
+      q: '¿Cuántos metros trae el rollo?',
+      a: '305 metros (1000 ft).'
+    }
+  ],
+    
     downloads: [
       { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5M4-E2/9A5M4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
@@ -69,6 +85,7 @@ export const PRODUCTS = [
       'Chaqueta': 'PVC (CMR - Riser)',
       'Color': 'Azul'
     },
+    
     downloads: [
       { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }
@@ -749,6 +766,7 @@ export const PRODUCTS = [
     sku: 'MX6-06B',
     category: 'jack',
     name: 'Jack RJ-45 Cat6 MAX Angular Azul BULK',
+    price: 12.50, 
     gallery: [
       '../imgs/siemon/jack/MX6-06B/MX6-06B.jpg',
       '../imgs/siemon/jack/MX6-06B/MX6-06B.rollo.jpg',
@@ -2192,6 +2210,7 @@ export const PRODUCTS = [
   sku: 'MC6-10-06B',
   category: 'patch',
   name: 'Patch Cord UTP Cat6 3.1m BULK Azul',
+  price: 300,
   gallery: [
     '../imgs/siemon/patch/MC6-10-06B/MC6-10-06B.jpg',
     '../imgs/siemon/patch/MC6-10-06B/MC6-10-06B.rollo.jpg',
