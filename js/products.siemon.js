@@ -85,7 +85,21 @@ export const PRODUCTS = [
       'Chaqueta': 'PVC (CMR - Riser)',
       'Color': 'Azul'
     },
-    
+     faqTitle: 'Preguntas Frecuentes sobre 9A5R4-E2',
+  faq: [
+    {
+      q: '¿Para qué tipo de instalaciones es recomendado este cable?',
+      a: 'Ideal para instalaciones horizontales en oficinas y áreas comerciales. Soporta 10/100/1000BASE-T.'
+    },
+    {
+      q: '¿Qué significa F/UTP?',
+      a: 'Tiene una lámina global (foil) que ayuda a reducir interferencias electromagnéticas.'
+    },
+    {
+      q: '¿Cuántos metros trae el rollo?',
+      a: '305 metros (1000 ft).'
+    }
+  ],
     downloads: [
       { label: 'Ficha técnica (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-ficha.pdf', icon: 'fa-file-pdf' },
       { label: 'Especificaciones (PDF)', href: '../docs/siemon/cat5e/9A5R4-E2/9A5R4-E2-SIEMON-specs.pdf', icon: 'fa-clipboard-list' }

@@ -1,85 +1,20 @@
 // /SIEMON/js/product.detail.js
 import { PRODUCTS } from './products.siemon.js';
 
-
 const path = window.location.pathname;
 const isInProductos = path.includes('/productos/');
 const PREFIX = isInProductos ? '../' : './';
-const FAQ_WHATSAPP = '51937700700'; // el número que te pidieron para FAQ
-
-function faqTpl(p) {
-  const faq = Array.isArray(p.faq) ? p.faq : [];
-  if (!faq.length) return '';
-
-  const title = p.faqTitle || `Preguntas Frecuentes sobre ${p.sku || 'este producto'}`;
-
-  const items = faq.map((it, idx) => `
-    <div class="faq-item mb-4 border rounded-xl overflow-hidden">
-      <button type="button"
-        class="faq-question w-full text-left px-5 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center"
-        aria-expanded="false"
-        data-faq-index="${idx}">
-        <span class="font-semibold text-gray-800">${escapeHtml(it.q)}</span>
-        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-      </button>
-
-      <div class="faq-answer px-5 py-4 bg-white hidden">
-        <p class="text-gray-700 leading-relaxed">${escapeHtml(it.a)}</p>
-      </div>
-    </div>
-  `).join('');
-
-  // Mensaje WhatsApp dinámico (incluye producto)
-  const msg = `Hola, tengo una consulta sobre el producto ${p.brand || 'SIEMON'} ${p.sku}: `;
-  const waLink = `https://wa.me/${FAQ_WHATSAPP}?text=${encodeURIComponent(msg)}`;
-
-  return `
-    <section class="faq-section mx-auto mt-10 mb-10 max-w-4xl">
-      <div class="border rounded-2xl p-6 bg-white shadow-sm">
-        <h2 class="text-2xl font-extrabold text-center mb-6 text-slate-900">
-          <i class="fas fa-question-circle mr-2 text-blue-600"></i>
-          ${escapeHtml(title)}
-        </h2>
-
-        <div class="faq-container">
-          ${items}
-
-          <div class="new-question mt-8 p-6 border border-blue-200 rounded-2xl bg-blue-50">
-            <h3 class="text-xl font-bold mb-2 text-blue-700">
-              ¿Tienes otra pregunta sobre ${escapeHtml(p.sku)}?
-            </h3>
-            <p class="text-gray-700 mb-4">
-              Escríbenos por WhatsApp y te respondemos.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-3">
-              <a href="${waLink}" target="_blank"
-                 class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition flex items-center justify-center gap-2">
-                <i class="fab fa-whatsapp text-lg"></i>
-                Enviar pregunta por WhatsApp
-              </a>
-            </div>
-
-            <p class="text-xs text-gray-500 text-center mt-3">
-              Al hacer clic se abrirá WhatsApp con el mensaje pre-escrito.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  `;
-}
+const FAQ_WHATSAPP = '51937700700';
 
 /* ===================== UTILIDADES ===================== */
 const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
-const WHATSAPP_PHONE = '51937514867'; // Nuevo número solicitado
+const WHATSAPP_PHONE = '51937514867';
 
 function buildWhatsAppUrl(product, actionType = 'comprar') {
   const brand = product.brand || 'SIEMON';
   const currentUrl = location.href;
   
-  // Mensaje dinámico según el botón presionado
   let text = actionType === 'cotizar' 
     ? `Hola, deseo cotizar el producto de la marca ${brand}, modelo ${product.sku}.` 
     : `Hola, deseo comprar el producto de la marca ${brand}, modelo ${product.sku}.`;
@@ -92,7 +27,6 @@ function buildWhatsAppUrl(product, actionType = 'comprar') {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
 
-// Normaliza rutas
 const fixRel = (u) => {
   if (!u) return u;
   if (/^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('mailto:') || u.startsWith('tel:')) return u;
@@ -169,33 +103,6 @@ function specTable(specs) {
   `;
 }
 
-function downloadsTpl(items) {
-  if (!Array.isArray(items) || !items.length) return '';
-  
-  const links = items.map(d => {
-    const href = fixRel(d.href);
-    let btnClass = 'download-btn btn-pdf';
-    if ((d.label || '').toLowerCase().includes('especificaciones') ||
-        (d.label || '').toLowerCase().includes('specifications') ||
-        d.icon === 'fa-clipboard-list') {
-      btnClass = 'download-btn btn-specs';
-    }
-    return `
-      <a href="${href}" target="_blank" class="${btnClass}">
-        <i class="fa-solid ${d.icon || 'fa-file-pdf'}"></i>
-        <span>${escapeHtml(d.label || 'Descarga')}</span>
-      </a>
-    `;
-  }).join('');
-  
-  return `
-    <section class="mt-6">
-      <h3 class="font-semibold text-lg mb-3">Download</h3>
-      <div class="flex flex-wrap gap-3">${links}</div>
-    </section>
-  `;
-}
-
 function accordionTpl(title, content, icon = 'fa-certificate') {
   if (!content) return '';
   return `
@@ -220,79 +127,22 @@ function standardsContent(items) {
     </div>
   `;
 }
-// Supongamos que 'product' es el objeto que pusiste de ejemplo
-const renderCard = (product) => {
-  return `
-    <div class="group relative bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
-      
-      <div class="flex flex-col items-center text-center">
-        <div class="h-40 flex items-center justify-center mb-4">
-          <img src="${product.gallery[0]}" alt="${product.name}" class="max-h-full object-contain">
-        </div>
-        <h3 class="text-sm font-bold text-slate-800 mb-1 h-10 overflow-hidden line-clamp-2">
-          ${product.name}
-        </h3>
-        <p class="text-xs text-gray-500 mb-3">Ref. ${product.sku}</p>
-        <span class="text-blue-600 font-semibold text-sm">Ver producto</span>
-      </div>
-
-      <div class="absolute inset-0 bg-white/98 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col border-2 border-blue-500 rounded-xl">
-        <div class="flex justify-between items-start mb-2">
-          <h4 class="text-xs font-bold text-blue-700 uppercase tracking-wider">${product.sku}</h4>
-          <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded">STOCK DISPONIBLE</span>
-        </div>
-        
-        <div class="mb-3">
-          <p class="text-xl font-bold text-slate-900">$${product.price.toFixed(2)} <span class="text-xs text-gray-500 font-normal">+ IGV</span></p>
-        </div>
-
-        <div class="flex-1 overflow-y-auto custom-scroll pr-1">
-          <ul class="space-y-1.5">
-            ${product.summary.map(item => `
-              <li class="flex items-start gap-2 text-[11px] text-slate-600">
-                <i class="fa-solid fa-check text-blue-500 mt-0.5"></i>
-                <span>${item}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-
-        <div class="mt-4 pt-3 border-t border-gray-100">
-           <a href="product.html?sku=${product.sku}" class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors">
-              VER DETALLES
-           </a>
-        </div>
-      </div>
-
-    </div>
-  `;
-}
 
 /* ===================== render ===================== */
 function renderProduct(p) {
-  // Breadcrumb
   const crumbSku = $('#crumbSku');
   if (crumbSku) crumbSku.textContent = p.sku;
-
-  // Info block con PRECIO y BOTÓN DE COMPRA (estilo imagen azul)
-  
 
   const infoBlock = `
   <div class="text-slate-700 w-full">
     <div class="border p-5 rounded-md bg-white shadow-sm">
-      <h1 class="font-medium mb-3 text-lg md:text-xl">
+    <h1 class="font-extrabold mb-4 text-xl md:text-2xl lg:text-3xl text-slate-800 leading-tight">
         ${escapeHtml(p.name)} — Ref. ${escapeHtml(p.sku)}
       </h1>
       
-      <ul class="text-sm text-slate-500 mb-4 space-y-1">
-        <li>- Rollo de 305 metros</li>
-        <li>- Cable F/UTP sólido de 04 pares Cat 5e</li>
-        <li>- Chaqueta PVC (CM, IEC 60332-1)</li>
-        <li>- Color gris</li>
-        <li>- ANSI/TIA-568.2-D — Cat 5e</li>
-        <li>- IEC 60332-1</li>
-        <li>- Aplicaciones: 10/100/1000BASE-T</li>
-        <li>- RoHS Compliant</li>
+      <ul class="text-base text-slate-600 mb-5 space-y-2 leading-relaxed">
+
+        ${(p.summary || []).map(item => `<li>- ${escapeHtml(item)}</li>`).join('')}
       </ul>
 
       <div class="mt-3 flex gap-2 justify-between items-center border-t pt-4">
@@ -327,7 +177,6 @@ function renderProduct(p) {
       </div>
     </div>
 
-
     <div class="mt-4 flex flex-col items-start gap-2">
         <span class="text-blue-600 font-bold text-sm uppercase">Download</span>
         ${(p.downloads || []).map(d => `
@@ -340,7 +189,6 @@ function renderProduct(p) {
   </div>
   `;
 
-  // Galería + info
   $('#productView').innerHTML = `
     <div class="p-4 md:p-6">
       <div class="flex flex-col lg:flex-row-reverse gap-8 items-start">
@@ -352,7 +200,8 @@ function renderProduct(p) {
         </div>
       </div>
 
-      <div class="flex justify-center border-b mt-6">
+      <!-- PESTAÑAS ARRIBA -->
+      <div class="flex justify-center border-b mt-8 mb-6">
           <ul class="flex gap-4 mb-[-2px]">
               <li id="btn-show-info" 
                   onclick="window.changeProductTab('info')"
@@ -367,9 +216,11 @@ function renderProduct(p) {
           </ul>
       </div>
 
-      <div class="mt-8 relative">
-          
-          <div id="tab-info-content" style="display: block;">
+      <!-- CONTENEDOR DE CONTENIDO QUE CAMBIA -->
+      <div class="relative">
+
+          <!-- TAB: PRODUCTO -->
+          <div id="tab-info-content" class="w-full">
               ${p.description ? `
                 <section class="mb-10">
                   <h2 class="text-xl font-bold mb-3 text-slate-800">Descripción</h2>
@@ -387,38 +238,26 @@ function renderProduct(p) {
               </div>
           </div>
 
-          <div id="tab-gallery-content" style="display: none;">
-              <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- TAB: IMÁGENES -->
+          <div id="tab-gallery-content" class="w-full hidden">
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                   ${(p.gallery || []).map(img => `
-                      <div class="border border-gray-200 rounded-xl overflow-hidden h-60 bg-white flex items-center justify-center p-3 shadow-sm hover:shadow-md transition-all">
-                          <img src="${fixRel(img)}" class="max-h-full max-w-full object-contain">
+                      <div class="border border-gray-200 rounded-xl overflow-hidden h-64 bg-white flex items-center justify-center p-4 shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                          <img src="${fixRel(img)}" 
+                               class="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300" 
+                               alt="Imagen del producto"
+                               onclick="window.openImageZoom('${fixRel(img)}')">
                       </div>
                   `).join('')}
               </div>
           </div>
-
       </div>
     </div>
   `;
 
-  
-  const btnComprar = document.getElementById('btnComprar');
-
-  // Botón "Comprar ahora" - con precio (cantidad fija = 1)
-  if (btnComprar && p.price) {
-    btnComprar.addEventListener('click', (e) => {
-      e.preventDefault();
-      const qty = 1; // Cantidad fija
-      const waUrl = buildWhatsAppUrl(p, qty, true); // true = incluir precio
-      window.open(waUrl, '_blank');
-    });
-  }
-
-  
   const imgMain = $('#img_main');
   if (imgMain) imgMain.addEventListener('error', () => { imgMain.src = DEFAULT_IMG; }, { once:true });
 
-  
   const view = $('#productView');
   view.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-thumb]');
@@ -461,134 +300,95 @@ function renderSimilar(current) {
   }
 
   const cardTpl = (p) => {
-  const imgSrc = fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG;
-  const price = p.price ? `$${p.price.toFixed(2)}` : 'Consultar';
-  const hasSummary = Array.isArray(p.summary) && p.summary.length > 0;
-  
-  // Si estamos en /productos/, recargar mismo index.html
-  // Si estamos en raíz, ir a /productos/index.html
-  const productUrl = isInProductos 
-    ? `./index.html?sku=${encodeURIComponent(p.sku)}` 
-    : `./productos/index.html?sku=${encodeURIComponent(p.sku)}`;
-  
-  return `
-    <a href="${productUrl}" 
-       class="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden block">
-      
-      <div class="flex flex-col items-center text-center space-y-3">
-        <div class="h-44 flex items-center justify-center p-2">
-          <img src="${imgSrc}" 
-               alt="${escapeHtml(p.name)}" 
-               class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
-               loading="lazy"
-               onerror="this.src='${DEFAULT_IMG}'">
-        </div>
-        <div class="space-y-1 w-full">
-          <h3 class="text-sm font-bold text-slate-800 line-clamp-2 min-h-[40px] px-2">
-            ${escapeHtml(p.name)}
-          </h3>
-          <p class="text-xs text-gray-400 font-medium tracking-wide">Ref. ${p.sku}</p>
-          
-          <!-- PRECIO VISIBLE SIEMPRE -->
-          <div class="pt-2 border-t border-gray-100 mt-2">
-            <p class="text-lg font-black text-blue-600">
-              ${price}
-              ${p.price ? '<span class="text-[10px] text-gray-500 font-normal ml-1">+ IGV</span>' : ''}
-            </p>
+    const imgSrc = fixRel((p.gallery && p.gallery[0]) || p.image) || DEFAULT_IMG;
+    const price = p.price ? `$${p.price.toFixed(2)}` : 'Consultar';
+    const hasSummary = Array.isArray(p.summary) && p.summary.length > 0;
+    
+    const productUrl = isInProductos 
+      ? `./index.html?sku=${encodeURIComponent(p.sku)}` 
+      : `./productos/index.html?sku=${encodeURIComponent(p.sku)}`;
+    
+    return `
+      <a href="${productUrl}" 
+         class="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden block">
+        
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="h-44 flex items-center justify-center p-2">
+            <img src="${imgSrc}" 
+                 alt="${escapeHtml(p.name)}" 
+                 class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy"
+                 onerror="this.src='${DEFAULT_IMG}'">
+          </div>
+          <div class="space-y-1 w-full">
+            <h3 class="text-sm font-bold text-slate-800 line-clamp-2 min-h-[40px] px-2">
+              ${escapeHtml(p.name)}
+            </h3>
+            <p class="text-xs text-gray-400 font-medium tracking-wide">Ref. ${p.sku}</p>
+            
+            <div class="pt-2 border-t border-gray-100 mt-2">
+              <p class="text-lg font-black text-blue-600">
+                ${price}
+                ${p.price ? '<span class="text-[10px] text-gray-500 font-normal ml-1">+ IGV</span>' : ''}
+              </p>
+            </div>
           </div>
         </div>
-        
-      </div>
 
-      <div class="absolute inset-0 bg-white/98 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col translate-y-4 group-hover:translate-y-0 border-2 border-blue-500 rounded-xl">
-        
-        <div class="flex justify-between items-start mb-4">
-          <div class="bg-blue-50 text-blue-700 text-[10px] font-black px-2 py-1 rounded">DISPONIBLE</div>
-          <p class="text-xl font-black text-slate-900 leading-none">
-            ${price}<span class="text-[10px] text-gray-500 font-normal ml-1">${p.price ? '+ IGV' : ''}</span>
-          </p>
+        <div class="absolute inset-0 bg-white/98 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col translate-y-4 group-hover:translate-y-0 border-2 border-blue-500 rounded-xl">
+          
+          <div class="flex justify-between items-start mb-4">
+            <div class="bg-blue-50 text-blue-700 text-[10px] font-black px-2 py-1 rounded">DISPONIBLE</div>
+            <p class="text-xl font-black text-slate-900 leading-none">
+              ${price}<span class="text-[10px] text-gray-500 font-normal ml-1">${p.price ? '+ IGV' : ''}</span>
+            </p>
+          </div>
+
+          ${hasSummary ? `
+          <div class="flex-1 overflow-y-auto mb-4" style="scrollbar-width: thin; scrollbar-color: #888 #f1f1f1;">
+            <ul class="space-y-2">
+              ${p.summary.map(point => `
+                <li class="flex items-start gap-2 text-[11px] leading-tight text-slate-600">
+                  <i class="fa-solid fa-circle-check text-blue-500 mt-0.5"></i>
+                  <span>${escapeHtml(point)}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          ` : `
+          <div class="flex-1 flex items-center justify-center mb-4">
+            <p class="text-sm text-gray-500 italic">Ver detalles del producto</p>
+          </div>
+          `}
+
+          <div class="w-full bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold py-3 rounded-lg transition-colors text-center shadow-md">
+            MÁS INFORMACIÓN
+          </div>
         </div>
 
-        ${hasSummary ? `
-        <div class="flex-1 overflow-y-auto mb-4" style="scrollbar-width: thin; scrollbar-color: #888 #f1f1f1;">
-          <ul class="space-y-2">
-            ${p.summary.map(point => `
-              <li class="flex items-start gap-2 text-[11px] leading-tight text-slate-600">
-                <i class="fa-solid fa-circle-check text-blue-500 mt-0.5"></i>
-                <span>${escapeHtml(point)}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-        ` : `
-        <div class="flex-1 flex items-center justify-center mb-4">
-          <p class="text-sm text-gray-500 italic">Ver detalles del producto</p>
-        </div>
-        `}
-
-        <div class="w-full bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold py-3 rounded-lg transition-colors text-center shadow-md">
-          MÁS INFORMACIÓN
-        </div>
-      </div>
-
-    </a>
-  `;
-};
+      </a>
+    `;
+  };
 
   grid.innerHTML = cards.map(cardTpl).join('');
 }
-// --- ZOOM MODAL PRO (mejora visual + UX) ---
+
+// --- ZOOM MODAL ---
 (function setupZoom() {
   if (document.getElementById('zoomContainer')) return;
 
   const zoomDiv = document.createElement('div');
   zoomDiv.id = 'zoomContainer';
-  zoomDiv.className = `
-    fixed inset-0 z-[100] hidden
-    bg-black/70 backdrop-blur-sm
-    flex items-center justify-center p-4
-  `;
+  zoomDiv.className = `fixed inset-0 z-[100] hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4`;
 
   zoomDiv.innerHTML = `
-    <div id="zoomPanel"
-      class="
-        relative w-full max-w-6xl
-        rounded-2xl overflow-hidden
-        shadow-2xl ring-1 ring-white/10
-        bg-gradient-to-b from-white/5 to-white/0
-        transform transition duration-200 ease-out scale-95 opacity-0
-      "
-    >
-      <button id="zoomClose"
-        class="
-          absolute top-3 right-3 z-10
-          w-11 h-11 rounded-full
-          bg-black/50 hover:bg-black/70
-          text-white text-2xl leading-none
-          flex items-center justify-center
-          transition
-        "
-        aria-label="Cerrar"
-      >&times;</button>
-
+    <div id="zoomPanel" class="relative w-full max-w-6xl rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-gradient-to-b from-white/5 to-white/0 transform transition duration-200 ease-out scale-95 opacity-0">
+      <button id="zoomClose" class="absolute top-3 right-3 z-10 w-11 h-11 rounded-full bg-black/50 hover:bg-black/70 text-white text-2xl leading-none flex items-center justify-center transition" aria-label="Cerrar">&times;</button>
       <div class="p-3 md:p-5">
         <div class="w-full h-[70vh] flex items-center justify-center">
-          <img id="zoomImg"
-            src=""
-            class="
-              max-w-full max-h-full object-contain
-              rounded-xl
-              shadow-lg
-              select-none
-            "
-            alt="Zoom"
-            draggable="false"
-          />
+          <img id="zoomImg" src="" class="max-w-full max-h-full object-contain rounded-xl shadow-lg select-none" alt="Zoom" draggable="false" />
         </div>
-
-        <p class="mt-3 text-center text-white/70 text-sm">
-          Click fuera o ESC para cerrar
-        </p>
+        <p class="mt-3 text-center text-white/70 text-sm">Click fuera o ESC para cerrar</p>
       </div>
     </div>
   `;
@@ -602,8 +402,6 @@ function renderSimilar(current) {
   function openZoom(src) {
     zoomImg.src = src;
     zoomDiv.classList.remove('hidden');
-
-    // animación
     requestAnimationFrame(() => {
       zoomPanel.classList.remove('scale-95', 'opacity-0');
       zoomPanel.classList.add('scale-100', 'opacity-100');
@@ -613,310 +411,237 @@ function renderSimilar(current) {
   function closeZoom() {
     zoomPanel.classList.remove('scale-100', 'opacity-100');
     zoomPanel.classList.add('scale-95', 'opacity-0');
-
     setTimeout(() => zoomDiv.classList.add('hidden'), 150);
   }
 
-  // cerrar si haces click fuera del panel
   zoomDiv.addEventListener('click', (e) => {
     if (e.target === zoomDiv) closeZoom();
   });
 
-  // no cerrar si haces click dentro del panel
   zoomPanel.addEventListener('click', (e) => e.stopPropagation());
-
   closeBtn.addEventListener('click', closeZoom);
 
   document.addEventListener('keydown', (e) => {
     if (!zoomDiv.classList.contains('hidden') && e.key === 'Escape') closeZoom();
   });
 
-
   document.addEventListener('click', (e) => {
     const imgMain = e.target.closest('#img_main');
     if (!imgMain) return;
     openZoom(imgMain.src);
   });
+
+  window.openImageZoom = openZoom;
 })();
-document.addEventListener('DOMContentLoaded', () => {
-  initFAQAccordion();
-  initWhatsAppQuestionForm();
-});
 
-function initFAQAccordion() {
-  const questions = document.querySelectorAll('.faq-question');
+// --- RENDER FAQ DINÁMICO ---
+function renderProductoFAQ(producto) {
+  const container = document.getElementById('dynamic-faq-container');
+  if (!container || !producto.faq || !producto.faq.length) return;
 
-  questions.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const answer = btn.nextElementSibling; // .faq-answer
-      const icon = btn.querySelector('i');
+  const faqItemsHTML = producto.faq.map((item) => `
+    <div class="faq-item mb-4 border rounded-md overflow-hidden">
+      <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" 
+              onclick="window.toggleFaq(this)">
+        <span class="font-medium text-gray-800">${escapeHtml(item.q)}</span>
+        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+      </button>
+      <div class="faq-answer p-4 bg-white hidden border-t">
+        <p class="text-gray-700">${escapeHtml(item.a)}</p>
+      </div>
+    </div>
+  `).join('');
 
-      // Cerrar todas las demás
-      document.querySelectorAll('.faq-answer').forEach((other) => {
-        if (other !== answer) {
-          other.classList.add('hidden');
-          const otherIcon = other.previousElementSibling?.querySelector('i');
-          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
-        }
-      });
+  container.innerHTML = `
+    <section class="faq-section mx-auto mt-10 mb-10" style="max-width: 90%; width: 900px">
+      <div class="border rounded-md p-5 bg-white shadow-sm">
+        <h2 class="text-2xl font-bold text-center mb-6 text-blue-600">
+          <i class="fas fa-question-circle mr-2"></i>
+          ${producto.faqTitle || `Preguntas Frecuentes sobre ${producto.sku}`}
+        </h2>
+        
+        <div class="faq-container">
+          ${faqItemsHTML}
+        </div>
 
-      // Toggle actual
-      const willOpen = answer.classList.contains('hidden');
-      answer.classList.toggle('hidden', !willOpen);
+        <div class="new-question mt-8 p-6 border border-blue-200 rounded-lg bg-blue-50">
+          <h3 class="text-xl font-bold mb-2 text-blue-700">
+            ¿Tienes otra pregunta sobre el ${producto.sku}?
+          </h3>
+          <p class="text-gray-700 mb-4">Envíanos tu consulta y nuestro equipo técnico te responderá en menos de 24 horas.</p>
+          
+          <div class="mb-4">
+            <textarea 
+              id="user-msg-${producto.sku}" 
+              placeholder="Ejemplo: ¿Tienen stock disponible? ¿Viene con garantía? ¿Hacen envíos a provincia?"
+              class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+              rows="4"
+              maxlength="500"
+              oninput="window.updateCharCount(this, '${producto.sku}')"
+            ></textarea>
+            <div class="mt-1 text-sm text-gray-500 flex justify-between">
+              <span>Escribe tu pregunta específica sobre el producto</span>
+              <span><span id="char-count-${producto.sku}">0</span>/500</span>
+            </div>
+          </div>
 
-      if (icon) icon.style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-    });
-  });
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button 
+              id="btn-enviar-${producto.sku}"
+              onclick="window.enviarWSP('${producto.sku}', '${escapeHtml(producto.name)}')"
+              disabled
+              class="bg-green-600 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
+            >
+              <i class="fab fa-whatsapp"></i>
+              Enviar pregunta por WhatsApp
+            </button>
+            <a 
+              href="https://wa.me/51937700700?text=Hola, tengo una consulta general" 
+              target="_blank"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center gap-2"
+            >
+              <i class="fas fa-comments"></i>
+              Consulta general
+            </a>
+          </div>
+          <p class="text-xs text-gray-500 text-center mt-4">
+            <i class="fas fa-info-circle mr-1"></i>
+            Al hacer clic en "Enviar pregunta por WhatsApp", se abrirá WhatsApp con tu pregunta pre-escrita.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fb-comments-section mx-auto mb-10" style="max-width: 90%; width: 900px">
+      <div class="border rounded-md p-5 bg-white shadow-sm">
+        <h3 class="text-2xl font-bold text-center mb-6 text-blue-700">
+          <i class="fab fa-facebook mr-2"></i>
+          Opiniones sobre ${producto.sku}
+        </h3>
+        <div class="fb-comments" 
+             data-href="https://www.ds3comunicaciones.com/producto/${producto.sku}" 
+             data-width="100%" 
+             data-numposts="5">
+        </div>
+      </div>
+    </section>
+  `;
+
+  if (window.FB) window.FB.XFBML.parse();
 }
 
-// --- WhatsApp form (tu misma lógica, solo la dejo viva y estable) ---
-function initWhatsAppQuestionForm() {
-  const textarea = document.getElementById('user-question');
-  const whatsappBtn = document.getElementById('whatsapp-question-btn');
-  const charCount = document.getElementById('char-count');
-  const maxChars = 500;
-
-  if (!textarea || !whatsappBtn || !charCount) return;
-
-  const phoneNumber = '937700700';
-
-  textarea.addEventListener('input', function () {
-    let currentLength = this.value.length;
-
-    if (currentLength > maxChars) {
-      this.value = this.value.substring(0, maxChars);
-      currentLength = maxChars;
-    }
-
-    charCount.textContent = `${currentLength}/${maxChars}`;
-
-    if (currentLength > maxChars * 0.9) {
-      charCount.classList.add('text-red-600', 'font-medium');
-      charCount.classList.remove('text-gray-500');
+// ✅ FUNCIONES GLOBALES
+window.updateCharCount = function(textarea, sku) {
+  const countSpan = document.getElementById(`char-count-${sku}`);
+  const btnEnviar = document.getElementById(`btn-enviar-${sku}`);
+  
+  const currentLength = textarea.value.length;
+  
+  if (countSpan) {
+    countSpan.innerText = currentLength;
+  }
+  
+  if (btnEnviar) {
+    const hasValidText = textarea.value.trim().length >= 3;
+    btnEnviar.disabled = !hasValidText;
+    
+    if (hasValidText) {
+      btnEnviar.classList.remove('opacity-50', 'cursor-not-allowed');
+      btnEnviar.classList.add('hover:bg-green-700');
     } else {
-      charCount.classList.remove('text-red-600', 'font-medium');
-      charCount.classList.add('text-gray-500');
+      btnEnviar.classList.add('opacity-50', 'cursor-not-allowed');
+      btnEnviar.classList.remove('hover:bg-green-700');
     }
+  }
+};
 
-    const ok = this.value.trim().length > 0 && this.value.trim().length <= maxChars;
-    whatsappBtn.disabled = !ok;
-  });
+window.enviarWSP = function(sku, nombre) {
+  const input = document.getElementById(`user-msg-${sku}`);
+  const mensajeUsuario = input ? input.value.trim() : "";
+  
+  if (mensajeUsuario.length < 3) {
+    alert('Por favor, escribe tu pregunta antes de enviar');
+    return;
+  }
+  
+  let mensajeFinal = `Hola DS3, tengo una consulta sobre el producto *${sku} - ${nombre}*:%0A%0A"${mensajeUsuario}"`;
+  
+  const url = `https://wa.me/51937700700?text=${mensajeFinal}`;
+  window.open(url, '_blank');
+  
+  if (input) {
+    input.value = '';
+    window.updateCharCount(input, sku);
+  }
+};
 
-  whatsappBtn.addEventListener('click', () => {
-    const question = textarea.value.trim();
-    if (!question) return;
+window.toggleFaq = function(button) {
+  const answer = button.nextElementSibling;
+  const icon = button.querySelector('i');
+  answer.classList.toggle('hidden');
+  icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+};
 
-    const message =
-      `*Consulta sobre U7-LITE*\n\n` +
-      `Hola, tengo la siguiente pregunta:\n\n${question}\n\n` +
-      `Producto: U7-LITE Access Point WiFi 7`;
+// ✅ TABS - FUNCIÓN PRINCIPAL QUE INTERCAMBIA CONTENIDO
+window.changeProductTab = function(tab) {
+  const infoContent = document.getElementById('tab-info-content');
+  const galleryContent = document.getElementById('tab-gallery-content');
+  const btnInfo = document.getElementById('btn-show-info');
+  const btnGallery = document.getElementById('btn-show-gallery');
 
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
+  if (!infoContent || !galleryContent) return;
 
-    // reset UI
-    textarea.value = '';
-    textarea.dispatchEvent(new Event('input'));
-  });
+  const activeTabClasses = 'border-b-2 border-blue-600 text-blue-600';
+  const inactiveTabClasses = 'border-b-2 border-transparent text-gray-500 hover:text-blue-600';
 
-  // inicializa estado
-  textarea.dispatchEvent(new Event('input'));
-}
+  if (tab === 'info') {
+    // Mostrar PRODUCTO
+    infoContent.classList.remove('hidden');
+    galleryContent.classList.add('hidden');
+    
+    btnInfo.className = `cursor-pointer px-8 py-3 ${activeTabClasses} font-bold text-sm transition-all uppercase`;
+    btnGallery.className = `cursor-pointer px-8 py-3 ${inactiveTabClasses} font-bold text-sm transition-all uppercase`;
+  } else if (tab === 'gallery') {
+    // Mostrar IMÁGENES
+    infoContent.classList.add('hidden');
+    galleryContent.classList.remove('hidden');
+    
+    btnGallery.className = `cursor-pointer px-8 py-3 ${activeTabClasses} font-bold text-sm transition-all uppercase`;
+    btnInfo.className = `cursor-pointer px-8 py-3 ${inactiveTabClasses} font-bold text-sm transition-all uppercase`;
+  }
+};
 
-// --- Facebook comments refresh (opcional, pero si lo quieres) ---
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    if (typeof FB !== 'undefined') FB.XFBML.parse();
-  }, 600);
-});
-(function boot() {
+// ✅ INIT - CARGAR PRODUCTO AL INICIAR
+(async function init() {
   const sku = getSku();
-  const mount = $('#productView');
-
   if (!sku) {
-    mount.innerHTML = `<div class="p-6 bg-white border rounded-xl">No encontré el producto (sin SKU).</div>`;
+    $('#productView').innerHTML = '<p class="p-10 text-center text-red-600">No se encontró el SKU del producto.</p>';
     return;
   }
 
   const product = PRODUCTS.find(p => p.sku === sku);
   if (!product) {
-    mount.innerHTML = `<div class="p-6 bg-white border rounded-xl">No encontré el producto (${escapeHtml(sku)}).</div>`;
+    $('#productView').innerHTML = '<p class="p-10 text-center text-red-600">Producto no encontrado.</p>';
     return;
   }
 
   renderProduct(product);
-  initFAQAccordion(document); // ✅ IMPORTANTE: después del render
   renderSimilar(product);
+  renderProductoFAQ(product);
 })();
-// 1. Función para encontrar el producto actual y renderizar
-function initProductTemplate() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productSku = urlParams.get('sku');
+(function(){
+  const container = document.getElementById('brandsScroll');
+  if (!container) return;
 
-    // Buscamos el objeto dentro de tu array PRODUCTS
-    const productoActual = PRODUCTS.find(p => p.sku === productSku);
+  const cards = [...container.querySelectorAll('.brand-card')];
+  if (!cards.length) return;
 
-    if (productoActual) {
-        renderProductoFAQ(productoActual);
-    } else {
-        // Carga el primero por defecto si no hay SKU en la URL para que no quede vacío
-        if (PRODUCTS.length > 0) renderProductoFAQ(PRODUCTS[0]); 
-    }
-}
+  // ✅ Como este repo es SIEMON, marcamos siemon fijo
+  const currentBrand = 'siemon';
 
-// 2. La función que construye el HTML con el RECTÁNGULO de texto
-function renderProductoFAQ(producto) {
-    const container = document.getElementById('dynamic-faq-container');
-    if (!container) return;
+  const active = cards.find(c => (c.dataset.brand || '').toLowerCase() === currentBrand);
+  if (!active) return;
 
-    const faqItemsHTML = producto.faq.map((item) => `
-        <div class="faq-item mb-4 border rounded-md overflow-hidden">
-            <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" 
-                    onclick="toggleFaq(this)">
-                <span class="font-medium text-gray-800">${item.q}</span>
-                <i class="fas fa-chevron-down transition-transform duration-300"></i>
-            </button>
-            <div class="faq-answer p-4 bg-white hidden border-t">
-                <p class="text-gray-700">${item.a}</p>
-            </div>
-        </div>
-    `).join('');
-
-    container.innerHTML = `
-        <section class="faq-section mx-auto mt-10 mb-10" style="max-width: 90%; width: 900px">
-            <div class="border rounded-md p-5 bg-white shadow-sm">
-                <h2 class="text-2xl font-bold text-center mb-6 text-blue-600">
-                    <i class="fas fa-question-circle mr-2"></i>
-                    ${producto.faqTitle || `Preguntas Frecuentes sobre ${producto.sku}`}
-                </h2>
-                
-                <div class="faq-container">
-                    ${faqItemsHTML}
-                </div>
-
-                <div class="new-question mt-8 p-6 border border-blue-200 rounded-lg bg-blue-50">
-                    <h3 class="text-xl font-bold mb-2 text-blue-700">
-                        ¿Tienes otra pregunta sobre el ${producto.sku}?
-                    </h3>
-                    <p class="text-gray-700 mb-4">Envíanos tu consulta y nuestro equipo técnico te responderá en menos de 24 horas.</p>
-                    
-                    <div class="mb-4">
-                        <textarea 
-                            id="user-msg-${producto.sku}" 
-                            placeholder="Ejemplo: ¿Tienen stock disponible? ¿Viene con garantía? ¿Hacen envíos a provincia?"
-                            class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                            rows="4"
-                            maxlength="500"
-                            oninput="updateCharCount(this, '${producto.sku}')"
-                        ></textarea>
-                        <div class="mt-1 text-sm text-gray-500 flex justify-between">
-                            <span>Escribe tu pregunta específica sobre el producto</span>
-                            <span><span id="char-count-${producto.sku}">0</span>/500</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <button 
-                            onclick="enviarWSP('${producto.sku}', '${producto.name}')"
-                            class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center gap-2"
-                        >
-                            <i class="fab fa-whatsapp"></i>
-                            Enviar pregunta por WhatsApp
-                        </button>
-                        <a 
-                            href="https://wa.me/51937700700?text=Hola, tengo una consulta general" 
-                            target="_blank"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center gap-2"
-                        >
-                            <i class="fas fa-comments"></i>
-                            Consulta general
-                        </a>
-                    </div>
-                    <p class="text-xs text-gray-500 text-center mt-4">
-                        <i class="fas fa-info-circle mr-1"></i>
-                        Al hacer clic en "Enviar pregunta por WhatsApp", se abrirá WhatsApp con tu pregunta pre-escrita.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="fb-comments-section mx-auto mb-10" style="max-width: 90%; width: 900px">
-            <div class="border rounded-md p-5 bg-white shadow-sm">
-                <h3 class="text-2xl font-bold text-center mb-6 text-blue-700">
-                    <i class="fab fa-facebook mr-2"></i>
-                    Opiniones sobre ${producto.sku}
-                </h3>
-                <div class="fb-comments" 
-                     data-href="https://www.ds3comunicaciones.com/producto/${producto.sku}" 
-                     data-width="100%" 
-                     data-numposts="5">
-                </div>
-            </div>
-        </section>
-    `;
-
-    if (window.FB) window.FB.XFBML.parse();
-}
-
-// --- FUNCIONES LÓGICAS ---
-
-// 1. Envío a WhatsApp capturando el texto del rectángulo
-function enviarWSP(sku, nombre) {
-    const input = document.getElementById(`user-msg-${sku}`);
-    const mensajeUsuario = input ? input.value.trim() : "";
-    
-    // Si el usuario escribió algo, lo agregamos al mensaje. Si no, enviamos uno estándar.
-    let mensajeFinal = `Hola DS3, tengo una consulta sobre el producto *${sku} - ${nombre}*`;
-    
-    if (mensajeUsuario !== "") {
-        mensajeFinal += `:%0A%0A"${mensajeUsuario}"`;
-    }
-
-    const url = `https://wa.me/51937700700?text=${mensajeFinal}`;
-    window.open(url, '_blank');
-}
-
-// 2. Actualizar contador de caracteres
-function updateCharCount(textarea, sku) {
-    const countSpan = document.getElementById(`char-count-${sku}`);
-    if (countSpan) {
-        countSpan.innerText = textarea.value.length;
-    }
-}
-
-// 3. Acordeón
-function toggleFaq(button) {
-    const answer = button.nextElementSibling;
-    const icon = button.querySelector('i');
-    answer.classList.toggle('hidden');
-    icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-}
-
-// EJECUTAR
-document.addEventListener("DOMContentLoaded", initProductTemplate);
-// FORZAMOS A QUE LA FUNCIÓN SEA GLOBAL PARA QUE EL ONCLICK LA ENCUENTRE
-// Función global para el intercambio de pestañas
-window.changeProductTab = function(tab) {
-    const infoContent = document.getElementById('tab-info-content');
-    const galleryContent = document.getElementById('tab-gallery-content');
-    const btnInfo = document.getElementById('btn-show-info');
-    const btnGallery = document.getElementById('btn-show-gallery');
-
-    if (!infoContent || !galleryContent) return;
-
-    // Clases de estilo
-    const active = "cursor-pointer px-8 py-3 border-b-2 border-blue-600 text-blue-600 font-bold text-sm transition-all uppercase";
-    const inactive = "cursor-pointer px-8 py-3 border-b-2 border-transparent text-gray-500 hover:text-blue-600 font-bold text-sm transition-all uppercase";
-
-    if (tab === 'info') {
-        infoContent.style.display = 'block';
-        galleryContent.style.display = 'none';
-        btnInfo.className = active;
-        btnGallery.className = inactive;
-    } else {
-        infoContent.style.display = 'none';
-        galleryContent.style.display = 'block';
-        btnGallery.className = active;
-        btnInfo.className = inactive;
-    }
-};  
+  active.classList.add('is-active');
+  container.prepend(active);
+})();
