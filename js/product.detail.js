@@ -141,7 +141,6 @@ function renderProduct(p) {
       </h1>
       
       <ul class="text-base text-slate-600 mb-5 space-y-2 leading-relaxed">
-
         ${(p.summary || []).map(item => `<li>- ${escapeHtml(item)}</li>`).join('')}
       </ul>
 
@@ -310,8 +309,7 @@ function renderSimilar(current) {
     
     return `
       <a href="${productUrl}" 
-         class="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden block">
-        
+         class="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden block flex-shrink-0 w-[280px] sm:w-[300px] lg:w-auto snap-start">        
         <div class="flex flex-col items-center text-center space-y-3">
           <div class="h-44 flex items-center justify-center p-2">
             <img src="${imgSrc}" 
@@ -335,7 +333,8 @@ function renderSimilar(current) {
           </div>
         </div>
 
-        <div class="absolute inset-0 bg-white/98 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col translate-y-4 group-hover:translate-y-0 border-2 border-blue-500 rounded-xl">
+        <!-- HOVER OVERLAY - Funciona en desktop al hacer hover, en móvil al tocar -->
+        <div class="product-hover-overlay absolute inset-0 bg-white/98 p-6 opacity-0 pointer-events-none lg:group-hover:opacity-100 lg:group-hover:pointer-events-auto transition-all duration-300 flex flex-col translate-y-4 lg:group-hover:translate-y-0 border-2 border-blue-500 rounded-xl">
           
           <div class="flex justify-between items-start mb-4">
             <div class="bg-blue-50 text-blue-700 text-[10px] font-black px-2 py-1 rounded">DISPONIBLE</div>
@@ -370,7 +369,69 @@ function renderSimilar(current) {
     `;
   };
 
+  // ✅ RESPONSIVE MEJORADO: Scroll horizontal en móvil con snap, grid en desktop
+  grid.className = 'mt-6 flex lg:grid lg:grid-cols-3 gap-4 lg:gap-6 overflow-x-auto lg:overflow-x-visible pb-4 snap-x snap-mandatory lg:snap-none px-4 lg:px-0 -mx-4 lg:mx-0';
+  
+  // ✅ Estilos para scrollbar personalizada
+  grid.style.scrollbarWidth = 'thin';
+  grid.style.scrollbarColor = '#3b82f6 #e5e7eb';
+  grid.style.scrollPaddingLeft = '1rem';
+  grid.style.scrollPaddingRight = '1rem';
+  
   grid.innerHTML = cards.map(cardTpl).join('');
+
+  // ✅ ACTIVAR OVERLAY EN MÓVIL AL TOCAR
+  setTimeout(() => {
+    const productCards = grid.querySelectorAll('a.group');
+    
+    productCards.forEach(card => {
+      const overlay = card.querySelector('.product-hover-overlay');
+      
+      if (overlay) {
+        // Evento táctil para móvil/tablet
+        card.addEventListener('touchstart', (e) => {
+          if (window.innerWidth < 1024) { // Solo en móvil/tablet
+            // Si el overlay ya está visible, permitir que el link funcione
+            if (overlay.style.opacity === '1') {
+              return; // Permitir navegación
+            }
+            
+            // Si no está visible, mostrarlo y prevenir navegación
+            e.preventDefault();
+            
+            // Ocultar otros overlays
+            productCards.forEach(otherCard => {
+              const otherOverlay = otherCard.querySelector('.product-hover-overlay');
+              if (otherOverlay && otherOverlay !== overlay) {
+                otherOverlay.style.opacity = '0';
+                otherOverlay.style.pointerEvents = 'none';
+                otherOverlay.style.transform = 'translateY(1rem)';
+              }
+            });
+            
+            // Mostrar este overlay
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
+            overlay.style.transform = 'translateY(0)';
+          }
+        });
+      }
+    });
+
+    // ✅ Cerrar overlay al tocar fuera
+    document.addEventListener('touchstart', (e) => {
+      if (window.innerWidth < 1024 && !e.target.closest('a.group')) {
+        productCards.forEach(card => {
+          const overlay = card.querySelector('.product-hover-overlay');
+          if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+            overlay.style.transform = 'translateY(1rem)';
+          }
+        });
+      }
+    });
+  }, 100);
 }
 
 // --- ZOOM MODAL ---
@@ -629,6 +690,8 @@ window.changeProductTab = function(tab) {
   renderSimilar(product);
   renderProductoFAQ(product);
 })();
+
+// ✅ ACTIVAR MARCA SIEMON
 (function(){
   const container = document.getElementById('brandsScroll');
   if (!container) return;
@@ -636,7 +699,6 @@ window.changeProductTab = function(tab) {
   const cards = [...container.querySelectorAll('.brand-card')];
   if (!cards.length) return;
 
-  // ✅ Como este repo es SIEMON, marcamos siemon fijo
   const currentBrand = 'siemon';
 
   const active = cards.find(c => (c.dataset.brand || '').toLowerCase() === currentBrand);
