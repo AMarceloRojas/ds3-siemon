@@ -10,11 +10,12 @@ const FAQ_WHATSAPP = '51937700700';
 const $ = (s) => document.querySelector(s);
 const DEFAULT_IMG = PREFIX + 'SIEMON/icons/Siemonlogo.png';
 const WHATSAPP_PHONE = '51937514867';
-
+const WHATSAPP_COMPRAR = '51994428965';  // ✅ Nuevo número para COMPRAR
 function buildWhatsAppUrl(product, actionType = 'comprar') {
   const brand = product.brand || 'SIEMON';
   const currentUrl = location.href;
-  
+    const phone = actionType === 'cotizar' ? WHATSAPP_PHONE : WHATSAPP_COMPRAR;
+
   let text = actionType === 'cotizar' 
     ? `Hola, deseo cotizar el producto de la marca ${brand}, modelo ${product.sku}.` 
     : `Hola, deseo comprar el producto de la marca ${brand}, modelo ${product.sku}.`;
@@ -24,7 +25,7 @@ function buildWhatsAppUrl(product, actionType = 'comprar') {
   }
   
   text += ` Link: ${currentUrl}`;
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 }
 
 const fixRel = (u) => {
