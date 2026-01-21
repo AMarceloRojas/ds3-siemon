@@ -1398,7 +1398,7 @@ export const PRODUCTS = [
 {
   sku: 'P6U-BOOT',
   category: 'cat6',
-  name: 'Bota para Plug Cat 6 (Paquete 50 uds)',
+  name: 'Bota para Plug Cat 6 (Paquete 50 uds)',  
   price: 59.00,
   gallery: [
     '../imgs/siemon/cat6/P6U-BOOT/P6U-BOOT.png',
@@ -1448,4 +1448,4 @@ export const PRODUCTS = [
     { label: 'Guía de instalación (PDF)', href: '../docs/siemon/cat6/P6U-BOOT/P6U-BOOT-specs.pdf', icon: 'fa-clipboard-list' }
   ]
 },
-]
+] 
